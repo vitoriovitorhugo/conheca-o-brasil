@@ -30,25 +30,46 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files - NUNCA subir senhas para o GitHub!
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel
-
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 local-*
+
+# IDE / AI
 .claude
 .z-ai-config
+
+# Logs
 *.log
 dev.log
 dev.out.log
-test
-prompt
-
 server.log
+
 # Skills directory
 /skills/
+
+# Database local (usamos Supabase agora)
+/db/
+*.db
+
+# Arquivos do ambiente de desenvolvimento
+.zscripts/
+agent-ctx/
+Caddyfile
+mini-services/
+examples/
+tool-results/
+worklog.md
+
+# Uploads e dados originais (já estão em src/lib/ibge-data.ts)
+upload/
+download/
+ibge_data.json
