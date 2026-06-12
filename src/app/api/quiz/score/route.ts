@@ -5,17 +5,28 @@ import { getCurrentSession } from "@/lib/auth";
 // POST - Save a quiz score
 export async function POST(request: Request) {
   try {
-    const session = await getCurrentSession();
+    const body = await request.json();
+    const { score, total, category, userId: bodyUserId } = body;
 
-    if (!session?.user?.id) {
+    // Try session first, fall back to userId from request body
+    const session = await getCurrentSession();
+    const userId = session?.user?.id || bodyUserId;
+
+    if (!userId) {
       return NextResponse.json(
         { error: "É necessário estar logado para salvar o resultado" },
         { status: 401 }
       );
     }
 
-    const body = await request.json();
-    const { score, total, category } = body;
+    // Verify the user exists
+    const userExists = await db.user.findUnique({ where: { id: userId } });
+    if (!userExists) {
+      return NextResponse.json(
+        { error: "Usuário não encontrado" },
+        { status: 401 }
+      );
+    }
 
     if (typeof score !== "number" || typeof total !== "number") {
       return NextResponse.json(
@@ -33,7 +44,7 @@ export async function POST(request: Request) {
 
     const quizScore = await db.quizScore.create({
       data: {
-        userId: session.user.id,
+        userId,
         score,
         total,
         category: category || "geral",

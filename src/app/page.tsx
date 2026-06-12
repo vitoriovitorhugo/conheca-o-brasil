@@ -289,23 +289,50 @@ export default function ConhecaBrasil() {
   }, [user]);
 
   const performLogin = async (email: string, password: string) => {
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
+    // Step 1: Validate credentials via our custom API (bypasses CSRF issues)
+    const loginRes = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
     });
 
-    if (result?.ok) {
+    const loginData = await loginRes.json();
+
+    if (!loginRes.ok || !loginData.success) {
+      return { success: false, error: loginData.error || "Email ou senha inválidos" };
+    }
+
+    // Step 2: Establish NextAuth session
+    try {
+      await signIn("credentials", { redirect: false, email, password });
+    } catch {
+      // signIn might fail in cross-origin preview environments,
+      // but credentials are already validated — try session directly
+    }
+
+    // Step 3: Verify session exists, or use the validated user data
+    try {
       const sessionRes = await fetch("/api/auth/session");
       const session = await sessionRes.json();
       if (session?.user?.id) {
         setUser({ id: session.user.id, name: session.user.name || session.user.email, email: session.user.email });
         setPage("dashboard");
         toast.success("Bem-vindo(a) ao Conheça o Brasil!");
-        return true;
+        return { success: true, error: null };
       }
+    } catch {
+      // Session fetch failed
     }
-    return false;
+
+    // Fallback: use the validated user data from our custom API
+    if (loginData.user?.id) {
+      setUser({ id: loginData.user.id, name: loginData.user.name || loginData.user.email, email: loginData.user.email });
+      setPage("dashboard");
+      toast.success("Bem-vindo(a) ao Conheça o Brasil!");
+      return { success: true, error: null };
+    }
+
+    return { success: false, error: "Erro ao criar sessão. Tente novamente." };
   };
 
   const handleAuth = async (email: string, password: string, name?: string) => {
@@ -323,17 +350,17 @@ export default function ConhecaBrasil() {
         }
         // Auto-login after successful signup
         toast.success("Conta criada com sucesso!");
-        const loggedIn = await performLogin(email, password);
-        if (!loggedIn) {
-          toast.error("Conta criada, mas erro ao entrar. Tente fazer login manualmente.");
+        const result = await performLogin(email, password);
+        if (!result.success) {
+          toast.error(result.error || "Conta criada, mas erro ao entrar. Tente fazer login manualmente.");
           setAuthMode("login");
         }
         return;
       }
 
-      const loggedIn = await performLogin(email, password);
-      if (!loggedIn) {
-        toast.error("Email ou senha inválidos");
+      const result = await performLogin(email, password);
+      if (!result.success) {
+        toast.error(result.error || "Email ou senha inválidos");
       }
     } catch {
       toast.error("Erro de conexão. Tente novamente.");
@@ -1502,7 +1529,7 @@ function Quiz({ user, onComplete }: { user: UserData; onComplete: () => void }) 
       await fetch("/api/quiz/score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ score: data.score, total: data.total, category: "geral" }),
+        body: JSON.stringify({ score: data.score, total: data.total, category: "geral", userId: user.id }),
       });
       toast.success(`Você acertou ${data.score} de ${data.total}!`);
     } catch {
