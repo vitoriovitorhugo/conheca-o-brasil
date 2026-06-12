@@ -56,3 +56,23 @@ Stage Summary:
 - Mobile-responsive with hamburger menu
 - Auth working with NextAuth credentials provider
 - All lint errors resolved
+
+---
+Task ID: 4
+Agent: Main Developer
+Task: Fix login flow - "Entrar" button not redirecting to dashboard
+
+Work Log:
+- Analyzed the auth flow: found that signup didn't auto-login, just switched to login tab
+- No demo credentials were visible, so users didn't know what to enter
+- Extracted performLogin() helper function to reuse login logic
+- Changed handleAuth to auto-login after successful signup (instead of just showing a toast and switching tabs)
+- Added demo account cards to the login page (Maria Silva, João Santos, Ana Oliveira)
+- Demo account buttons auto-fill email/password when clicked
+- Tested complete flow with Agent Browser: login, signup, dashboard, quiz, ranking, curiosidades - all working
+
+Stage Summary:
+- Signup now auto-logs in and redirects to Dashboard
+- 3 demo accounts displayed on login page with click-to-fill
+- All navigation (Dashboard, Curiosidades, Quiz, Ranking) working after login
+- No console errors or page errors

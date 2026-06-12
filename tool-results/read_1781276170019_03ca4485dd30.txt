@@ -1,0 +1,1729 @@
+     1→"use client";
+     2→
+     3→import React, { useState, useEffect } from "react";
+     4→import { signIn, signOut } from "next-auth/react";
+     5→import {
+     6→  BarChart3,
+     7→  Trophy,
+     8→  Brain,
+     9→  Lightbulb,
+    10→  LogOut,
+    11→  Menu,
+    12→  X,
+    13→  ChevronRight,
+    14→  TrendingUp,
+    15→  TrendingDown,
+    16→  Users,
+    17→  Briefcase,
+    18→  DollarSign,
+    19→  GraduationCap,
+    20→  MapPin,
+    21→  Clock,
+    22→  Target,
+    23→  Award,
+    24→  ArrowLeft,
+    25→  CheckCircle2,
+    26→  XCircle,
+    27→  Loader2,
+    28→  Flag,
+    29→  Star,
+    30→} from "lucide-react";
+    31→import {
+    32→  BarChart,
+    33→  Bar,
+    34→  LineChart,
+    35→  Line,
+    36→  PieChart,
+    37→  Pie,
+    38→  Cell,
+    39→  XAxis,
+    40→  YAxis,
+    41→  CartesianGrid,
+    42→  Tooltip,
+    43→  Legend,
+    44→  ResponsiveContainer,
+    45→  AreaChart,
+    46→  Area,
+    47→  RadarChart,
+    48→  PolarGrid,
+    49→  PolarAngleAxis,
+    50→  PolarRadiusAxis,
+    51→  Radar,
+    52→} from "recharts";
+    53→import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+    54→import { Button } from "@/components/ui/button";
+    55→import { Input } from "@/components/ui/input";
+    56→import { Label } from "@/components/ui/label";
+    57→import { Badge } from "@/components/ui/badge";
+    58→import { Progress } from "@/components/ui/progress";
+    59→import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+    60→import { Separator } from "@/components/ui/separator";
+    61→import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+    62→import { ScrollArea } from "@/components/ui/scroll-area";
+    63→import { toast } from "sonner";
+    64→
+    65→// =============================================
+    66→// TYPES
+    67→// =============================================
+    68→type Page = "auth" | "dashboard" | "quiz" | "ranking" | "curiosidades";
+    69→type AuthMode = "login" | "signup";
+    70→
+    71→interface UserData {
+    72→  id: string;
+    73→  name: string;
+    74→  email: string;
+    75→}
+    76→
+    77→interface IbgeData {
+    78→  t11_yearly: Record<string, YearlyIndicator>;
+    79→  t11_by_sex: Record<string, IndicatorDetail>;
+    80→  t11_by_race: Record<string, IndicatorDetail>;
+    81→  t11_by_age: Record<string, AgeIndicator>;
+    82→  t11_by_education: Record<string, EduIndicator>;
+    83→  t14_yearly_income: Record<string, YearlyIncome>;
+    84→  t14_income_by_sex: Record<string, number>;
+    85→  t14_income_by_race: Record<string, number>;
+    86→  t14_income_by_education: Record<string, number>;
+    87→  t17_atividade: Record<string, AtividadeDetail>;
+    88→  t137_tempo_desocupacao: Record<string, TempoDetail>;
+    89→  t141_horas: Record<string, HorasDetail>;
+    90→  t143_nenos: Record<string, NenosDetail>;
+    91→  t150_jovens_pobreza: Record<string, PobrezaDetail>;
+    92→  t151_grupos_ocupacao: Record<string, OcupacaoDetail>;
+    93→  city_income: string[][];
+    94→  national_income: string[][];
+    95→}
+    96→
+    97→interface YearlyIndicator {
+    98→  pop_idade_trabalhar: number;
+    99→  pop_forca_trabalho: number;
+   100→  pop_ocupada: number;
+   101→  pop_ocupada_formal: number;
+   102→  pop_desocupada: number;
+   103→  taxa_participacao: number;
+   104→  nivel_ocupacao: number;
+   105→  taxa_formalizacao: number;
+   106→  taxa_desocupacao: number;
+   107→  taxa_subutilizacao: number;
+   108→}
+   109→
+   110→interface IndicatorDetail {
+   111→  pop_idade_trabalhar: number;
+   112→  taxa_participacao: number;
+   113→  nivel_ocupacao: number;
+   114→  taxa_formalizacao: number;
+   115→  taxa_desocupacao: number;
+   116→  taxa_subutilizacao: number;
+   117→}
+   118→
+   119→interface AgeIndicator {
+   120→  pop_idade_trabalhar: number;
+   121→  taxa_participacao: number;
+   122→  nivel_ocupacao: number;
+   123→  taxa_formalizacao: number;
+   124→  taxa_desocupacao: number;
+   125→}
+   126→
+   127→interface EduIndicator {
+   128→  pop_idade_trabalhar: number;
+   129→  taxa_participacao: number;
+   130→  nivel_ocupacao: number;
+   131→  taxa_formalizacao: number;
+   132→  taxa_desocupacao: number;
+   133→}
+   134→
+   135→interface YearlyIncome {
+   136→  rendimento_medio_princ: number;
+   137→  rendimento_medio_todos: number;
+   138→}
+   139→
+   140→interface AtividadeDetail {
+   141→  total: number;
+   142→  sem_instrucao: number;
+   143→  fund_completo: number;
+   144→  medio_completo: number;
+   145→  superior_completo: number;
+   146→  idade_14_29: number;
+   147→  idade_30_49: number;
+   148→  idade_50_59: number;
+   149→  idade_60_mais: number;
+   150→}
+   151→
+   152→interface TempoDetail {
+   153→  total_mil: number;
+   154→  ate_1_mes: number;
+   155→  "1_mes_1_ano": number;
+   156→  "1_2_anos": number;
+   157→  "2_anos_mais": number;
+   158→}
+   159→
+   160→interface HorasDetail {
+   161→  total_mil: number;
+   162→  ate_39h: number;
+   163→  "40_44h": number;
+   164→  "45_48h": number;
+   165→  "49h_mais": number;
+   166→}
+   167→
+   168→interface NenosDetail {
+   169→  total_mil: number;
+   170→  so_estuda_mil: number;
+   171→  estuda_ocupado_mil: number;
+   172→  so_ocupado_mil: number;
+   173→  nao_estuda_nao_ocupado_mil: number;
+   174→  so_estuda_pct: number;
+   175→  estuda_ocupado_pct: number;
+   176→  so_ocupado_pct: number;
+   177→  nao_estuda_nao_ocupado_pct: number;
+   178→}
+   179→
+   180→interface PobrezaDetail {
+   181→  total_jovens: number;
+   182→  menos_215: number;
+   183→  menos_365: number;
+   184→  menos_685: number;
+   185→  ate_50_med_nac: number;
+   186→  ate_50_med_reg: number;
+   187→}
+   188→
+   189→interface OcupacaoDetail {
+   190→  total: number;
+   191→  homens: number;
+   192→  mulheres: number;
+   193→  branca: number;
+   194→  preta: number;
+   195→  parda: number;
+   196→  preta_ou_parda: number;
+   197→}
+   198→
+   199→interface QuizQuestion {
+   200→  id: number;
+   201→  question: string;
+   202→  options: string[];
+   203→  category: string;
+   204→}
+   205→
+   206→interface QuizResult {
+   207→  questionId: number;
+   208→  correct: boolean;
+   209→  correctAnswer: number;
+   210→  explanation: string;
+   211→}
+   212→
+   213→interface RankingEntry {
+   214→  rank: number;
+   215→  userName: string;
+   216→  score: number;
+   217→  total: number;
+   218→  percentage: number;
+   219→  createdAt: string;
+   220→}
+   221→
+   222→// =============================================
+   223→// CHART COLORS
+   224→// =============================================
+   225→const COLORS = ["#10b981", "#f59e0b", "#14b8a6", "#f97316", "#06b6d4", "#84cc16", "#ef4444", "#8b5cf6"];
+   226→
+   227→const CHART_COLORS = {
+   228→  emerald: "#10b981",
+   229→  amber: "#f59e0b",
+   230→  teal: "#14b8a6",
+   231→  orange: "#f97316",
+   232→  rose: "#f43f5e",
+   233→  cyan: "#06b6d4",
+   234→  lime: "#84cc16",
+   235→  violet: "#8b5cf6",
+   236→};
+   237→
+   238→// =============================================
+   239→// MAIN APP COMPONENT
+   240→// =============================================
+   241→export default function ConhecaBrasil() {
+   242→  const [page, setPage] = useState<Page>("auth");
+   243→  const [authMode, setAuthMode] = useState<AuthMode>("login");
+   244→  const [user, setUser] = useState<UserData | null>(null);
+   245→  const [ibgeData, setIbgeData] = useState<IbgeData | null>(null);
+   246→  const [sidebarOpen, setSidebarOpen] = useState(false);
+   247→  const [loading, setLoading] = useState(true);
+   248→
+   249→  // Check session on mount
+   250→  useEffect(() => {
+   251→    const doCheck = async () => {
+   252→      try {
+   253→        const res = await fetch("/api/auth/session");
+   254→        const data = await res.json();
+   255→        if (data?.user?.id) {
+   256→          setUser({ id: data.user.id, name: data.user.name || data.user.email, email: data.user.email });
+   257→          setPage("dashboard");
+   258→        }
+   259→      } catch {
+   260→        // Not logged in
+   261→      }
+   262→      setLoading(false);
+   263→    };
+   264→    doCheck();
+   265→  }, []);
+   266→
+   267→  // Fetch IBGE data when user logs in
+   268→  useEffect(() => {
+   269→    if (user && !ibgeData) {
+   270→      const doFetch = async () => {
+   271→        try {
+   272→          const res = await fetch("/api/ibge");
+   273→          const data = await res.json();
+   274→          setIbgeData(data);
+   275→        } catch (e) {
+   276→          console.error("Failed to fetch IBGE data:", e);
+   277→          toast.error("Erro ao carregar dados do IBGE");
+   278→        }
+   279→      };
+   280→      doFetch();
+   281→    }
+   282→  }, [user, ibgeData]);
+   283→
+   284→  // Seed database on first load
+   285→  useEffect(() => {
+   286→    if (user) {
+   287→      fetch("/api/seed").catch(() => {});
+   288→    }
+   289→  }, [user]);
+   290→
+   291→  const handleAuth = async (email: string, password: string, name?: string) => {
+   292→    try {
+   293→      if (authMode === "signup") {
+   294→        const res = await fetch("/api/auth/register", {
+   295→          method: "POST",
+   296→          headers: { "Content-Type": "application/json" },
+   297→          body: JSON.stringify({ email, password, name }),
+   298→        });
+   299→        const data = await res.json();
+   300→        if (!res.ok) {
+   301→          toast.error(data.error || "Erro ao criar conta");
+   302→          return;
+   303→        }
+   304→        toast.success("Conta criada! Faça login para continuar.");
+   305→        setAuthMode("login");
+   306→        return;
+   307→      }
+   308→
+   309→      const result = await signIn("credentials", {
+   310→        redirect: false,
+   311→        email,
+   312→        password,
+   313→      });
+   314→
+   315→      if (result?.ok) {
+   316→        const sessionRes = await fetch("/api/auth/session");
+   317→        const session = await sessionRes.json();
+   318→        if (session?.user?.id) {
+   319→          setUser({ id: session.user.id, name: session.user.name || session.user.email, email: session.user.email });
+   320→          setPage("dashboard");
+   321→          toast.success("Bem-vindo(a) ao Conheça o Brasil!");
+   322→        }
+   323→      } else {
+   324→        toast.error("Email ou senha inválidos");
+   325→      }
+   326→    } catch {
+   327→      toast.error("Erro de conexão. Tente novamente.");
+   328→    }
+   329→  };
+   330→
+   331→  const handleLogout = async () => {
+   332→    await signOut({ redirect: false });
+   333→    setUser(null);
+   334→    setPage("auth");
+   335→    setIbgeData(null);
+   336→    toast.info("Você saiu da aplicação");
+   337→  };
+   338→
+   339→  const navItems = [
+   340→    { id: "dashboard" as Page, label: "Dashboard", icon: BarChart3 },
+   341→    { id: "curiosidades" as Page, label: "Curiosidades", icon: Lightbulb },
+   342→    { id: "quiz" as Page, label: "Quiz", icon: Brain },
+   343→    { id: "ranking" as Page, label: "Ranking", icon: Trophy },
+   344→  ];
+   345→
+   346→  if (loading) {
+   347→    return (
+   348→      <div className="min-h-screen flex items-center justify-center bg-background">
+   349→        <div className="flex flex-col items-center gap-4">
+   350→          <div className="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin" />
+   351→          <p className="text-muted-foreground text-sm">Carregando...</p>
+   352→        </div>
+   353→      </div>
+   354→    );
+   355→  }
+   356→
+   357→  if (page === "auth" || !user) {
+   358→    return <AuthPage mode={authMode} setMode={setAuthMode} onAuth={handleAuth} />;
+   359→  }
+   360→
+   361→  return (
+   362→    <div className="min-h-screen flex flex-col bg-background">
+   363→      {/* Header */}
+   364→      <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-md">
+   365→        <div className="flex items-center justify-between px-4 md:px-6 h-14">
+   366→          <div className="flex items-center gap-3">
+   367→            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
+   368→              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+   369→            </Button>
+   370→            <div className="flex items-center gap-2">
+   371→              <span className="text-xl">🇧🇷</span>
+   372→              <h1 className="font-bold text-lg tracking-tight hidden sm:block">CONHEÇA O BRASIL</h1>
+   373→              <h1 className="font-bold text-lg tracking-tight sm:hidden">BRASIL</h1>
+   374→            </div>
+   375→          </div>
+   376→          <div className="flex items-center gap-2">
+   377→            <Badge variant="secondary" className="hidden sm:flex gap-1">
+   378→              <Star className="w-3 h-3" /> {user.name}
+   379→            </Badge>
+   380→            <Button variant="ghost" size="sm" onClick={handleLogout} className="text-muted-foreground">
+   381→              <LogOut className="w-4 h-4 mr-1" /> <span className="hidden sm:inline">Sair</span>
+   382→            </Button>
+   383→          </div>
+   384→        </div>
+   385→      </header>
+   386→
+   387→      <div className="flex flex-1">
+   388→        {/* Sidebar - Desktop */}
+   389→        <aside className="hidden md:flex w-56 border-r border-border flex-col p-3 gap-1 bg-card/50">
+   390→          {navItems.map((item) => (
+   391→            <button
+   392→              key={item.id}
+   393→              onClick={() => setPage(item.id)}
+   394→              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
+   395→                page === item.id
+   396→                  ? "bg-primary text-primary-foreground shadow-sm"
+   397→                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+   398→              }`}
+   399→            >
+   400→              <item.icon className="w-4 h-4" />
+   401→              {item.label}
+   402→            </button>
+   403→          ))}
+   404→        </aside>
+   405→
+   406→        {/* Sidebar - Mobile */}
+   407→        {sidebarOpen && (
+   408→          <div className="fixed inset-0 z-40 md:hidden">
+   409→            <div className="fixed inset-0 bg-black/40" onClick={() => setSidebarOpen(false)} />
+   410→            <aside className="fixed left-0 top-14 bottom-0 w-56 bg-card border-r border-border p-3 flex flex-col gap-1 z-50">
+   411→              {navItems.map((item) => (
+   412→                <button
+   413→                  key={item.id}
+   414→                  onClick={() => {
+   415→                    setPage(item.id);
+   416→                    setSidebarOpen(false);
+   417→                  }}
+   418→                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
+   419→                    page === item.id
+   420→                      ? "bg-primary text-primary-foreground shadow-sm"
+   421→                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+   422→                  }`}
+   423→                >
+   424→                  <item.icon className="w-4 h-4" />
+   425→                  {item.label}
+   426→                </button>
+   427→              ))}
+   428→            </aside>
+   429→          </div>
+   430→        )}
+   431→
+   432→        {/* Main Content */}
+   433→        <main className="flex-1 overflow-y-auto">
+   434→          <div className="max-w-7xl mx-auto p-4 md:p-6">
+   435→            {page === "dashboard" && ibgeData && <Dashboard data={ibgeData} />}
+   436→            {page === "curiosidades" && ibgeData && <Curiosidades data={ibgeData} />}
+   437→            {page === "quiz" && <Quiz user={user} onComplete={() => setPage("ranking")} />}
+   438→            {page === "ranking" && <RankingPage />}
+   439→            {!ibgeData && page === "dashboard" && (
+   440→              <div className="flex items-center justify-center h-64">
+   441→                <Loader2 className="w-8 h-8 animate-spin text-primary" />
+   442→              </div>
+   443→            )}
+   444→          </div>
+   445→        </main>
+   446→      </div>
+   447→
+   448→      {/* Footer */}
+   449→      <footer className="mt-auto border-t border-border bg-card/50 py-3 px-4 text-center text-xs text-muted-foreground">
+   450→        <p>CONHEÇA O BRASIL — Dados extraídos do IBGE (PNAD Contínua 2012-2024)</p>
+   451→      </footer>
+   452→    </div>
+   453→  );
+   454→}
+   455→
+   456→// =============================================
+   457→// AUTH PAGE
+   458→// =============================================
+   459→function AuthPage({ mode, setMode, onAuth }: { mode: AuthMode; setMode: (m: AuthMode) => void; onAuth: (e: string, p: string, n?: string) => Promise<void> }) {
+   460→  const [email, setEmail] = useState("");
+   461→  const [password, setPassword] = useState("");
+   462→  const [name, setName] = useState("");
+   463→  const [submitting, setSubmitting] = useState(false);
+   464→
+   465→  const handleSubmit = async (e: React.FormEvent) => {
+   466→    e.preventDefault();
+   467→    setSubmitting(true);
+   468→    await onAuth(email, password, mode === "signup" ? name : undefined);
+   469→    setSubmitting(false);
+   470→  };
+   471→
+   472→  return (
+   473→    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+   474→      <div className="w-full max-w-md">
+   475→        <div className="text-center mb-8">
+   476→          <div className="text-5xl mb-3">🇧🇷</div>
+   477→          <h1 className="text-3xl font-bold tracking-tight">CONHEÇA O BRASIL</h1>
+   478→          <p className="text-muted-foreground mt-2">Dashboard interativo com dados do IBGE</p>
+   479→        </div>
+   480→
+   481→        <Card className="shadow-lg border-border/50">
+   482→          <CardHeader className="pb-4">
+   483→            <div className="flex gap-2">
+   484→              <button
+   485→                onClick={() => setMode("login")}
+   486→                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${
+   487→                  mode === "login" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+   488→                }`}
+   489→              >
+   490→                Entrar
+   491→              </button>
+   492→              <button
+   493→                onClick={() => setMode("signup")}
+   494→                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${
+   495→                  mode === "signup" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+   496→                }`}
+   497→              >
+   498→                Criar Conta
+   499→              </button>
+   500→            </div>
+   501→          </CardHeader>
+   502→          <CardContent>
+   503→            <form onSubmit={handleSubmit} className="space-y-4">
+   504→              {mode === "signup" && (
+   505→                <div className="space-y-2">
+   506→                  <Label htmlFor="name">Nome</Label>
+   507→                  <Input id="name" placeholder="Seu nome" value={name} onChange={(e) => setName(e.target.value)} required />
+   508→                </div>
+   509→              )}
+   510→              <div className="space-y-2">
+   511→                <Label htmlFor="email">Email</Label>
+   512→                <Input id="email" type="email" placeholder="seu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+   513→              </div>
+   514→              <div className="space-y-2">
+   515→                <Label htmlFor="password">Senha</Label>
+   516→                <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+   517→              </div>
+   518→              <Button type="submit" className="w-full" disabled={submitting}>
+   519→                {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+   520→                {mode === "login" ? "Entrar" : "Criar Conta"}
+   521→              </Button>
+   522→            </form>
+   523→          </CardContent>
+   524→        </Card>
+   525→
+   526→        <p className="text-center text-xs text-muted-foreground mt-6">
+   527→          Fonte: IBGE — Pesquisa Nacional por Amostra de Domicílios Contínua
+   528→        </p>
+   529→      </div>
+   530→    </div>
+   531→  );
+   532→}
+   533→
+   534→// =============================================
+   535→// DASHBOARD
+   536→// =============================================
+   537→function Dashboard({ data }: { data: IbgeData }) {
+   538→  return (
+   539→    <div className="space-y-6">
+   540→      {/* KPI Cards */}
+   541→      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+   542→        <KPICard title="Taxa de Desocupação" value="6,63%" change="-1.12" icon={<Briefcase className="w-4 h-4" />} color="emerald" />
+   543→        <KPICard title="População Ocupada" value="101,3M" change="+2,6M" icon={<Users className="w-4 h-4" />} color="teal" />
+   544→        <KPICard title="Rendimento Médio" value="R$ 3.108" change="+5,3%" icon={<DollarSign className="w-4 h-4" />} color="amber" />
+   545→        <KPICard title="Taxa de Formalização" value="59,4%" change="+0,15" icon={<GraduationCap className="w-4 h-4" />} color="orange" />
+   546→      </div>
+   547→
+   548→      <Tabs defaultValue="mercado" className="space-y-4">
+   549→        <TabsList className="flex flex-wrap h-auto gap-1 bg-muted/50 p-1">
+   550→          <TabsTrigger value="mercado" className="text-xs sm:text-sm">Mercado de Trabalho</TabsTrigger>
+   551→          <TabsTrigger value="renda" className="text-xs sm:text-sm">Rendimento</TabsTrigger>
+   552→          <TabsTrigger value="educacao" className="text-xs sm:text-sm">Educação</TabsTrigger>
+   553→          <TabsTrigger value="jovens" className="text-xs sm:text-sm">Jovens</TabsTrigger>
+   554→          <TabsTrigger value="ocupacao" className="text-xs sm:text-sm">Ocupação</TabsTrigger>
+   555→          <TabsTrigger value="regioes" className="text-xs sm:text-sm">Regiões</TabsTrigger>
+   556→        </TabsList>
+   557→
+   558→        <TabsContent value="mercado" className="space-y-4">
+   559→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   560→            <ChartCard title="Taxa de Desocupação (2012-2024)" subtitle="Evolução anual em %">
+   561→              <DesocupacaoLineChart data={data} />
+   562→            </ChartCard>
+   563→            <ChartCard title="Indicadores por Sexo (2024)" subtitle="Comparação homens vs mulheres">
+   564→              <SexoRadarChart data={data} />
+   565→            </ChartCard>
+   566→          </div>
+   567→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   568→            <ChartCard title="População na Força de Trabalho" subtitle="Evolução em milhões (2012-2024)">
+   569→              <ForcaTrabalhoAreaChart data={data} />
+   570→            </ChartCard>
+   571→            <ChartCard title="Indicadores por Cor/Raça (2024)" subtitle="Taxas em %">
+   572→              <RacaBarChart data={data} />
+   573→            </ChartCard>
+   574→          </div>
+   575→          <ChartCard title="Indicadores por Faixa Etária (2024)" subtitle="Taxas em %">
+   576→            <IdadeBarChart data={data} />
+   577→          </ChartCard>
+   578→        </TabsContent>
+   579→
+   580→        <TabsContent value="renda" className="space-y-4">
+   581→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   582→            <ChartCard title="Rendimento Médio Mensal (2012-2024)" subtitle="Em R$ do trabalho principal">
+   583→              <RendimentoLineChart data={data} />
+   584→            </ChartCard>
+   585→            <ChartCard title="Rendimento por Sexo (2024)" subtitle="R$ mensais">
+   586→              <RendimentoSexoChart data={data} />
+   587→            </ChartCard>
+   588→          </div>
+   589→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   590→            <ChartCard title="Rendimento por Cor/Raça (2024)" subtitle="R$ mensais">
+   591→              <RendimentoRacaChart data={data} />
+   592→            </ChartCard>
+   593→            <ChartCard title="Rendimento por Escolaridade (2024)" subtitle="R$ mensais">
+   594→              <RendimentoEducacaoChart data={data} />
+   595→            </ChartCard>
+   596→          </div>
+   597→          <ChartCard title="Rendimento Médio por Capital" subtitle="PME - Pesquisa Mensal de Emprego">
+   598→            <RendimentoCapitalChart data={data} />
+   599→          </ChartCard>
+   600→        </TabsContent>
+   601→
+   602→        <TabsContent value="educacao" className="space-y-4">
+   603→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   604→            <ChartCard title="Indicadores por Escolaridade (2024)" subtitle="Taxas em %">
+   605→              <EducacaoBarChart data={data} />
+   606→            </ChartCard>
+   607→            <ChartCard title="Nível de Instrução por Setor" subtitle="Distribuição % por atividade econômica">
+   608→              <InstrucaoSetorChart data={data} />
+   609→            </ChartCard>
+   610→          </div>
+   611→          <ChartCard title="Distribuição de Idade por Setor" subtitle="Proporção % de trabalhadores por faixa etária">
+   612→            <IdadeSetorChart data={data} />
+   613→          </ChartCard>
+   614→        </TabsContent>
+   615→
+   616→        <TabsContent value="jovens" className="space-y-4">
+   617→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   618→            <ChartCard title="Situação dos Jovens (Nem-Nem)" subtitle="15 a 29 anos — Ocupação e estudo (%)">
+   619→              <NemosChart data={data} />
+   620→            </ChartCard>
+   621→            <ChartCard title="Jovens por Classes de Renda" subtitle="Pobreza por região (%)">
+   622→              <PobrezaJovensChart data={data} />
+   623→            </ChartCard>
+   624→          </div>
+   625→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   626→            <ChartCard title="Horas Trabalhadas pelos Jovens" subtitle="Distribuição % por jornada">
+   627→              <HorasJovensChart data={data} />
+   628→            </ChartCard>
+   629→            <ChartCard title="Tempo de Desocupação" subtitle="Distribuição % por duração">
+   630→              <TempoDesocupacaoChart data={data} />
+   631→            </ChartCard>
+   632→          </div>
+   633→          <ChartCard title="Nem-Nem por Região e Sexo" subtitle="Comparação detalhada">
+   634→            <NenosRegiaoChart data={data} />
+   635→          </ChartCard>
+   636→        </TabsContent>
+   637→
+   638→        <TabsContent value="ocupacao" className="space-y-4">
+   639→          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+   640→            <ChartCard title="Grupos Ocupacionais por Sexo" subtitle="Em mil pessoas">
+   641→              <OcupacaoSexoChart data={data} />
+   642→            </ChartCard>
+   643→            <ChartCard title="Grupos Ocupacionais por Cor/Raça" subtitle="Distribuição %">
+   644→              <OcupacaoRacaChart data={data} />
+   645→            </ChartCard>
+   646→          </div>
+   647→          <ChartCard title="Distribuição Ocupacional" subtitle="Proporção de cada grupo (%)">
+   648→            <OcupacaoPieChart data={data} />
+   649→          </ChartCard>
+   650→        </TabsContent>
+   651→
+   652→        <TabsContent value="regioes" className="space-y-4">
+   653→          <ChartCard title="Comparação Regional dos Jovens" subtitle="Indicadores por região brasileira">
+   654→            <RegiaoComparacaoChart data={data} />
+   655→          </ChartCard>
+   656→        </TabsContent>
+   657→      </Tabs>
+   658→    </div>
+   659→  );
+   660→}
+   661→
+   662→// =============================================
+   663→// KPI CARD
+   664→// =============================================
+   665→function KPICard({ title, value, change, icon, color }: { title: string; value: string; change: string; icon: React.ReactNode; color: string }) {
+   666→  const isPositive = change.startsWith("+") || change.startsWith("-");
+   667→  const isGood = change.startsWith("+") || (title.includes("Desocupação") && change.startsWith("-"));
+   668→  const colorMap: Record<string, string> = {
+   669→    emerald: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
+   670→    teal: "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300",
+   671→    amber: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
+   672→    orange: "bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300",
+   673→  };
+   674→  return (
+   675→    <Card className="hover:shadow-md transition-shadow">
+   676→      <CardContent className="p-4">
+   677→        <div className="flex items-center justify-between mb-2">
+   678→          <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{title}</span>
+   679→          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${colorMap[color] || colorMap.emerald}`}>
+   680→            {icon}
+   681→          </div>
+   682→        </div>
+   683→        <div className="text-2xl font-bold tracking-tight">{value}</div>
+   684→        <div className={`flex items-center gap-1 mt-1 text-xs font-medium ${isGood ? "text-emerald-600" : "text-rose-600"}`}>
+   685→          {isGood ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+   686→          {change} vs ano anterior
+   687→        </div>
+   688→      </CardContent>
+   689→    </Card>
+   690→  );
+   691→}
+   692→
+   693→// =============================================
+   694→// CHART CARD
+   695→// =============================================
+   696→function ChartCard({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
+   697→  return (
+   698→    <Card className="hover:shadow-md transition-shadow">
+   699→      <CardHeader className="pb-2">
+   700→        <CardTitle className="text-base font-semibold">{title}</CardTitle>
+   701→        <CardDescription className="text-xs">{subtitle}</CardDescription>
+   702→      </CardHeader>
+   703→      <CardContent className="pt-0">{children}</CardContent>
+   704→    </Card>
+   705→  );
+   706→}
+   707→
+   708→// =============================================
+   709→// CHART COMPONENTS
+   710→// =============================================
+   711→
+   712→// 1. Desocupação Line Chart (2012-2024)
+   713→function DesocupacaoLineChart({ data }: { data: IbgeData }) {
+   714→  const chartData = Object.entries(data.t11_yearly).map(([year, val]) => ({
+   715→    year,
+   716→    desocupacao: val.taxa_desocupacao,
+   717→    subutilizacao: val.taxa_subutilizacao,
+   718→  }));
+   719→  return (
+   720→    <ResponsiveContainer width="100%" height={300}>
+   721→      <LineChart data={chartData}>
+   722→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   723→        <XAxis dataKey="year" tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
+   724→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+   725→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid var(--border)" }} />
+   726→        <Legend wrapperStyle={{ fontSize: 12 }} />
+   727→        <Line type="monotone" dataKey="desocupacao" name="Desocupação" stroke={CHART_COLORS.rose} strokeWidth={2.5} dot={{ r: 3 }} />
+   728→        <Line type="monotone" dataKey="subutilizacao" name="Subutilização" stroke={CHART_COLORS.amber} strokeWidth={2} dot={{ r: 3 }} />
+   729→      </LineChart>
+   730→    </ResponsiveContainer>
+   731→  );
+   732→}
+   733→
+   734→// 2. Sexo Radar Chart
+   735→function SexoRadarChart({ data }: { data: IbgeData }) {
+   736→  const homens = data.t11_by_sex["Homens"];
+   737→  const mulheres = data.t11_by_sex["Mulheres"];
+   738→  const chartData = [
+   739→    { metric: "Participação", homens: homens.taxa_participacao, mulheres: mulheres.taxa_participacao },
+   740→    { metric: "Ocupação", homens: homens.nivel_ocupacao, mulheres: mulheres.nivel_ocupacao },
+   741→    { metric: "Formalização", homens: homens.taxa_formalizacao, mulheres: mulheres.taxa_formalizacao },
+   742→    { metric: "Subutilização", homens: homens.taxa_subutilizacao, mulheres: mulheres.taxa_subutilizacao },
+   743→    { metric: "Desocupação", homens: homens.taxa_desocupacao, mulheres: mulheres.taxa_desocupacao },
+   744→  ];
+   745→  return (
+   746→    <ResponsiveContainer width="100%" height={300}>
+   747→      <RadarChart data={chartData}>
+   748→        <PolarGrid stroke="var(--border)" />
+   749→        <PolarAngleAxis dataKey="metric" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+   750→        <PolarRadiusAxis tick={{ fontSize: 9 }} stroke="var(--muted-foreground)" />
+   751→        <Radar name="Homens" dataKey="homens" stroke={CHART_COLORS.teal} fill={CHART_COLORS.teal} fillOpacity={0.2} />
+   752→        <Radar name="Mulheres" dataKey="mulheres" stroke={CHART_COLORS.rose} fill={CHART_COLORS.rose} fillOpacity={0.2} />
+   753→        <Legend wrapperStyle={{ fontSize: 12 }} />
+   754→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+   755→      </RadarChart>
+   756→    </ResponsiveContainer>
+   757→  );
+   758→}
+   759→
+   760→// 3. Força de Trabalho Area Chart
+   761→function ForcaTrabalhoAreaChart({ data }: { data: IbgeData }) {
+   762→  const chartData = Object.entries(data.t11_yearly).map(([year, val]) => ({
+   763→    year,
+   764→    forca: Math.round(val.pop_forca_trabalho / 1000),
+   765→    ocupada: Math.round(val.pop_ocupada / 1000),
+   766→    formal: Math.round(val.pop_ocupada_formal / 1000),
+   767→  }));
+   768→  return (
+   769→    <ResponsiveContainer width="100%" height={300}>
+   770→      <AreaChart data={chartData}>
+   771→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   772→        <XAxis dataKey="year" tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
+   773→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="M" />
+   774→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid var(--border)" }} />
+   775→        <Legend wrapperStyle={{ fontSize: 12 }} />
+   776→        <Area type="monotone" dataKey="forca" name="Força de trabalho" stroke={CHART_COLORS.emerald} fill={CHART_COLORS.emerald} fillOpacity={0.15} strokeWidth={2} />
+   777→        <Area type="monotone" dataKey="ocupada" name="Pop. ocupada" stroke={CHART_COLORS.teal} fill={CHART_COLORS.teal} fillOpacity={0.15} strokeWidth={2} />
+   778→        <Area type="monotone" dataKey="formal" name="Trabalho formal" stroke={CHART_COLORS.amber} fill={CHART_COLORS.amber} fillOpacity={0.15} strokeWidth={2} />
+   779→      </AreaChart>
+   780→    </ResponsiveContainer>
+   781→  );
+   782→}
+   783→
+   784→// 4. Raça Bar Chart
+   785→function RacaBarChart({ data }: { data: IbgeData }) {
+   786→  const chartData = Object.entries(data.t11_by_race).map(([race, val]) => ({
+   787→    race,
+   788→    Participação: val.taxa_participacao,
+   789→    Ocupação: val.nivel_ocupacao,
+   790→    Formalização: val.taxa_formalizacao,
+   791→    Desocupação: val.taxa_desocupacao,
+   792→    Subutilização: val.taxa_subutilizacao,
+   793→  }));
+   794→  return (
+   795→    <ResponsiveContainer width="100%" height={300}>
+   796→      <BarChart data={chartData}>
+   797→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   798→        <XAxis dataKey="race" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+   799→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+   800→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+   801→        <Legend wrapperStyle={{ fontSize: 11 }} />
+   802→        <Bar dataKey="Participação" fill={CHART_COLORS.emerald} radius={[2, 2, 0, 0]} />
+   803→        <Bar dataKey="Formalização" fill={CHART_COLORS.amber} radius={[2, 2, 0, 0]} />
+   804→        <Bar dataKey="Desocupação" fill={CHART_COLORS.rose} radius={[2, 2, 0, 0]} />
+   805→      </BarChart>
+   806→    </ResponsiveContainer>
+   807→  );
+   808→}
+   809→
+   810→// 5. Idade Bar Chart
+   811→function IdadeBarChart({ data }: { data: IbgeData }) {
+   812→  const chartData = Object.entries(data.t11_by_age).map(([age, val]) => ({
+   813→    age,
+   814→    Participação: val.taxa_participacao,
+   815→    Ocupação: val.nivel_ocupacao,
+   816→    Formalização: val.taxa_formalizacao,
+   817→    Desocupação: val.taxa_desocupacao,
+   818→  }));
+   819→  return (
+   820→    <ResponsiveContainer width="100%" height={300}>
+   821→      <BarChart data={chartData} layout="vertical">
+   822→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   823→        <XAxis type="number" tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+   824→        <YAxis dataKey="age" type="category" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" width={90} />
+   825→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+   826→        <Legend wrapperStyle={{ fontSize: 11 }} />
+   827→        <Bar dataKey="Participação" fill={CHART_COLORS.emerald} radius={[0, 2, 2, 0]} />
+   828→        <Bar dataKey="Formalização" fill={CHART_COLORS.amber} radius={[0, 2, 2, 0]} />
+   829→        <Bar dataKey="Desocupação" fill={CHART_COLORS.rose} radius={[0, 2, 2, 0]} />
+   830→      </BarChart>
+   831→    </ResponsiveContainer>
+   832→  );
+   833→}
+   834→
+   835→// 6. Rendimento Line Chart
+   836→function RendimentoLineChart({ data }: { data: IbgeData }) {
+   837→  const chartData = Object.entries(data.t14_yearly_income).map(([year, val]) => ({
+   838→    year,
+   839→    principal: val.rendimento_medio_princ,
+   840→    todos: val.rendimento_medio_todos,
+   841→  }));
+   842→  return (
+   843→    <ResponsiveContainer width="100%" height={300}>
+   844→      <LineChart data={chartData}>
+   845→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   846→        <XAxis dataKey="year" tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
+   847→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" prefix="R$ " />
+   848→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`} />
+   849→        <Legend wrapperStyle={{ fontSize: 12 }} />
+   850→        <Line type="monotone" dataKey="principal" name="Trabalho principal" stroke={CHART_COLORS.emerald} strokeWidth={2.5} dot={{ r: 3 }} />
+   851→        <Line type="monotone" dataKey="todos" name="Todos trabalhos" stroke={CHART_COLORS.amber} strokeWidth={2} dot={{ r: 3 }} />
+   852→      </LineChart>
+   853→    </ResponsiveContainer>
+   854→  );
+   855→}
+   856→
+   857→// 7. Rendimento por Sexo
+   858→function RendimentoSexoChart({ data }: { data: IbgeData }) {
+   859→  const chartData = Object.entries(data.t14_income_by_sex)
+   860→    .filter(([key]) => key !== "Total")
+   861→    .map(([sex, val]) => ({ sex, rendimento: val }));
+   862→  return (
+   863→    <ResponsiveContainer width="100%" height={300}>
+   864→      <BarChart data={chartData}>
+   865→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   866→        <XAxis dataKey="sex" tick={{ fontSize: 12 }} stroke="var(--muted-foreground)" />
+   867→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
+   868→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`} />
+   869→        <Bar dataKey="rendimento" name="Rendimento médio (R$)" radius={[8, 8, 0, 0]}>
+   870→          {chartData.map((_, i) => (
+   871→            <Cell key={i} fill={i === 0 ? CHART_COLORS.teal : CHART_COLORS.rose} />
+   872→          ))}
+   873→        </Bar>
+   874→      </BarChart>
+   875→    </ResponsiveContainer>
+   876→  );
+   877→}
+   878→
+   879→// 8. Rendimento por Raça
+   880→function RendimentoRacaChart({ data }: { data: IbgeData }) {
+   881→  const chartData = Object.entries(data.t14_income_by_race).map(([race, val]) => ({ race, rendimento: val }));
+   882→  return (
+   883→    <ResponsiveContainer width="100%" height={300}>
+   884→      <BarChart data={chartData}>
+   885→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   886→        <XAxis dataKey="race" tick={{ fontSize: 12 }} stroke="var(--muted-foreground)" />
+   887→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
+   888→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`} />
+   889→        <Bar dataKey="rendimento" name="Rendimento médio (R$)" radius={[8, 8, 0, 0]}>
+   890→          {chartData.map((_, i) => (
+   891→            <Cell key={i} fill={COLORS[i]} />
+   892→          ))}
+   893→        </Bar>
+   894→      </BarChart>
+   895→    </ResponsiveContainer>
+   896→  );
+   897→}
+   898→
+   899→// 9. Rendimento por Escolaridade
+   900→function RendimentoEducacaoChart({ data }: { data: IbgeData }) {
+   901→  const labels: Record<string, string> = {
+   902→    "Sem instrução ou fund. incompleto": "Sem inst./Fund. inc.",
+   903→    "Fund. completo ou médio incompleto": "Fund. comp./Médio inc.",
+   904→    "Ensino médio completo ou sup. incompleto": "Médio comp./Sup. inc.",
+   905→    "Ensino superior completo": "Sup. completo",
+   906→  };
+   907→  const chartData = Object.entries(data.t14_income_by_education).map(([edu, val]) => ({
+   908→    edu: labels[edu] || edu,
+   909→    rendimento: val,
+   910→  }));
+   911→  return (
+   912→    <ResponsiveContainer width="100%" height={300}>
+   913→      <BarChart data={chartData}>
+   914→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   915→        <XAxis dataKey="edu" tick={{ fontSize: 9 }} stroke="var(--muted-foreground)" interval={0} angle={-15} />
+   916→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
+   917→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`} />
+   918→        <Bar dataKey="rendimento" name="Rendimento médio (R$)" radius={[8, 8, 0, 0]}>
+   919→          {chartData.map((_, i) => (
+   920→            <Cell key={i} fill={COLORS[i]} />
+   921→          ))}
+   922→        </Bar>
+   923→      </BarChart>
+   924→    </ResponsiveContainer>
+   925→  );
+   926→}
+   927→
+   928→// 10. Rendimento por Capital
+   929→function RendimentoCapitalChart({ data }: { data: IbgeData }) {
+   930→  const cityRow = data.city_income?.[1] || [];
+   931→  const valueRow = data.city_income?.[2] || [];
+   932→  if (cityRow.length < 2) return <p className="text-sm text-muted-foreground p-4">Dados não disponíveis</p>;
+   933→  const chartData = cityRow.slice(1, -1).map((city, i) => ({
+   934→    city: city.replace(/\s*\(.*\)/, ""),
+   935→    rendimento: parseFloat((valueRow[i + 1] || "0").replace(/\./g, "").replace(",", ".")),
+   936→  }));
+   937→  return (
+   938→    <ResponsiveContainer width="100%" height={300}>
+   939→      <BarChart data={chartData}>
+   940→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   941→        <XAxis dataKey="city" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+   942→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
+   943→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`} />
+   944→        <Bar dataKey="rendimento" name="Rendimento médio (R$)" radius={[8, 8, 0, 0]}>
+   945→          {chartData.map((_, i) => (
+   946→            <Cell key={i} fill={COLORS[i % COLORS.length]} />
+   947→          ))}
+   948→        </Bar>
+   949→      </BarChart>
+   950→    </ResponsiveContainer>
+   951→  );
+   952→}
+   953→
+   954→// 11. Educação Bar Chart
+   955→function EducacaoBarChart({ data }: { data: IbgeData }) {
+   956→  const labels: Record<string, string> = {
+   957→    "Sem instrução ou fund. incompleto": "Sem inst./Fund. inc.",
+   958→    "Fund. completo ou médio incompleto": "Fund. comp./Médio inc.",
+   959→    "Ensino médio completo ou sup. incompleto": "Médio comp./Sup. inc.",
+   960→    "Ensino superior completo": "Sup. completo",
+   961→  };
+   962→  const chartData = Object.entries(data.t11_by_education).map(([edu, val]) => ({
+   963→    edu: labels[edu] || edu,
+   964→    Participação: val.taxa_participacao,
+   965→    Ocupação: val.nivel_ocupacao,
+   966→    Formalização: val.taxa_formalizacao,
+   967→    Desocupação: val.taxa_desocupacao,
+   968→  }));
+   969→  return (
+   970→    <ResponsiveContainer width="100%" height={300}>
+   971→      <BarChart data={chartData}>
+   972→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+   973→        <XAxis dataKey="edu" tick={{ fontSize: 9 }} stroke="var(--muted-foreground)" angle={-15} interval={0} />
+   974→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+   975→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+   976→        <Legend wrapperStyle={{ fontSize: 11 }} />
+   977→        <Bar dataKey="Participação" fill={CHART_COLORS.emerald} radius={[2, 2, 0, 0]} />
+   978→        <Bar dataKey="Formalização" fill={CHART_COLORS.amber} radius={[2, 2, 0, 0]} />
+   979→        <Bar dataKey="Desocupação" fill={CHART_COLORS.rose} radius={[2, 2, 0, 0]} />
+   980→      </BarChart>
+   981→    </ResponsiveContainer>
+   982→  );
+   983→}
+   984→
+   985→// 12. Instrução por Setor (Stacked Bar)
+   986→function InstrucaoSetorChart({ data }: { data: IbgeData }) {
+   987→  const skipLabels = ["Total", "Grupos Ocupacionais no Trabalho Principal (1)"];
+   988→  const entries = Object.entries(data.t17_atividade).filter(([k]) => !skipLabels.includes(k));
+   989→  const chartData = entries.map(([setor, val]) => ({
+   990→    setor: setor.length > 20 ? setor.substring(0, 18) + "…" : setor,
+   991→    "Sem instrução": val.sem_instrucao,
+   992→    "Fund. completo": val.fund_completo,
+   993→    "Médio completo": val.medio_completo,
+   994→    "Superior completo": val.superior_completo,
+   995→  }));
+   996→  return (
+   997→    <ResponsiveContainer width="100%" height={350}>
+   998→      <BarChart data={chartData} layout="vertical">
+   999→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1000→        <XAxis type="number" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" unit="%" />
+  1001→        <YAxis dataKey="setor" type="category" tick={{ fontSize: 9 }} stroke="var(--muted-foreground)" width={120} />
+  1002→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1003→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1004→        <Bar dataKey="Sem instrução" stackId="a" fill={CHART_COLORS.rose} />
+  1005→        <Bar dataKey="Fund. completo" stackId="a" fill={CHART_COLORS.amber} />
+  1006→        <Bar dataKey="Médio completo" stackId="a" fill={CHART_COLORS.teal} />
+  1007→        <Bar dataKey="Superior completo" stackId="a" fill={CHART_COLORS.emerald} radius={[0, 2, 2, 0]} />
+  1008→      </BarChart>
+  1009→    </ResponsiveContainer>
+  1010→  );
+  1011→}
+  1012→
+  1013→// 13. Idade por Setor (Stacked Bar)
+  1014→function IdadeSetorChart({ data }: { data: IbgeData }) {
+  1015→  const skipLabels = ["Total", "Grupos Ocupacionais no Trabalho Principal (1)"];
+  1016→  const entries = Object.entries(data.t17_atividade).filter(([k]) => !skipLabels.includes(k));
+  1017→  const chartData = entries.map(([setor, val]) => ({
+  1018→    setor: setor.length > 20 ? setor.substring(0, 18) + "…" : setor,
+  1019→    "14-29 anos": val.idade_14_29,
+  1020→    "30-49 anos": val.idade_30_49,
+  1021→    "50-59 anos": val.idade_50_59,
+  1022→    "60+ anos": val.idade_60_mais,
+  1023→  }));
+  1024→  return (
+  1025→    <ResponsiveContainer width="100%" height={350}>
+  1026→      <BarChart data={chartData} layout="vertical">
+  1027→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1028→        <XAxis type="number" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" unit="%" />
+  1029→        <YAxis dataKey="setor" type="category" tick={{ fontSize: 9 }} stroke="var(--muted-foreground)" width={120} />
+  1030→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1031→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1032→        <Bar dataKey="14-29 anos" stackId="a" fill={CHART_COLORS.cyan} />
+  1033→        <Bar dataKey="30-49 anos" stackId="a" fill={CHART_COLORS.emerald} />
+  1034→        <Bar dataKey="50-59 anos" stackId="a" fill={CHART_COLORS.amber} />
+  1035→        <Bar dataKey="60+ anos" stackId="a" fill={CHART_COLORS.orange} radius={[0, 2, 2, 0]} />
+  1036→      </BarChart>
+  1037→    </ResponsiveContainer>
+  1038→  );
+  1039→}
+  1040→
+  1041→// 14. NEM-NEM Chart
+  1042→function NemosChart({ data }: { data: IbgeData }) {
+  1043→  const regions = ["Brasil", "Norte", "Nordeste", "Sudeste", "Sul", "Centro-Oeste"];
+  1044→  const chartData = regions
+  1045→    .filter((r) => data.t143_nenos[r])
+  1046→    .map((r) => ({
+  1047→      region: r,
+  1048→      "Só estuda": data.t143_nenos[r].so_estuda_pct,
+  1049→      "Estuda e trabalha": data.t143_nenos[r].estuda_ocupado_pct,
+  1050→      "Só trabalha": data.t143_nenos[r].so_ocupado_pct,
+  1051→      "Nem-nem": data.t143_nenos[r].nao_estuda_nao_ocupado_pct,
+  1052→    }));
+  1053→  return (
+  1054→    <ResponsiveContainer width="100%" height={300}>
+  1055→      <BarChart data={chartData}>
+  1056→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1057→        <XAxis dataKey="region" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+  1058→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+  1059→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1060→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1061→        <Bar dataKey="Só estuda" stackId="a" fill={CHART_COLORS.cyan} radius={[0, 0, 0, 0]} />
+  1062→        <Bar dataKey="Estuda e trabalha" stackId="a" fill={CHART_COLORS.emerald} />
+  1063→        <Bar dataKey="Só trabalha" stackId="a" fill={CHART_COLORS.amber} />
+  1064→        <Bar dataKey="Nem-nem" stackId="a" fill={CHART_COLORS.rose} radius={[2, 2, 0, 0]} />
+  1065→      </BarChart>
+  1066→    </ResponsiveContainer>
+  1067→  );
+  1068→}
+  1069→
+  1070→// 15. Pobreza Jovens Chart
+  1071→function PobrezaJovensChart({ data }: { data: IbgeData }) {
+  1072→  const regions = ["Brasil", "Norte", "Nordeste", "Sudeste", "Sul", "Centro-Oeste"];
+  1073→  const chartData = regions
+  1074→    .filter((r) => data.t150_jovens_pobreza[r])
+  1075→    .map((r) => ({
+  1076→      region: r,
+  1077→      "Extrema (<US$2,15)": data.t150_jovens_pobreza[r].menos_215,
+  1078→      "Moderada (<US$3,65)": data.t150_jovens_pobreza[r].menos_365,
+  1079→      "Vulnerável (<US$6,85)": data.t150_jovens_pobreza[r].menos_685,
+  1080→    }));
+  1081→  return (
+  1082→    <ResponsiveContainer width="100%" height={300}>
+  1083→      <BarChart data={chartData}>
+  1084→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1085→        <XAxis dataKey="region" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+  1086→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+  1087→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1088→        <Legend wrapperStyle={{ fontSize: 10 }} />
+  1089→        <Bar dataKey="Extrema (<US$2,15)" fill={CHART_COLORS.rose} radius={[2, 2, 0, 0]} />
+  1090→        <Bar dataKey="Moderada (<US$3,65)" fill={CHART_COLORS.orange} radius={[2, 2, 0, 0]} />
+  1091→        <Bar dataKey="Vulnerável (<US$6,85)" fill={CHART_COLORS.amber} radius={[2, 2, 0, 0]} />
+  1092→      </BarChart>
+  1093→    </ResponsiveContainer>
+  1094→  );
+  1095→}
+  1096→
+  1097→// 16. Horas Jovens Chart
+  1098→function HorasJovensChart({ data }: { data: IbgeData }) {
+  1099→  const entries = Object.entries(data.t141_horas).filter(([k]) => ["Brasil", "Homem", "Mulher", "Branca", "Preta", "Parda"].includes(k));
+  1100→  const chartData = entries.map(([label, val]) => ({
+  1101→    label,
+  1102→    "Até 39h": val.ate_39h,
+  1103→    "40-44h": val["40_44h"],
+  1104→    "45-48h": val["45_48h"],
+  1105→    "49h+": val["49h_mais"],
+  1106→  }));
+  1107→  return (
+  1108→    <ResponsiveContainer width="100%" height={300}>
+  1109→      <BarChart data={chartData}>
+  1110→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1111→        <XAxis dataKey="label" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+  1112→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+  1113→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1114→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1115→        <Bar dataKey="Até 39h" fill={CHART_COLORS.cyan} radius={[2, 2, 0, 0]} />
+  1116→        <Bar dataKey="40-44h" fill={CHART_COLORS.emerald} radius={[2, 2, 0, 0]} />
+  1117→        <Bar dataKey="45-48h" fill={CHART_COLORS.amber} radius={[2, 2, 0, 0]} />
+  1118→        <Bar dataKey="49h+" fill={CHART_COLORS.rose} radius={[2, 2, 0, 0]} />
+  1119→      </BarChart>
+  1120→    </ResponsiveContainer>
+  1121→  );
+  1122→}
+  1123→
+  1124→// 17. Tempo Desocupação
+  1125→function TempoDesocupacaoChart({ data }: { data: IbgeData }) {
+  1126→  const entries = Object.entries(data.t137_tempo_desocupacao).filter(([k]) => ["Brasil", "Homens", "Mulheres", "Branca", "Preta ou parda"].includes(k));
+  1127→  const chartData = entries.map(([label, val]) => ({
+  1128→    label,
+  1129→    "Até 1 mês": val.ate_1_mes,
+  1130→    "1 mês a 1 ano": val["1_mes_1_ano"],
+  1131→    "1 a 2 anos": val["1_2_anos"],
+  1132→    "2+ anos": val["2_anos_mais"],
+  1133→  }));
+  1134→  return (
+  1135→    <ResponsiveContainer width="100%" height={300}>
+  1136→      <BarChart data={chartData}>
+  1137→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1138→        <XAxis dataKey="label" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+  1139→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+  1140→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1141→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1142→        <Bar dataKey="Até 1 mês" fill={CHART_COLORS.emerald} radius={[2, 2, 0, 0]} />
+  1143→        <Bar dataKey="1 mês a 1 ano" fill={CHART_COLORS.amber} radius={[2, 2, 0, 0]} />
+  1144→        <Bar dataKey="1 a 2 anos" fill={CHART_COLORS.orange} radius={[2, 2, 0, 0]} />
+  1145→        <Bar dataKey="2+ anos" fill={CHART_COLORS.rose} radius={[2, 2, 0, 0]} />
+  1146→      </BarChart>
+  1147→    </ResponsiveContainer>
+  1148→  );
+  1149→}
+  1150→
+  1151→// 18. Nem-Nem por Região detalhado
+  1152→function NenosRegiaoChart({ data }: { data: IbgeData }) {
+  1153→  const entries = Object.entries(data.t143_nenos).filter(([k]) => !["Brasil"].includes(k) && data.t143_nenos[k]?.nao_estuda_nao_ocupado_pct);
+  1154→  const chartData = entries.map(([label, val]) => ({
+  1155→    label,
+  1156→    "Nem-nem": val.nao_estuda_nao_ocupado_pct,
+  1157→    "Só estuda": val.so_estuda_pct,
+  1158→    "Estuda e trabalha": val.estuda_ocupado_pct,
+  1159→    "Só trabalha": val.so_ocupado_pct,
+  1160→  }));
+  1161→  return (
+  1162→    <ResponsiveContainer width="100%" height={300}>
+  1163→      <BarChart data={chartData}>
+  1164→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1165→        <XAxis dataKey="label" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" />
+  1166→        <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" unit="%" />
+  1167→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1168→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1169→        <Bar dataKey="Só estuda" fill={CHART_COLORS.cyan} />
+  1170→        <Bar dataKey="Estuda e trabalha" fill={CHART_COLORS.emerald} />
+  1171→        <Bar dataKey="Só trabalha" fill={CHART_COLORS.amber} />
+  1172→        <Bar dataKey="Nem-nem" fill={CHART_COLORS.rose} radius={[2, 2, 0, 0]} />
+  1173→      </BarChart>
+  1174→    </ResponsiveContainer>
+  1175→  );
+  1176→}
+  1177→
+  1178→// 19. Ocupação por Sexo
+  1179→function OcupacaoSexoChart({ data }: { data: IbgeData }) {
+  1180→  const skipLabels = ["Brasil", "Grupos Ocupacionais no Trabalho Principal (1)"];
+  1181→  const entries = Object.entries(data.t151_grupos_ocupacao).filter(([k]) => !skipLabels.includes(k));
+  1182→  const chartData = entries.map(([ocup, val]) => ({
+  1183→    ocup:ocup.length > 25 ? ocup.substring(0, 23) + "…" : ocup,
+  1184→    Homens: Math.round(val.homens / 1000),
+  1185→    Mulheres: Math.round(val.mulheres / 1000),
+  1186→  }));
+  1187→  return (
+  1188→    <ResponsiveContainer width="100%" height={350}>
+  1189→      <BarChart data={chartData} layout="vertical">
+  1190→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1191→        <XAxis type="number" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" unit="M" />
+  1192→        <YAxis dataKey="ocup" type="category" tick={{ fontSize: 8 }} stroke="var(--muted-foreground)" width={130} />
+  1193→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1194→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1195→        <Bar dataKey="Homens" fill={CHART_COLORS.teal} radius={[0, 2, 2, 0]} />
+  1196→        <Bar dataKey="Mulheres" fill={CHART_COLORS.rose} radius={[0, 2, 2, 0]} />
+  1197→      </BarChart>
+  1198→    </ResponsiveContainer>
+  1199→  );
+  1200→}
+  1201→
+  1202→// 20. Ocupação por Raça
+  1203→function OcupacaoRacaChart({ data }: { data: IbgeData }) {
+  1204→  const skipLabels = ["Brasil", "Grupos Ocupacionais no Trabalho Principal (1)"];
+  1205→  const entries = Object.entries(data.t151_grupos_ocupacao).filter(([k]) => !skipLabels.includes(k));
+  1206→  const chartData = entries.map(([ocup, val]) => {
+  1207→    const total = val.total || 1;
+  1208→    return {
+  1209→      ocup: ocup.length > 25 ? ocup.substring(0, 23) + "…" : ocup,
+  1210→      Branca: Math.round((val.branca / total) * 100),
+  1211→      Preta: Math.round(((val.preta || 0) / total) * 100),
+  1212→      Parda: Math.round(((val.parda || val.pretao || 0) / total) * 100),
+  1213→    };
+  1214→  });
+  1215→  return (
+  1216→    <ResponsiveContainer width="100%" height={350}>
+  1217→      <BarChart data={chartData} layout="vertical">
+  1218→        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+  1219→        <XAxis type="number" tick={{ fontSize: 10 }} stroke="var(--muted-foreground)" unit="%" />
+  1220→        <YAxis dataKey="ocup" type="category" tick={{ fontSize: 8 }} stroke="var(--muted-foreground)" width={130} />
+  1221→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1222→        <Legend wrapperStyle={{ fontSize: 11 }} />
+  1223→        <Bar dataKey="Branca" stackId="a" fill={CHART_COLORS.emerald} />
+  1224→        <Bar dataKey="Preta" stackId="a" fill={CHART_COLORS.amber} />
+  1225→        <Bar dataKey="Parda" stackId="a" fill={CHART_COLORS.orange} radius={[0, 2, 2, 0]} />
+  1226→      </BarChart>
+  1227→    </ResponsiveContainer>
+  1228→  );
+  1229→}
+  1230→
+  1231→// 21. Ocupação Pie Chart
+  1232→function OcupacaoPieChart({ data }: { data: IbgeData }) {
+  1233→  const skipLabels = ["Brasil", "Grupos Ocupacionais no Trabalho Principal (1)"];
+  1234→  const entries = Object.entries(data.t151_grupos_ocupacao).filter(([k]) => !skipLabels.includes(k));
+  1235→  const chartData = entries.map(([ocup, val]) => ({
+  1236→    name:ocup.length > 30 ?ocup.substring(0, 28) + "…" :ocup,
+  1237→    value: Math.round(val.total / 1000),
+  1238→  }));
+  1239→  return (
+  1240→    <ResponsiveContainer width="100%" height={350}>
+  1241→      <PieChart>
+  1242→        <Pie data={chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`} labelLine={{ strokeWidth: 1 }} style={{ fontSize: 10 }}>
+  1243→          {chartData.map((_, i) => (
+  1244→            <Cell key={i} fill={COLORS[i % COLORS.length]} />
+  1245→          ))}
+  1246→        </Pie>
+  1247→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1248→      </PieChart>
+  1249→    </ResponsiveContainer>
+  1250→  );
+  1251→}
+  1252→
+  1253→// 22. Região Comparação
+  1254→function RegiaoComparacaoChart({ data }: { data: IbgeData }) {
+  1255→  const regions = ["Norte", "Nordeste", "Sudeste", "Sul", "Centro-Oeste"];
+  1256→  const chartData = regions
+  1257→    .filter((r) => data.t150_jovens_pobreza[r] && data.t143_nenos[r])
+  1258→    .map((r) => ({
+  1259→      region: r,
+  1260→      "Pobreza extrema": data.t150_jovens_pobreza[r].menos_215,
+  1261→      "Nem-nem": data.t143_nenos[r].nao_estuda_nao_ocupado_pct,
+  1262→      "Só estuda": data.t143_nenos[r].so_estuda_pct,
+  1263→      "Estuda e trabalha": data.t143_nenos[r].estuda_ocupado_pct,
+  1264→    }));
+  1265→  return (
+  1266→    <ResponsiveContainer width="100%" height={350}>
+  1267→      <RadarChart data={chartData}>
+  1268→        <PolarGrid stroke="var(--border)" />
+  1269→        <PolarAngleAxis dataKey="region" tick={{ fontSize: 12 }} stroke="var(--muted-foreground)" />
+  1270→        <PolarRadiusAxis tick={{ fontSize: 9 }} stroke="var(--muted-foreground)" />
+  1271→        <Radar name="Pobreza extrema" dataKey="Pobreza extrema" stroke={CHART_COLORS.rose} fill={CHART_COLORS.rose} fillOpacity={0.15} />
+  1272→        <Radar name="Nem-nem" dataKey="Nem-nem" stroke={CHART_COLORS.orange} fill={CHART_COLORS.orange} fillOpacity={0.15} />
+  1273→        <Radar name="Estuda e trabalha" dataKey="Estuda e trabalha" stroke={CHART_COLORS.emerald} fill={CHART_COLORS.emerald} fillOpacity={0.15} />
+  1274→        <Legend wrapperStyle={{ fontSize: 12 }} />
+  1275→        <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+  1276→      </RadarChart>
+  1277→    </ResponsiveContainer>
+  1278→  );
+  1279→}
+  1280→
+  1281→// =============================================
+  1282→// CURIOSIDADES
+  1283→// =============================================
+  1284→function Curiosidades({ data }: { data: IbgeData }) {
+  1285→  const insights = [
+  1286→    {
+  1287→      icon: <TrendingUp className="w-5 h-5" />,
+  1288→      color: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
+  1289→      title: "Menor desemprego da série histórica",
+  1290→      text: `Em 2024, a taxa de desocupação brasileira atingiu 6,63%, a menor desde o início da série em 2012. Em 2021, no pico da pandemia, chegou a 14,01%.`,
+  1291→    },
+  1292→    {
+  1293→      icon: <DollarSign className="w-5 h-5" />,
+  1294→      color: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
+  1295→      title: "Gap salarial de gênero persiste",
+  1296→      text: `Homens ganham em média R$ 2.244 contra R$ 1.963 das mulheres — uma diferença de R$ 281 por mês. A taxa de participação feminina (53,5%) é quase 20 pontos menor que a masculina (72,8%).`,
+  1297→    },
+  1298→    {
+  1299→      icon: <Users className="w-5 h-5" />,
+  1300→      color: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-300",
+  1301→      title: "Desigualdade racial no mercado",
+  1302→      text: `A taxa de desocupação entre pretos e pardos (7,63%) é maior que entre brancos (5,33%). O rendimento médio de brancos (R$ 2.514) supera o de pardos (R$ 1.832) em 37%.`,
+  1303→    },
+  1304→    {
+  1305→      icon: <GraduationCap className="w-5 h-5" />,
+  1306→      color: "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300",
+  1307→      title: "Educação muda tudo",
+  1308→      text: `Com ensino superior completo, a taxa de desocupação cai para apenas 3,57%, contra 9,29% para quem tem apenas fundamental. O rendimento de quem tem diploma é 5x maior que sem instrução.`,
+  1309→    },
+  1310→    {
+  1311→      icon: <MapPin className="w-5 h-5" />,
+  1312→      color: "bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300",
+  1313→      title: "Nordeste: epicentro da pobreza juvenil",
+  1314→      text: `22,4% dos jovens nordestinos vivem em pobreza extrema (menos de US$ 2,15/dia), contra apenas 4,4% no Sul. O Nordeste também tem a maior taxa de jovens nem-nem (27,5%).`,
+  1315→    },
+  1316→    {
+  1317→      icon: <Clock className="w-5 h-5" />,
+  1318→      color: "bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300",
+  1319→      title: "Desemprego de longa duração",
+  1320→      text: `24,2% dos desocupados estão há mais de 2 anos procurando emprego. Entre as mulheres, esse percentual sobe para 28,1%, mostrando maior dificuldade de reinserção.`,
+  1321→    },
+  1322→    {
+  1323→      icon: <Briefcase className="w-5 h-5" />,
+  1324→      color: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
+  1325→      title: "Pandemia devastadora",
+  1326→      text: `Em 2020, a taxa de subutilização saltou para 28,3% e 13,6 milhões ficaram desocupados. A força de trabalho encolheu de 106M para 99M em um único ano — o maior recuo da série.`,
+  1327→    },
+  1328→    {
+  1329→      icon: <Target className="w-5 h-5" />,
+  1330→      color: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
+  1331→      title: "Formalização estagnada",
+  1332→      text: `Apesar da recuperação do emprego, a taxa de formalização permanece em 59,4%, praticamente a mesma de 2012 (58,9%). Mais de 40 milhões de brasileiros trabalham sem carteira ou proteção social.`,
+  1333→    },
+  1334→    {
+  1335→      icon: <Users className="w-5 h-5" />,
+  1336→      color: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-300",
+  1337→      title: "Jovens: o grupo mais vulnerável",
+  1338→      text: `Jovens de 18 a 24 anos têm taxa de desocupação de 13,4% — o dobro da média nacional. Na faixa de 14 a 17 anos, chega a 26,5%. O subemprego afeta 53,5% dos adolescentes de 14-17 anos.`,
+  1339→    },
+  1340→    {
+  1341→      icon: <Flag className="w-5 h-5" />,
+  1342→      color: "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300",
+  1343→      title: "Rio lidera rendimento entre capitais",
+  1344→      text: `O Rio de Janeiro tem o maior rendimento médio (R$ 2.435) entre as capitais pesquisadas, superando São Paulo (R$ 2.324). Recife (R$ 1.648) e Salvador (R$ 1.654) ficam abaixo da média.`,
+  1345→    },
+  1346→    {
+  1347→      icon: <Lightbulb className="w-5 h-5" />,
+  1348→      color: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
+  1349→      title: "Mulheres nem-nem: o dobro dos homens",
+  1350→      text: `26,2% das mulheres jovens de 15-29 anos não estudam nem trabalham, contra 13,5% dos homens. A principal causa é o trabalho doméstico e cuidados não remunerados.`,
+  1351→    },
+  1352→    {
+  1353→      icon: <TrendingUp className="w-5 h-5" />,
+  1354→      color: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
+  1355→      title: "Recuperação pós-pandemia surpreende",
+  1356→      text: `Em apenas 3 anos (2021→2024), o Brasil reduziu a desocupação de 14% para 6,6% e criou mais de 13 milhões de postos de trabalho — a recuperação mais rápida da série.`,
+  1357→    },
+  1358→  ];
+  1359→
+  1360→  return (
+  1361→    <div className="space-y-6">
+  1362→      <div className="text-center mb-8">
+  1363→        <div className="flex items-center justify-center gap-2 mb-2">
+  1364→          <Lightbulb className="w-6 h-6 text-amber-500" />
+  1365→          <h2 className="text-2xl font-bold tracking-tight">Curiosidades sobre o Brasil</h2>
+  1366→        </div>
+  1367→        <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
+  1368→          Insights extraídos automaticamente dos dados do IBGE — PNAD Contínua (2012-2024)
+  1369→        </p>
+  1370→      </div>
+  1371→      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  1372→        {insights.map((insight, i) => (
+  1373→          <Card key={i} className="hover:shadow-md transition-shadow">
+  1374→            <CardContent className="p-5">
+  1375→              <div className="flex gap-4">
+  1376→                <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${insight.color}`}>
+  1377→                  {insight.icon}
+  1378→                </div>
+  1379→                <div>
+  1380→                  <h3 className="font-semibold text-sm mb-1">{insight.title}</h3>
+  1381→                  <p className="text-xs text-muted-foreground leading-relaxed">{insight.text}</p>
+  1382→                </div>
+  1383→              </div>
+  1384→            </CardContent>
+  1385→          </Card>
+  1386→        ))}
+  1387→      </div>
+  1388→    </div>
+  1389→  );
+  1390→}
+  1391→
+  1392→// =============================================
+  1393→// QUIZ
+  1394→// =============================================
+  1395→function Quiz({ user, onComplete }: { user: UserData; onComplete: () => void }) {
+  1396→  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  1397→  const [current, setCurrent] = useState(0);
+  1398→  const [answers, setAnswers] = useState<Record<number, number>>({});
+  1399→  const [loading, setLoading] = useState(true);
+  1400→  const [submitting, setSubmitting] = useState(false);
+  1401→  const [results, setResults] = useState<{ score: number; total: number; results: QuizResult[] } | null>(null);
+  1402→
+  1403→  useEffect(() => {
+  1404→    const doFetch = async () => {
+  1405→      try {
+  1406→        const res = await fetch("/api/quiz");
+  1407→        const data = await res.json();
+  1408→        setQuestions(data.questions || []);
+  1409→      } catch {
+  1410→        toast.error("Erro ao carregar quiz");
+  1411→      }
+  1412→      setLoading(false);
+  1413→    };
+  1414→    doFetch();
+  1415→  }, []);
+  1416→
+  1417→  const handleAnswer = (questionId: number, answerIndex: number) => {
+  1418→    setAnswers((prev) => ({ ...prev, [questionId]: answerIndex }));
+  1419→  };
+  1420→
+  1421→  const handleSubmit = async () => {
+  1422→    setSubmitting(true);
+  1423→    try {
+  1424→      const answerList = Object.entries(answers).map(([qId, ans]) => ({
+  1425→        questionId: parseInt(qId),
+  1426→        answer: ans,
+  1427→      }));
+  1428→      const res = await fetch("/api/quiz", {
+  1429→        method: "POST",
+  1430→        headers: { "Content-Type": "application/json" },
+  1431→        body: JSON.stringify({ answers: answerList }),
+  1432→      });
+  1433→      const data = await res.json();
+  1434→      setResults(data);
+  1435→
+  1436→      // Save score
+  1437→      await fetch("/api/quiz/score", {
+  1438→        method: "POST",
+  1439→        headers: { "Content-Type": "application/json" },
+  1440→        body: JSON.stringify({ score: data.score, total: data.total, category: "geral" }),
+  1441→      });
+  1442→      toast.success(`Você acertou ${data.score} de ${data.total}!`);
+  1443→    } catch {
+  1444→      toast.error("Erro ao enviar respostas");
+  1445→    }
+  1446→    setSubmitting(false);
+  1447→  };
+  1448→
+  1449→  if (loading) {
+  1450→    return (
+  1451→      <div className="flex items-center justify-center h-64">
+  1452→        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+  1453→      </div>
+  1454→    );
+  1455→  }
+  1456→
+  1457→  if (results) {
+  1458→    return (
+  1459→      <QuizResults results={results} questions={questions} answers={answers} onRetry={() => { setResults(null); setAnswers({}); setCurrent(0); }} onRanking={onComplete} />
+  1460→    );
+  1461→  }
+  1462→
+  1463→  const q = questions[current];
+  1464→  if (!q) return <p className="text-center text-muted-foreground">Nenhuma pergunta disponível</p>;
+  1465→
+  1466→  const progress = ((current + 1) / questions.length) * 100;
+  1467→  const categoryIcons: Record<string, React.ReactNode> = {
+  1468→    emprego: <Briefcase className="w-4 h-4" />,
+  1469→    renda: <DollarSign className="w-4 h-4" />,
+  1470→    educação: <GraduationCap className="w-4 h-4" />,
+  1471→    regional: <MapPin className="w-4 h-4" />,
+  1472→  };
+  1473→
+  1474→  return (
+  1475→    <div className="max-w-2xl mx-auto space-y-6">
+  1476→      <div className="text-center mb-4">
+  1477→        <div className="flex items-center justify-center gap-2 mb-2">
+  1478→          <Brain className="w-6 h-6 text-primary" />
+  1479→          <h2 className="text-2xl font-bold tracking-tight">Quiz: Conheça o Brasil</h2>
+  1480→        </div>
+  1481→        <p className="text-muted-foreground text-sm">Teste seus conhecimentos sobre os dados do IBGE</p>
+  1482→      </div>
+  1483→
+  1484→      <div className="space-y-2">
+  1485→        <div className="flex items-center justify-between text-xs text-muted-foreground">
+  1486→          <span>Pergunta {current + 1} de {questions.length}</span>
+  1487→          <span>{Object.keys(answers).length} respondidas</span>
+  1488→        </div>
+  1489→        <Progress value={progress} className="h-2" />
+  1490→      </div>
+  1491→
+  1492→      <Card className="shadow-md">
+  1493→        <CardHeader className="pb-3">
+  1494→          <div className="flex items-center gap-2">
+  1495→            <Badge variant="secondary" className="gap-1 text-xs">
+  1496→              {categoryIcons[q.category] || <Star className="w-3 h-3" />} {q.category}
+  1497→            </Badge>
+  1498→          </div>
+  1499→          <CardTitle className="text-base leading-relaxed mt-2">{q.question}</CardTitle>
+  1500→        </CardHeader>
+  1501→        <CardContent className="space-y-2">
+  1502→          {q.options.map((opt, i) => (
+  1503→            <button
+  1504→              key={i}
+  1505→              onClick={() => handleAnswer(q.id, i)}
+  1506→              className={`w-full text-left p-3 rounded-lg border text-sm transition-all ${
+  1507→                answers[q.id] === i
+  1508→                  ? "border-primary bg-primary/5 text-primary font-medium"
+  1509→                  : "border-border hover:border-primary/30 hover:bg-accent/50"
+  1510→              }`}
+  1511→            >
+  1512→              <span className="inline-flex items-center gap-2">
+  1513→                <span className={`w-6 h-6 rounded-full text-xs flex items-center justify-center border ${answers[q.id] === i ? "border-primary bg-primary text-primary-foreground" : "border-border"}`}>
+  1514→                  {String.fromCharCode(65 + i)}
+  1515→                </span>
+  1516→                {opt}
+  1517→              </span>
+  1518→            </button>
+  1519→          ))}
+  1520→        </CardContent>
+  1521→      </Card>
+  1522→
+  1523→      <div className="flex items-center justify-between">
+  1524→        <Button variant="outline" onClick={() => setCurrent(Math.max(0, current - 1))} disabled={current === 0}>
+  1525→          <ArrowLeft className="w-4 h-4 mr-1" /> Anterior
+  1526→        </Button>
+  1527→        {current < questions.length - 1 ? (
+  1528→          <Button onClick={() => setCurrent(current + 1)}>
+  1529→            Próxima <ChevronRight className="w-4 h-4 ml-1" />
+  1530→          </Button>
+  1531→        ) : (
+  1532→          <Button onClick={handleSubmit} disabled={submitting || Object.keys(answers).length < questions.length}>
+  1533→            {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : <Award className="w-4 h-4 mr-1" />}
+  1534→            Finalizar Quiz
+  1535→          </Button>
+  1536→        )}
+  1537→      </div>
+  1538→
+  1539→      {/* Question navigator */}
+  1540→      <div className="flex flex-wrap gap-1 justify-center">
+  1541→        {questions.map((_, i) => (
+  1542→          <button
+  1543→            key={i}
+  1544→            onClick={() => setCurrent(i)}
+  1545→            className={`w-7 h-7 rounded text-xs font-medium transition-all ${
+  1546→              i === current
+  1547→                ? "bg-primary text-primary-foreground"
+  1548→                : answers[questions[i].id] !== undefined
+  1549→                ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+  1550→                : "bg-muted text-muted-foreground"
+  1551→            }`}
+  1552→          >
+  1553→            {i + 1}
+  1554→          </button>
+  1555→        ))}
+  1556→      </div>
+  1557→    </div>
+  1558→  );
+  1559→}
+  1560→
+  1561→// =============================================
+  1562→// QUIZ RESULTS
+  1563→// =============================================
+  1564→function QuizResults({ results, questions, answers, onRetry, onRanking }: { results: { score: number; total: number; results: QuizResult[] }; questions: QuizQuestion[]; answers: Record<number, number>; onRetry: () => void; onRanking: () => void }) {
+  1565→  const pct = Math.round((results.score / results.total) * 100);
+  1566→  const emoji = pct >= 80 ? "🏆" : pct >= 60 ? "🎉" : pct >= 40 ? "🤔" : "📚";
+  1567→  const message = pct >= 80 ? "Excelente! Você realmente conhece o Brasil!" : pct >= 60 ? "Muito bom! Continue aprendendo!" : pct >= 40 ? "Bom começo! Explore mais os dados." : "Continue estudando os dados do IBGE!";
+  1568→
+  1569→  return (
+  1570→    <div className="max-w-2xl mx-auto space-y-6">
+  1571→      <Card className="shadow-lg text-center">
+  1572→        <CardContent className="p-8">
+  1573→          <div className="text-5xl mb-4">{emoji}</div>
+  1574→          <h2 className="text-2xl font-bold mb-2">Resultado do Quiz</h2>
+  1575→          <p className="text-muted-foreground mb-4">{message}</p>
+  1576→          <div className="flex items-center justify-center gap-6 mb-4">
+  1577→            <div>
+  1578→              <div className="text-4xl font-bold text-primary">{results.score}</div>
+  1579→              <div className="text-xs text-muted-foreground">Acertos</div>
+  1580→            </div>
+  1581→            <Separator orientation="vertical" className="h-12" />
+  1582→            <div>
+  1583→              <div className="text-4xl font-bold">{results.total}</div>
+  1584→              <div className="text-xs text-muted-foreground">Total</div>
+  1585→            </div>
+  1586→            <Separator orientation="vertical" className="h-12" />
+  1587→            <div>
+  1588→              <div className="text-4xl font-bold text-amber-500">{pct}%</div>
+  1589→              <div className="text-xs text-muted-foreground">Aproveitamento</div>
+  1590→            </div>
+  1591→          </div>
+  1592→          <div className="flex gap-3 justify-center">
+  1593→            <Button onClick={onRetry} variant="outline"><Target className="w-4 h-4 mr-1" /> Tentar novamente</Button>
+  1594→            <Button onClick={onRanking}><Trophy className="w-4 h-4 mr-1" /> Ver Ranking</Button>
+  1595→          </div>
+  1596→        </CardContent>
+  1597→      </Card>
+  1598→
+  1599→      <div className="space-y-3">
+  1600→        <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider">Detalhes das respostas</h3>
+  1601→        <ScrollArea className="max-h-96">
+  1602→          <div className="space-y-2">
+  1603→            {results.results.map((r, i) => {
+  1604→              const q = questions.find((q) => q.id === r.questionId);
+  1605→              if (!q) return null;
+  1606→              return (
+  1607→                <Card key={i} className={r.correct ? "border-emerald-200 dark:border-emerald-800" : "border-rose-200 dark:border-rose-800"}>
+  1608→                  <CardContent className="p-3">
+  1609→                    <div className="flex gap-2">
+  1610→                      {r.correct ? (
+  1611→                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+  1612→                      ) : (
+  1613→                        <XCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
+  1614→                      )}
+  1615→                      <div>
+  1616→                        <p className="text-sm font-medium">{q.question}</p>
+  1617→                        {!r.correct && (
+  1618→                          <p className="text-xs text-muted-foreground mt-1">
+  1619→                            Sua resposta: {q.options[answers[r.questionId] ?? -1]} | Correta: {q.options[r.correctAnswer]}
+  1620→                          </p>
+  1621→                        )}
+  1622→                        <p className="text-xs text-muted-foreground mt-1 italic">{r.explanation}</p>
+  1623→                      </div>
+  1624→                    </div>
+  1625→                  </CardContent>
+  1626→                </Card>
+  1627→              );
+  1628→            })}
+  1629→          </div>
+  1630→        </ScrollArea>
+  1631→      </div>
+  1632→    </div>
+  1633→  );
+  1634→}
+  1635→
+  1636→// =============================================
+  1637→// RANKING PAGE
+  1638→// =============================================
+  1639→function RankingPage() {
+  1640→  const [ranking, setRanking] = useState<RankingEntry[]>([]);
+  1641→  const [loading, setLoading] = useState(true);
+  1642→
+  1643→  useEffect(() => {
+  1644→    const doFetch = async () => {
+  1645→      try {
+  1646→        const res = await fetch("/api/quiz/score?category=geral&limit=20");
+  1647→        const data = await res.json();
+  1648→        setRanking(data.ranking || []);
+  1649→      } catch {
+  1650→        toast.error("Erro ao carregar ranking");
+  1651→      }
+  1652→      setLoading(false);
+  1653→    };
+  1654→    doFetch();
+  1655→  }, []);
+  1656→
+  1657→  const refreshRanking = async () => {
+  1658→    try {
+  1659→      const res = await fetch("/api/quiz/score?category=geral&limit=20");
+  1660→      const data = await res.json();
+  1661→      setRanking(data.ranking || []);
+  1662→    } catch {
+  1663→      toast.error("Erro ao carregar ranking");
+  1664→    }
+  1665→  };
+  1666→
+  1667→  const getMedal = (rank: number) => {
+  1668→    if (rank === 1) return "🥇";
+  1669→    if (rank === 2) return "🥈";
+  1670→    if (rank === 3) return "🥉";
+  1671→    return null;
+  1672→  };
+  1673→
+  1674→  return (
+  1675→    <div className="max-w-2xl mx-auto space-y-6">
+  1676→      <div className="text-center mb-4">
+  1677→        <div className="flex items-center justify-center gap-2 mb-2">
+  1678→          <Trophy className="w-6 h-6 text-amber-500" />
+  1679→          <h2 className="text-2xl font-bold tracking-tight">Ranking</h2>
+  1680→        </div>
+  1681→        <p className="text-muted-foreground text-sm">Os melhores pontuadores do Quiz Conheça o Brasil</p>
+  1682→      </div>
+  1683→
+  1684→      {loading ? (
+  1685→        <div className="flex items-center justify-center h-40">
+  1686→          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+  1687→        </div>
+  1688→      ) : ranking.length === 0 ? (
+  1689→        <Card>
+  1690→          <CardContent className="p-8 text-center">
+  1691→            <Award className="w-12 h-12 mx-auto text-muted-foreground mb-3" />
+  1692→            <p className="text-muted-foreground">Nenhum resultado ainda. Seja o primeiro a completar o quiz!</p>
+  1693→          </CardContent>
+  1694→        </Card>
+  1695→      ) : (
+  1696→        <Card className="shadow-md">
+  1697→          <CardContent className="p-0">
+  1698→            <div className="divide-y divide-border">
+  1699→              {ranking.map((entry) => (
+  1700→                <div key={entry.rank} className={`flex items-center gap-3 p-4 ${entry.rank <= 3 ? "bg-amber-50/50 dark:bg-amber-950/20" : ""}`}>
+  1701→                  <div className="w-8 text-center font-bold text-sm">
+  1702→                    {getMedal(entry.rank) || <span className="text-muted-foreground">{entry.rank}</span>}
+  1703→                  </div>
+  1704→                  <Avatar className="w-8 h-8">
+  1705→                    <AvatarFallback className="text-xs bg-primary/10 text-primary">
+  1706→                      {entry.userName.charAt(0).toUpperCase()}
+  1707→                    </AvatarFallback>
+  1708→                  </Avatar>
+  1709→                  <div className="flex-1 min-w-0">
+  1710→                    <p className="text-sm font-medium truncate">{entry.userName}</p>
+  1711→                    <p className="text-xs text-muted-foreground">{entry.score} de {entry.total} acertos</p>
+  1712→                  </div>
+  1713→                  <div className="text-right">
+  1714→                    <span className="text-lg font-bold text-primary">{entry.percentage}%</span>
+  1715→                  </div>
+  1716→                </div>
+  1717→              ))}
+  1718→            </div>
+  1719→          </CardContent>
+  1720→        </Card>
+  1721→      )}
+  1722→
+  1723→      <Button variant="outline" className="w-full" onClick={refreshRanking}>
+  1724→        <TrendingUp className="w-4 h-4 mr-1" /> Atualizar Ranking
+  1725→      </Button>
+  1726→    </div>
+  1727→  );
+  1728→}
+  1729→

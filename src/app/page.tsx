@@ -288,6 +288,26 @@ export default function ConhecaBrasil() {
     }
   }, [user]);
 
+  const performLogin = async (email: string, password: string) => {
+    const result = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+
+    if (result?.ok) {
+      const sessionRes = await fetch("/api/auth/session");
+      const session = await sessionRes.json();
+      if (session?.user?.id) {
+        setUser({ id: session.user.id, name: session.user.name || session.user.email, email: session.user.email });
+        setPage("dashboard");
+        toast.success("Bem-vindo(a) ao Conheça o Brasil!");
+        return true;
+      }
+    }
+    return false;
+  };
+
   const handleAuth = async (email: string, password: string, name?: string) => {
     try {
       if (authMode === "signup") {
@@ -301,26 +321,18 @@ export default function ConhecaBrasil() {
           toast.error(data.error || "Erro ao criar conta");
           return;
         }
-        toast.success("Conta criada! Faça login para continuar.");
-        setAuthMode("login");
+        // Auto-login after successful signup
+        toast.success("Conta criada com sucesso!");
+        const loggedIn = await performLogin(email, password);
+        if (!loggedIn) {
+          toast.error("Conta criada, mas erro ao entrar. Tente fazer login manualmente.");
+          setAuthMode("login");
+        }
         return;
       }
 
-      const result = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
-      });
-
-      if (result?.ok) {
-        const sessionRes = await fetch("/api/auth/session");
-        const session = await sessionRes.json();
-        if (session?.user?.id) {
-          setUser({ id: session.user.id, name: session.user.name || session.user.email, email: session.user.email });
-          setPage("dashboard");
-          toast.success("Bem-vindo(a) ao Conheça o Brasil!");
-        }
-      } else {
+      const loggedIn = await performLogin(email, password);
+      if (!loggedIn) {
         toast.error("Email ou senha inválidos");
       }
     } catch {
@@ -469,6 +481,12 @@ function AuthPage({ mode, setMode, onAuth }: { mode: AuthMode; setMode: (m: Auth
     setSubmitting(false);
   };
 
+  const fillDemo = (demoEmail: string, demoPassword: string) => {
+    setEmail(demoEmail);
+    setPassword(demoPassword);
+    setMode("login");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
@@ -520,6 +538,53 @@ function AuthPage({ mode, setMode, onAuth }: { mode: AuthMode; setMode: (m: Auth
                 {mode === "login" ? "Entrar" : "Criar Conta"}
               </Button>
             </form>
+
+            {mode === "login" && (
+              <div className="mt-4 pt-4 border-t border-border">
+                <p className="text-xs text-muted-foreground text-center mb-3">Contas de demonstração (clique para preencher):</p>
+                <div className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => fillDemo("maria@brasil.com", "brasil123")}
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-md border border-border hover:bg-accent transition-colors text-left"
+                  >
+                    <Avatar className="w-8 h-8">
+                      <AvatarFallback className="bg-emerald-100 text-emerald-700 text-xs">MS</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium">Maria Silva</p>
+                      <p className="text-xs text-muted-foreground">maria@brasil.com</p>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fillDemo("joao@brasil.com", "brasil123")}
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-md border border-border hover:bg-accent transition-colors text-left"
+                  >
+                    <Avatar className="w-8 h-8">
+                      <AvatarFallback className="bg-amber-100 text-amber-700 text-xs">JS</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium">João Santos</p>
+                      <p className="text-xs text-muted-foreground">joao@brasil.com</p>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fillDemo("ana@brasil.com", "brasil123")}
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-md border border-border hover:bg-accent transition-colors text-left"
+                  >
+                    <Avatar className="w-8 h-8">
+                      <AvatarFallback className="bg-teal-100 text-teal-700 text-xs">AO</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium">Ana Oliveira</p>
+                      <p className="text-xs text-muted-foreground">ana@brasil.com</p>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
