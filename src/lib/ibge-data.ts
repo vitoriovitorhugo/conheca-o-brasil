@@ -1,4 +1,1155 @@
-// Dados IBGE embutidos no código (não depende de sistema de arquivos)
-// Isso é necessário para funcionar na Vercel (serverless)
-
-export const ibgeData = {"t11_yearly": {"2012": {"pop_idade_trabalhar": 153685.0, "pop_forca_trabalho": 96354.0, "pop_ocupada": 89261.0, "pop_ocupada_formal": 52597.0, "pop_desocupada": 7093.0, "taxa_participacao": 62.7, "nivel_ocupacao": 58.08, "taxa_formalizacao": 58.92, "taxa_desocupacao": 7.36, "taxa_subutilizacao": 18.64}, "2013": {"pop_idade_trabalhar": 155766.0, "pop_forca_trabalho": 97943.0, "pop_ocupada": 90814.0, "pop_ocupada_formal": 54547.0, "pop_desocupada": 7129.0, "taxa_participacao": 62.88, "nivel_ocupacao": 58.3, "taxa_formalizacao": 60.06, "taxa_desocupacao": 7.28, "taxa_subutilizacao": 17.08}, "2014": {"pop_idade_trabalhar": 157802.0, "pop_forca_trabalho": 98516.0, "pop_ocupada": 91619.0, "pop_ocupada_formal": 56116.0, "pop_desocupada": 6897.0, "taxa_participacao": 62.43, "nivel_ocupacao": 58.06, "taxa_formalizacao": 61.25, "taxa_desocupacao": 7.0, "taxa_subutilizacao": 15.85}, "2015": {"pop_idade_trabalhar": 159714.0, "pop_forca_trabalho": 100562.0, "pop_ocupada": 91649.0, "pop_ocupada_formal": 56224.0, "pop_desocupada": 8913.0, "taxa_participacao": 62.96, "nivel_ocupacao": 57.38, "taxa_formalizacao": 61.35, "taxa_desocupacao": 8.86, "taxa_subutilizacao": 18.21}, "2016": {"pop_idade_trabalhar": 161500.0, "pop_forca_trabalho": 101726.0, "pop_ocupada": 89894.0, "pop_ocupada_formal": 54999.0, "pop_desocupada": 11832.0, "taxa_participacao": 62.99, "nivel_ocupacao": 55.66, "taxa_formalizacao": 61.18, "taxa_desocupacao": 11.63, "taxa_subutilizacao": 21.39}, "2017": {"pop_idade_trabalhar": 163166.0, "pop_forca_trabalho": 103204.0, "pop_ocupada": 90172.0, "pop_ocupada_formal": 53604.0, "pop_desocupada": 13032.0, "taxa_participacao": 63.25, "nivel_ocupacao": 55.26, "taxa_formalizacao": 59.45, "taxa_desocupacao": 12.63, "taxa_subutilizacao": 24.19}, "2018": {"pop_idade_trabalhar": 164729.0, "pop_forca_trabalho": 104176.0, "pop_ocupada": 91519.0, "pop_ocupada_formal": 53739.0, "pop_desocupada": 12657.0, "taxa_participacao": 63.24, "nivel_ocupacao": 55.56, "taxa_formalizacao": 58.72, "taxa_desocupacao": 12.15, "taxa_subutilizacao": 24.66}, "2019": {"pop_idade_trabalhar": 166328.0, "pop_forca_trabalho": 106046.0, "pop_ocupada": 93534.0, "pop_ocupada_formal": 54763.0, "pop_desocupada": 12511.0, "taxa_participacao": 63.76, "nivel_ocupacao": 56.23, "taxa_formalizacao": 58.55, "taxa_desocupacao": 11.8, "taxa_subutilizacao": 24.36}, "2020": {"pop_idade_trabalhar": 167886.0, "pop_forca_trabalho": 98880.0, "pop_ocupada": 85289.0, "pop_ocupada_formal": 52179.0, "pop_desocupada": 13590.0, "taxa_participacao": 58.9, "nivel_ocupacao": 50.8, "taxa_formalizacao": 61.18, "taxa_desocupacao": 13.74, "taxa_subutilizacao": 28.27}, "2021": {"pop_idade_trabalhar": 169125.0, "pop_forca_trabalho": 102253.0, "pop_ocupada": 87929.0, "pop_ocupada_formal": 52631.0, "pop_desocupada": 14324.0, "taxa_participacao": 60.46, "nivel_ocupacao": 51.99, "taxa_formalizacao": 59.86, "taxa_desocupacao": 14.01, "taxa_subutilizacao": 28.54}, "2022": {"pop_idade_trabalhar": 170254.0, "pop_forca_trabalho": 105241.0, "pop_ocupada": 95158.0, "pop_ocupada_formal": 56192.0, "pop_desocupada": 10082.0, "taxa_participacao": 61.81, "nivel_ocupacao": 55.89, "taxa_formalizacao": 59.05, "taxa_desocupacao": 9.58, "taxa_subutilizacao": 20.93}, "2023": {"pop_idade_trabalhar": 171515.0, "pop_forca_trabalho": 107026.0, "pop_ocupada": 98733.0, "pop_ocupada_formal": 58491.0, "pop_desocupada": 8293.0, "taxa_participacao": 62.4, "nivel_ocupacao": 57.57, "taxa_formalizacao": 59.24, "taxa_desocupacao": 7.75, "taxa_subutilizacao": 18.01}, "2024": {"pop_idade_trabalhar": 172816.0, "pop_forca_trabalho": 108502.0, "pop_ocupada": 101309.0, "pop_ocupada_formal": 60171.0, "pop_desocupada": 7194.0, "taxa_participacao": 62.78, "nivel_ocupacao": 58.62, "taxa_formalizacao": 59.39, "taxa_desocupacao": 6.63, "taxa_subutilizacao": 16.22}}, "t11_by_sex": {"Homens": {"pop_idade_trabalhar": 83321.0, "taxa_participacao": 72.8, "nivel_ocupacao": 68.82, "taxa_formalizacao": 59.44, "taxa_desocupacao": 5.46, "taxa_subutilizacao": 12.8}, "Mulheres": {"pop_idade_trabalhar": 89495.0, "taxa_participacao": 53.46, "nivel_ocupacao": 49.12, "taxa_formalizacao": 59.33, "taxa_desocupacao": 8.11, "taxa_subutilizacao": 20.38}}, "t11_by_race": {"Branca": {"pop_idade_trabalhar": 72975.0, "taxa_participacao": 63.38, "nivel_ocupacao": 60.0, "taxa_formalizacao": 65.97, "taxa_desocupacao": 5.33, "taxa_subutilizacao": 12.39}, "Preta": {"pop_idade_trabalhar": 19623.0, "taxa_participacao": 65.81, "nivel_ocupacao": 60.56, "taxa_formalizacao": 56.44, "taxa_desocupacao": 7.98, "taxa_subutilizacao": 18.72}, "Parda": {"pop_idade_trabalhar": 78147.0, "taxa_participacao": 61.53, "nivel_ocupacao": 56.89, "taxa_formalizacao": 53.79, "taxa_desocupacao": 7.53, "taxa_subutilizacao": 19.1}, "Preta ou parda": {"pop_idade_trabalhar": 97771.0, "taxa_participacao": 62.39, "nivel_ocupacao": 57.63, "taxa_formalizacao": 54.35, "taxa_desocupacao": 7.63, "taxa_subutilizacao": 19.02}}, "t11_by_age": {"14 a 17 anos": {"pop_idade_trabalhar": 11969.0, "taxa_participacao": 17.13, "nivel_ocupacao": 12.59, "taxa_formalizacao": 21.49, "taxa_desocupacao": 26.47}, "18 a 24 anos": {"pop_idade_trabalhar": 21636.0, "taxa_participacao": 70.1, "nivel_ocupacao": 60.68, "taxa_formalizacao": 55.3, "taxa_desocupacao": 13.44}, "25 a 29 anos": {"pop_idade_trabalhar": 16356.0, "taxa_participacao": 81.29, "nivel_ocupacao": 74.78, "taxa_formalizacao": 60.32, "taxa_desocupacao": 8.01}, "30 a 49 anos": {"pop_idade_trabalhar": 63953.0, "taxa_participacao": 81.92, "nivel_ocupacao": 77.89, "taxa_formalizacao": 63.78, "taxa_desocupacao": 4.92}, "50 a 59 anos": {"pop_idade_trabalhar": 24850.0, "taxa_participacao": 68.54, "nivel_ocupacao": 65.63, "taxa_formalizacao": 59.81, "taxa_desocupacao": 4.25}, "60 anos ou mais": {"pop_idade_trabalhar": 34052.0, "taxa_participacao": 25.15, "nivel_ocupacao": 24.43, "taxa_formalizacao": 44.27, "taxa_desocupacao": 2.89}}, "t11_by_education": {"Sem instrução ou fund. incompleto": {"pop_idade_trabalhar": 50751.0, "taxa_participacao": 41.93, "nivel_ocupacao": 39.2, "taxa_formalizacao": 37.69, "taxa_desocupacao": 6.52}, "Fund. completo ou médio incompleto": {"pop_idade_trabalhar": 28470.0, "taxa_participacao": 53.31, "nivel_ocupacao": 48.36, "taxa_formalizacao": 47.5, "taxa_desocupacao": 9.29}, "Ensino médio completo ou sup. incompleto": {"pop_idade_trabalhar": 64005.0, "taxa_participacao": 74.15, "nivel_ocupacao": 68.65, "taxa_formalizacao": 64.16, "taxa_desocupacao": 7.42}, "Ensino superior completo": {"pop_idade_trabalhar": 29590.0, "taxa_participacao": 83.09, "nivel_ocupacao": 80.13, "taxa_formalizacao": 75.67, "taxa_desocupacao": 3.57}}, "t14_yearly_income": {"2012": {"rendimento_medio_princ": 1970.04, "rendimento_medio_todos": 2005.12}, "2013": {"rendimento_medio_princ": 2026.54, "rendimento_medio_todos": 2061.93}, "2014": {"rendimento_medio_princ": 2047.73, "rendimento_medio_todos": 2078.66}, "2015": {"rendimento_medio_princ": 1976.74, "rendimento_medio_todos": 2012.0}, "2016": {"rendimento_medio_princ": 1946.1, "rendimento_medio_todos": 1976.38}, "2017": {"rendimento_medio_princ": 1938.91, "rendimento_medio_todos": 1971.52}, "2018": {"rendimento_medio_princ": 1905.84, "rendimento_medio_todos": 1943.44}, "2019": {"rendimento_medio_princ": 1867.64, "rendimento_medio_todos": 1905.1}, "2020": {"rendimento_medio_princ": 1930.95, "rendimento_medio_todos": 1957.81}, "2021": {"rendimento_medio_princ": 1848.64, "rendimento_medio_todos": 1879.18}, "2022": {"rendimento_medio_princ": 1890.87, "rendimento_medio_todos": 1924.21}, "2023": {"rendimento_medio_princ": 2038.19, "rendimento_medio_todos": 2078.19}, "2024": {"rendimento_medio_princ": 2124.74, "rendimento_medio_todos": 2181.72}}, "t14_income_by_sex": {"Total": 2124.74, "Homens": 2244.33, "Mulheres": 1963.42}, "t14_income_by_race": {"Branca": 2514.24, "Preta": 1930.82, "Parda": 1831.8}, "t14_income_by_education": {"Sem instrução ou fund. incompleto": 1959.94, "Fund. completo ou médio incompleto": 2454.6, "Ensino médio completo ou sup. incompleto": 6089.83, "Ensino superior completo": 0}, "t17_atividade": {"Total": {"total": 43782.0, "sem_instrucao": 14.51, "fund_completo": 11.17, "medio_completo": 41.73, "superior_completo": 32.6, "idade_14_29": 24.7, "idade_30_49": 48.83, "idade_50_59": 16.97, "idade_60_mais": 9.49}, "Agropecuária": {"total": 2836.0, "sem_instrucao": 47.74, "fund_completo": 17.33, "medio_completo": 27.8, "superior_completo": 7.14, "idade_14_29": 19.82, "idade_30_49": 42.23, "idade_50_59": 21.86, "idade_60_mais": 16.09}, "Indústria": {"total": 5879.0, "sem_instrucao": 13.89, "fund_completo": 13.51, "medio_completo": 48.71, "superior_completo": 23.88, "idade_14_29": 26.33, "idade_30_49": 51.23, "idade_50_59": 14.77, "idade_60_mais": 7.67}, "Construção": {"total": 2535.0, "sem_instrucao": 33.09, "fund_completo": 17.44, "medio_completo": 35.42, "superior_completo": 14.05, "idade_14_29": 21.3, "idade_30_49": 47.21, "idade_50_59": 20.11, "idade_60_mais": 11.38}, "Comércio e reparação": {"total": 8521.0, "sem_instrucao": 12.07, "fund_completo": 13.37, "medio_completo": 54.77, "superior_completo": 19.79, "idade_14_29": 30.09, "idade_30_49": 46.29, "idade_50_59": 15.45, "idade_60_mais": 8.17}, "Adm. pública, educação, saúde e serv. sociais": {"total": 8649.0, "sem_instrucao": 2.79, "fund_completo": 2.89, "medio_completo": 30.17, "superior_completo": 64.14, "idade_14_29": 19.33, "idade_30_49": 52.99, "idade_50_59": 18.77, "idade_60_mais": 8.91}, "Transporte, armazenagem e correio": {"total": 687.0, "sem_instrucao": 4.99, "fund_completo": 9.13, "medio_completo": 58.88, "superior_completo": 27.0, "idade_14_29": 28.09, "idade_30_49": 55.69, "idade_50_59": 12.3, "idade_60_mais": 3.92}, "Alojamento e alimentação": {"total": 3079.0, "sem_instrucao": 21.2, "fund_completo": 19.1, "medio_completo": 50.34, "superior_completo": 9.35, "idade_14_29": 30.12, "idade_30_49": 47.31, "idade_50_59": 14.18, "idade_60_mais": 8.39}, "Informação, financeira e outras ativ. profissionais": {"total": 5410.0, "sem_instrucao": 5.77, "fund_completo": 5.48, "medio_completo": 41.99, "superior_completo": 46.75, "idade_14_29": 31.29, "idade_30_49": 52.25, "idade_50_59": 11.47, "idade_60_mais": 4.99}, "Serviços domésticos": {"total": 5486.0, "sem_instrucao": 40.23, "fund_completo": 21.42, "medio_completo": 36.31, "superior_completo": 2.04, "idade_14_29": 13.81, "idade_30_49": 48.34, "idade_50_59": 26.89, "idade_60_mais": 10.96}, "Outros serviços": {"total": 3159.0, "sem_instrucao": 10.91, "fund_completo": 14.75, "medio_completo": 54.35, "superior_completo": 19.99, "idade_14_29": 31.82, "idade_30_49": 50.3, "idade_50_59": 12.26, "idade_60_mais": 5.62}}, "t137_tempo_desocupacao": {"Brasil": {"total_mil": 7194.0, "ate_1_mes": 25.02, "1_mes_1_ano": 39.32, "1_2_anos": 11.41, "2_anos_mais": 24.25}, "Homens": {"total_mil": 3311.0, "ate_1_mes": 30.22, "1_mes_1_ano": 39.63, "1_2_anos": 10.43, "2_anos_mais": 19.72}, "Mulheres": {"total_mil": 3883.0, "ate_1_mes": 20.59, "1_mes_1_ano": 39.05, "1_2_anos": 12.25, "2_anos_mais": 28.11}, "Branca": {"total_mil": 2466.0, "ate_1_mes": 23.47, "1_mes_1_ano": 41.76, "1_2_anos": 11.63, "2_anos_mais": 23.15}, "Preta ou parda": {"total_mil": 4653.0, "ate_1_mes": 25.88, "1_mes_1_ano": 38.17, "1_2_anos": 11.11, "2_anos_mais": 24.84}, "Homem branco": {"total_mil": 1149.0, "ate_1_mes": 25.74, "1_mes_1_ano": 42.61, "1_2_anos": 11.87, "2_anos_mais": 19.77}, "Homem preto ou pardo": {"total_mil": 2129.0, "ate_1_mes": 32.74, "1_mes_1_ano": 38.21, "1_2_anos": 9.37, "2_anos_mais": 19.68}, "Mulher branca": {"total_mil": 1317.0, "ate_1_mes": 21.49, "1_mes_1_ano": 41.01, "1_2_anos": 11.41, "2_anos_mais": 26.09}, "Mulher preta ou parda": {"total_mil": 2524.0, "ate_1_mes": 20.1, "1_mes_1_ano": 38.13, "1_2_anos": 12.57, "2_anos_mais": 29.2}, "14 a 29 anos": {"total_mil": 3646.0, "ate_1_mes": 26.7, "1_mes_1_ano": 41.02, "1_2_anos": 12.92, "2_anos_mais": 19.36}, "30 a 49 anos": {"total_mil": 2576.0, "ate_1_mes": 23.06, "1_mes_1_ano": 39.17, "1_2_anos": 9.8, "2_anos_mais": 27.96}, "50 a 59 anos": {"total_mil": 724.0, "ate_1_mes": 24.76, "1_mes_1_ano": 34.05, "1_2_anos": 10.47, "2_anos_mais": 30.72}, "60 anos ou mais": {"total_mil": 247.0, "ate_1_mes": 21.44, "1_mes_1_ano": 31.16, "1_2_anos": 8.7, "2_anos_mais": 38.71}, "Sem instrução ou fundamental incompleto": {"total_mil": 1387.0, "ate_1_mes": 30.89, "1_mes_1_ano": 36.43, "1_2_anos": 8.95, "2_anos_mais": 23.73}, "Ensino fundamental completo ou médio incompleto": {"total_mil": 1410.0, "ate_1_mes": 29.2, "1_mes_1_ano": 39.87, "1_2_anos": 11.46, "2_anos_mais": 19.47}, "Ensino médio completo ou superior Incompleto": {"total_mil": 3520.0, "ate_1_mes": 22.66, "1_mes_1_ano": 39.17, "1_2_anos": 12.39, "2_anos_mais": 25.78}, "Ensino superior completo": {"total_mil": 877.0, "ate_1_mes": 18.51, "1_mes_1_ano": 43.58, "1_2_anos": 11.29, "2_anos_mais": 26.62}}, "t141_horas": {"Brasil": {"total_mil": 26741.0, "ate_39h": 29.7, "40_44h": 52.58, "45_48h": 9.52, "49h_mais": 8.2}, "15 a 17 anos": {"total_mil": 1381.0, "ate_39h": 70.29, "40_44h": 23.93, "45_48h": 3.03, "49h_mais": 2.76}, "18 a 24 anos": {"total_mil": 13129.0, "ate_39h": 29.71, "40_44h": 53.11, "45_48h": 9.79, "49h_mais": 7.39}, "25 a 29 anos": {"total_mil": 12231.0, "ate_39h": 25.11, "40_44h": 55.24, "45_48h": 9.97, "49h_mais": 9.68}, "Homem": {"total_mil": 15330.0, "ate_39h": 24.68, "40_44h": 55.06, "45_48h": 10.54, "49h_mais": 9.73}, "Mulher": {"total_mil": 11411.0, "ate_39h": 36.46, "40_44h": 49.24, "45_48h": 8.17, "49h_mais": 6.13}, "Branca": {"total_mil": 10770.0, "ate_39h": 28.21, "40_44h": 54.13, "45_48h": 9.06, "49h_mais": 8.59}, "Preta": {"total_mil": 3285.0, "ate_39h": 30.18, "40_44h": 51.05, "45_48h": 9.49, "49h_mais": 9.28}, "Parda": {"total_mil": 12416.0, "ate_39h": 30.91, "40_44h": 51.59, "45_48h": 9.98, "49h_mais": 7.53}, "Preta ou parda": {"total_mil": 15702.0, "ate_39h": 30.76, "40_44h": 51.47, "45_48h": 9.87, "49h_mais": 7.89}, "Até fundamental incompleto": {"total_mil": 2141.0, "ate_39h": 34.8, "40_44h": 46.47, "45_48h": 9.82, "49h_mais": 8.91}, "Fundamental completo até médio incompleto": {"total_mil": 4942.0, "ate_39h": 38.85, "40_44h": 43.07, "45_48h": 9.28, "49h_mais": 8.8}, "Médio completo até superior incompleto": {"total_mil": 15536.0, "ate_39h": 26.84, "40_44h": 54.78, "45_48h": 10.36, "49h_mais": 8.01}, "Superior completo ou nível mais elevado": {"total_mil": 4122.0, "ate_39h": 26.88, "40_44h": 58.83, "45_48h": 6.49, "49h_mais": 7.8}}, "t143_nenos": {"Brasil": {"total_mil": 46977.37, "so_estuda_mil": 10935.56, "estuda_ocupado_mil": 5926.64, "so_ocupado_mil": 20814.46, "nao_estuda_nao_ocupado_mil": 9300.71, "so_estuda_pct": 23.28, "estuda_ocupado_pct": 12.62, "so_ocupado_pct": 44.31, "nao_estuda_nao_ocupado_pct": 19.8}, "Norte": {"total_mil": 4749.02, "so_estuda_mil": 1260.84, "estuda_ocupado_mil": 535.01, "so_ocupado_mil": 1796.63, "nao_estuda_nao_ocupado_mil": 1156.54, "so_estuda_pct": 26.55, "estuda_ocupado_pct": 11.27, "so_ocupado_pct": 37.83, "nao_estuda_nao_ocupado_pct": 24.35}, "Nordeste": {"total_mil": 13169.16, "so_estuda_mil": 3457.72, "estuda_ocupado_mil": 1136.3, "so_ocupado_mil": 4947.54, "nao_estuda_nao_ocupado_mil": 3627.6, "so_estuda_pct": 26.26, "estuda_ocupado_pct": 8.63, "so_ocupado_pct": 37.57, "nao_estuda_nao_ocupado_pct": 27.55}, "Sudeste": {"total_mil": 18519.07, "so_estuda_mil": 4083.66, "estuda_ocupado_mil": 2537.24, "so_ocupado_mil": 8864.63, "nao_estuda_nao_ocupado_mil": 3033.54, "so_estuda_pct": 22.05, "estuda_ocupado_pct": 13.7, "so_ocupado_pct": 47.87, "nao_estuda_nao_ocupado_pct": 16.38}, "Sul": {"total_mil": 6539.74, "so_estuda_mil": 1273.17, "estuda_ocupado_mil": 1116.86, "so_ocupado_mil": 3277.14, "nao_estuda_nao_ocupado_mil": 872.56, "so_estuda_pct": 19.47, "estuda_ocupado_pct": 17.08, "so_ocupado_pct": 50.11, "nao_estuda_nao_ocupado_pct": 13.34}, "Centro-Oeste": {"total_mil": 4000.38, "so_estuda_mil": 860.17, "estuda_ocupado_mil": 601.22, "so_ocupado_mil": 1928.53, "nao_estuda_nao_ocupado_mil": 610.46, "so_estuda_pct": 21.5, "estuda_ocupado_pct": 15.03, "so_ocupado_pct": 48.21, "nao_estuda_nao_ocupado_pct": 15.26}, "Homem": {"total_mil": 23773.18, "so_estuda_mil": 5232.28, "estuda_ocupado_mil": 2898.92, "so_ocupado_mil": 12431.02, "nao_estuda_nao_ocupado_mil": 3210.97, "so_estuda_pct": 22.01, "estuda_ocupado_pct": 12.19, "so_ocupado_pct": 52.29, "nao_estuda_nao_ocupado_pct": 13.51}, "Mulher": {"total_mil": 23204.19, "so_estuda_mil": 5703.28, "estuda_ocupado_mil": 3027.73, "so_ocupado_mil": 8383.44, "nao_estuda_nao_ocupado_mil": 6089.74, "so_estuda_pct": 24.58, "estuda_ocupado_pct": 13.05, "so_ocupado_pct": 36.13, "nao_estuda_nao_ocupado_pct": 26.24}, "Branca": {"total_mil": 18064.29, "so_estuda_mil": 4465.51, "estuda_ocupado_mil": 2741.24, "so_ocupado_mil": 8028.64, "nao_estuda_nao_ocupado_mil": 2828.9, "so_estuda_pct": 24.72, "estuda_ocupado_pct": 15.17, "so_ocupado_pct": 44.44, "nao_estuda_nao_ocupado_pct": 15.66}, "Preta": {"total_mil": 5485.77, "so_estuda_mil": 1049.25, "estuda_ocupado_mil": 617.25, "so_ocupado_mil": 2667.97, "nao_estuda_nao_ocupado_mil": 1151.3, "so_estuda_pct": 19.13, "estuda_ocupado_pct": 11.25, "so_ocupado_pct": 48.63, "nao_estuda_nao_ocupado_pct": 20.99}, "Parda": {"total_mil": 22932.37, "so_estuda_mil": 5301.38, "estuda_ocupado_mil": 2516.2, "so_ocupado_mil": 9900.15, "nao_estuda_nao_ocupado_mil": 5214.64, "so_estuda_pct": 23.12, "estuda_ocupado_pct": 10.97, "so_ocupado_pct": 43.17, "nao_estuda_nao_ocupado_pct": 22.74}, "Preta ou parda": {"total_mil": 28418.13, "so_estuda_mil": 6350.63, "estuda_ocupado_mil": 3133.45, "so_ocupado_mil": 12568.12, "nao_estuda_nao_ocupado_mil": 6365.93, "so_estuda_pct": 22.35, "estuda_ocupado_pct": 11.03, "so_ocupado_pct": 44.23, "nao_estuda_nao_ocupado_pct": 22.4}, "Homem branco": {"total_mil": 9067.49, "so_estuda_mil": 2123.69, "estuda_ocupado_mil": 1299.19, "so_ocupado_mil": 4632.81, "nao_estuda_nao_ocupado_mil": 1011.8, "so_estuda_pct": 23.42, "estuda_ocupado_pct": 14.33, "so_ocupado_pct": 51.09, "nao_estuda_nao_ocupado_pct": 11.16}}, "t150_jovens_pobreza": {"Brasil": {"total_jovens": 47894.99, "menos_215": 11.38, "menos_365": 18.8, "menos_685": 38.28, "ate_50_med_nac": 25.18, "ate_50_med_reg": 22.3}, "Norte": {"total_jovens": 4819.75, "menos_215": 15.04, "menos_365": 27.74, "menos_685": 52.54, "ate_50_med_nac": 36.88, "ate_50_med_reg": 25.49}, "Nordeste": {"total_jovens": 13478.43, "menos_215": 22.43, "menos_365": 35.11, "menos_685": 61.21, "ate_50_med_nac": 44.65, "ate_50_med_reg": 25.96}, "Sudeste": {"total_jovens": 18978.42, "menos_215": 6.34, "menos_365": 11.04, "menos_685": 27.76, "ate_50_med_nac": 15.98, "ate_50_med_reg": 20.92}, "Sul": {"total_jovens": 6681.21, "menos_215": 4.41, "menos_365": 7.09, "menos_685": 19.62, "ate_50_med_nac": 10.25, "ate_50_med_reg": 18.46}, "Centro-Oeste": {"total_jovens": 3937.18, "menos_215": 5.25, "menos_365": 9.31, "menos_685": 24.68, "ate_50_med_nac": 13.83, "ate_50_med_reg": 19.02}, "Homem": {"total_jovens": 24126.15, "menos_215": 11.11, "menos_365": 18.17, "menos_685": 36.64, "ate_50_med_nac": 24.07, "ate_50_med_reg": 21.43}, "Mulher": {"total_jovens": 23768.84, "menos_215": 11.67, "menos_365": 19.44, "menos_685": 39.94, "ate_50_med_nac": 26.3, "ate_50_med_reg": 23.18}, "Branca": {"total_jovens": 18608.25, "menos_215": 7.52, "menos_365": 11.8, "menos_685": 25.99, "ate_50_med_nac": 16.1, "ate_50_med_reg": 16.85}, "Preta": {"total_jovens": 5380.91, "menos_215": 12.19, "menos_365": 20.32, "menos_685": 43.25, "ate_50_med_nac": 28.41, "ate_50_med_reg": 24.8}, "Parda": {"total_jovens": 23382.44, "menos_215": 14.19, "menos_365": 23.95, "menos_685": 46.85, "ate_50_med_nac": 31.59, "ate_50_med_reg": 26.03}, "Preta ou parda": {"total_jovens": 28763.35, "menos_215": 13.81, "menos_365": 23.27, "menos_685": 46.17, "ate_50_med_nac": 30.99, "ate_50_med_reg": 25.8}, "Homem branco": {"total_jovens": 9280.16, "menos_215": 7.51, "menos_365": 11.57, "menos_685": 25.06, "ate_50_med_nac": 15.52, "ate_50_med_reg": 16.42}, "Homem preto ou pardo": {"total_jovens": 11827.34, "menos_215": 13.8, "menos_365": 23.12, "menos_685": 44.73, "ate_50_med_nac": 30.18, "ate_50_med_reg": 25.08}, "Mulher branca": {"total_jovens": 9328.09, "menos_215": 7.54, "menos_365": 12.03, "menos_685": 26.92, "ate_50_med_nac": 16.67, "ate_50_med_reg": 17.28}, "Mulher preta ou parda": {"total_jovens": 11555.1, "menos_215": 14.59, "menos_365": 24.8, "menos_685": 49.01, "ate_50_med_nac": 33.03, "ate_50_med_reg": 27.0}, "Até fundamental incompleto": {"total_jovens": 6844.77, "menos_215": 24.05, "menos_365": 38.06, "menos_685": 65.06, "ate_50_med_nac": 47.88, "ate_50_med_reg": 41.86}, "Fundamental completo até médio incompleto": {"total_jovens": 13832.89, "menos_215": 14.36, "menos_365": 24.15, "menos_685": 47.88, "ate_50_med_nac": 32.02, "ate_50_med_reg": 28.93}, "Médio completo até superior incompleto": {"total_jovens": 22508.76, "menos_215": 7.48, "menos_365": 12.75, "menos_685": 30.35, "ate_50_med_nac": 18.2, "ate_50_med_reg": 15.91}, "Superior completo ou nível mais elevado": {"total_jovens": 4708.57, "menos_215": 2.88, "menos_365": 4.0, "menos_685": 9.05, "ate_50_med_nac": 5.41, "ate_50_med_reg": 4.92}}, "t151_grupos_ocupacao": {"Brasil": {"total": 101309.0, "homens": 57345.0, "mulheres": 43963.0, "branca": 43782.0, "preta": 11883.0, "parda": 44461.0, "preta_ou_parda": 56344.0}, "Diretores e gerentes": {"total": 3530.0, "homens": 2081.0, "mulheres": 1449.0, "branca": 2300.0, "preta": 197.0, "parda": 980.0, "preta_ou_parda": 1177.0}, "Profissionais das ciências e intelectuais": {"total": 12834.0, "homens": 5198.0, "mulheres": 7636.0, "branca": 7728.0, "preta": 1065.0, "parda": 3807.0, "preta_ou_parda": 4872.0}, "Técnicos e profissionais de nível médio": {"total": 8676.0, "homens": 4687.0, "mulheres": 3990.0, "branca": 4491.0, "preta": 909.0, "parda": 3172.0, "preta_ou_parda": 4080.0}, "Trabalhadores de apoio administrativo": {"total": 8487.0, "homens": 3301.0, "mulheres": 5186.0, "branca": 3997.0, "preta": 917.0, "parda": 3476.0, "preta_ou_parda": 4393.0}, "Trabalhadores dos serviços, vendedores dos comércios e mercados": {"total": 22595.0, "homens": 9513.0, "mulheres": 13082.0, "branca": 9156.0, "preta": 2678.0, "parda": 10494.0, "preta_ou_parda": 13172.0}, "Trabalhadores qualificados da agropecuária, florestais, da caça e da pesca": {"total": 4960.0, "homens": 4025.0, "mulheres": 934.0, "branca": 2083.0, "preta": 473.0, "parda": 2354.0, "preta_ou_parda": 2827.0}, "Trabalhadores qualificados, operários e artesões da construção, das artes mecânicas e outros ofícios": {"total": 13585.0, "homens": 11392.0, "mulheres": 2192.0, "branca": 5094.0, "preta": 1842.0, "parda": 6522.0, "preta_ou_parda": 8363.0}, "Operadores de instalações e máquinas e montadores": {"total": 9509.0, "homens": 8233.0, "mulheres": 1276.0, "branca": 3853.0, "preta": 1108.0, "parda": 4451.0, "preta_ou_parda": 5559.0}, "Ocupações elementares": {"total": 16326.0, "homens": 8197.0, "mulheres": 8130.0, "branca": 4754.0, "preta": 2601.0, "parda": 8826.0, "preta_ou_parda": 11427.0}}, "city_income": [["Rendimento médio mensal das pessoas ocupadas de 10 anos ou mais, por cidade"], ["", "Belo Horizonte (MG)", "Porto Alegre (RS)", "Recife (PE)", "Rio de Janeiro (RJ)", "Salvador (BA)", "São Paulo (SP)", "Total das áreas"], ["Totals", "2.073,40", "2.278,80", "1.647,80", "2.434,90", "1.653,60", "2.324,10", "2.227,50"], ["Fonte: \"IBGE - Pesquisa Mensal de Emprego\""]], "national_income": [["Rendimento médio mensal das pessoas de 14 anos ou mais"], ["", "", "Totais"], ["Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos", "Reais", "3.732"], ["Variação percentual em relação a três trimestres móveis anteriores - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos", "%", "0,3"], ["Variação percentual em relação ao mesmo trimestre móvel do ano anterior - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos", "%", "5,3"], ["Fonte: \"IBGE - Pesquisa Nacional por Amostra de Domicílios Contínua mensal\""]]} as const;
+export const ibgeData = {
+  "t11_yearly": {
+    "2012": {
+      "pop_idade_trabalhar": 153685.0,
+      "pop_forca_trabalho": 96354.0,
+      "pop_ocupada": 89261.0,
+      "pop_ocupada_formal": 52597.0,
+      "pop_desocupada": 7093.0,
+      "taxa_participacao": 62.7,
+      "nivel_ocupacao": 58.08,
+      "taxa_formalizacao": 58.92,
+      "taxa_desocupacao": 7.36,
+      "taxa_subutilizacao": 18.64
+    },
+    "2013": {
+      "pop_idade_trabalhar": 155766.0,
+      "pop_forca_trabalho": 97943.0,
+      "pop_ocupada": 90814.0,
+      "pop_ocupada_formal": 54547.0,
+      "pop_desocupada": 7129.0,
+      "taxa_participacao": 62.88,
+      "nivel_ocupacao": 58.3,
+      "taxa_formalizacao": 60.06,
+      "taxa_desocupacao": 7.28,
+      "taxa_subutilizacao": 17.08
+    },
+    "2014": {
+      "pop_idade_trabalhar": 157802.0,
+      "pop_forca_trabalho": 98516.0,
+      "pop_ocupada": 91619.0,
+      "pop_ocupada_formal": 56116.0,
+      "pop_desocupada": 6897.0,
+      "taxa_participacao": 62.43,
+      "nivel_ocupacao": 58.06,
+      "taxa_formalizacao": 61.25,
+      "taxa_desocupacao": 7.0,
+      "taxa_subutilizacao": 15.85
+    },
+    "2015": {
+      "pop_idade_trabalhar": 159714.0,
+      "pop_forca_trabalho": 100562.0,
+      "pop_ocupada": 91649.0,
+      "pop_ocupada_formal": 56224.0,
+      "pop_desocupada": 8913.0,
+      "taxa_participacao": 62.96,
+      "nivel_ocupacao": 57.38,
+      "taxa_formalizacao": 61.35,
+      "taxa_desocupacao": 8.86,
+      "taxa_subutilizacao": 18.21
+    },
+    "2016": {
+      "pop_idade_trabalhar": 161500.0,
+      "pop_forca_trabalho": 101726.0,
+      "pop_ocupada": 89894.0,
+      "pop_ocupada_formal": 54999.0,
+      "pop_desocupada": 11832.0,
+      "taxa_participacao": 62.99,
+      "nivel_ocupacao": 55.66,
+      "taxa_formalizacao": 61.18,
+      "taxa_desocupacao": 11.63,
+      "taxa_subutilizacao": 21.39
+    },
+    "2017": {
+      "pop_idade_trabalhar": 163166.0,
+      "pop_forca_trabalho": 103204.0,
+      "pop_ocupada": 90172.0,
+      "pop_ocupada_formal": 53604.0,
+      "pop_desocupada": 13032.0,
+      "taxa_participacao": 63.25,
+      "nivel_ocupacao": 55.26,
+      "taxa_formalizacao": 59.45,
+      "taxa_desocupacao": 12.63,
+      "taxa_subutilizacao": 24.19
+    },
+    "2018": {
+      "pop_idade_trabalhar": 164729.0,
+      "pop_forca_trabalho": 104176.0,
+      "pop_ocupada": 91519.0,
+      "pop_ocupada_formal": 53739.0,
+      "pop_desocupada": 12657.0,
+      "taxa_participacao": 63.24,
+      "nivel_ocupacao": 55.56,
+      "taxa_formalizacao": 58.72,
+      "taxa_desocupacao": 12.15,
+      "taxa_subutilizacao": 24.66
+    },
+    "2019": {
+      "pop_idade_trabalhar": 166328.0,
+      "pop_forca_trabalho": 106046.0,
+      "pop_ocupada": 93534.0,
+      "pop_ocupada_formal": 54763.0,
+      "pop_desocupada": 12511.0,
+      "taxa_participacao": 63.76,
+      "nivel_ocupacao": 56.23,
+      "taxa_formalizacao": 58.55,
+      "taxa_desocupacao": 11.8,
+      "taxa_subutilizacao": 24.36
+    },
+    "2020": {
+      "pop_idade_trabalhar": 167886.0,
+      "pop_forca_trabalho": 98880.0,
+      "pop_ocupada": 85289.0,
+      "pop_ocupada_formal": 52179.0,
+      "pop_desocupada": 13590.0,
+      "taxa_participacao": 58.9,
+      "nivel_ocupacao": 50.8,
+      "taxa_formalizacao": 61.18,
+      "taxa_desocupacao": 13.74,
+      "taxa_subutilizacao": 28.27
+    },
+    "2021": {
+      "pop_idade_trabalhar": 169125.0,
+      "pop_forca_trabalho": 102253.0,
+      "pop_ocupada": 87929.0,
+      "pop_ocupada_formal": 52631.0,
+      "pop_desocupada": 14324.0,
+      "taxa_participacao": 60.46,
+      "nivel_ocupacao": 51.99,
+      "taxa_formalizacao": 59.86,
+      "taxa_desocupacao": 14.01,
+      "taxa_subutilizacao": 28.54
+    },
+    "2022": {
+      "pop_idade_trabalhar": 170254.0,
+      "pop_forca_trabalho": 105241.0,
+      "pop_ocupada": 95158.0,
+      "pop_ocupada_formal": 56192.0,
+      "pop_desocupada": 10082.0,
+      "taxa_participacao": 61.81,
+      "nivel_ocupacao": 55.89,
+      "taxa_formalizacao": 59.05,
+      "taxa_desocupacao": 9.58,
+      "taxa_subutilizacao": 20.93
+    },
+    "2023": {
+      "pop_idade_trabalhar": 171515.0,
+      "pop_forca_trabalho": 107026.0,
+      "pop_ocupada": 98733.0,
+      "pop_ocupada_formal": 58491.0,
+      "pop_desocupada": 8293.0,
+      "taxa_participacao": 62.4,
+      "nivel_ocupacao": 57.57,
+      "taxa_formalizacao": 59.24,
+      "taxa_desocupacao": 7.75,
+      "taxa_subutilizacao": 18.01
+    },
+    "2024": {
+      "pop_idade_trabalhar": 172816.0,
+      "pop_forca_trabalho": 108502.0,
+      "pop_ocupada": 101309.0,
+      "pop_ocupada_formal": 60171.0,
+      "pop_desocupada": 7194.0,
+      "taxa_participacao": 62.78,
+      "nivel_ocupacao": 58.62,
+      "taxa_formalizacao": 59.39,
+      "taxa_desocupacao": 6.63,
+      "taxa_subutilizacao": 16.22
+    }
+  },
+  "t11_by_sex": {
+    "Homens": {
+      "pop_idade_trabalhar": 83321.0,
+      "taxa_participacao": 72.8,
+      "nivel_ocupacao": 68.82,
+      "taxa_formalizacao": 59.44,
+      "taxa_desocupacao": 5.46,
+      "taxa_subutilizacao": 12.8
+    },
+    "Mulheres": {
+      "pop_idade_trabalhar": 89495.0,
+      "taxa_participacao": 53.46,
+      "nivel_ocupacao": 49.12,
+      "taxa_formalizacao": 59.33,
+      "taxa_desocupacao": 8.11,
+      "taxa_subutilizacao": 20.38
+    }
+  },
+  "t11_by_race": {
+    "Branca": {
+      "pop_idade_trabalhar": 72975.0,
+      "taxa_participacao": 63.38,
+      "nivel_ocupacao": 60.0,
+      "taxa_formalizacao": 65.97,
+      "taxa_desocupacao": 5.33,
+      "taxa_subutilizacao": 12.39
+    },
+    "Preta": {
+      "pop_idade_trabalhar": 19623.0,
+      "taxa_participacao": 65.81,
+      "nivel_ocupacao": 60.56,
+      "taxa_formalizacao": 56.44,
+      "taxa_desocupacao": 7.98,
+      "taxa_subutilizacao": 18.72
+    },
+    "Parda": {
+      "pop_idade_trabalhar": 78147.0,
+      "taxa_participacao": 61.53,
+      "nivel_ocupacao": 56.89,
+      "taxa_formalizacao": 53.79,
+      "taxa_desocupacao": 7.53,
+      "taxa_subutilizacao": 19.1
+    },
+    "Preta ou parda": {
+      "pop_idade_trabalhar": 97771.0,
+      "taxa_participacao": 62.39,
+      "nivel_ocupacao": 57.63,
+      "taxa_formalizacao": 54.35,
+      "taxa_desocupacao": 7.63,
+      "taxa_subutilizacao": 19.02
+    }
+  },
+  "t11_by_age": {
+    "14 a 17 anos": {
+      "pop_idade_trabalhar": 11969.0,
+      "taxa_participacao": 17.13,
+      "nivel_ocupacao": 12.59,
+      "taxa_formalizacao": 21.49,
+      "taxa_desocupacao": 26.47
+    },
+    "18 a 24 anos": {
+      "pop_idade_trabalhar": 21636.0,
+      "taxa_participacao": 70.1,
+      "nivel_ocupacao": 60.68,
+      "taxa_formalizacao": 55.3,
+      "taxa_desocupacao": 13.44
+    },
+    "25 a 29 anos": {
+      "pop_idade_trabalhar": 16356.0,
+      "taxa_participacao": 81.29,
+      "nivel_ocupacao": 74.78,
+      "taxa_formalizacao": 60.32,
+      "taxa_desocupacao": 8.01
+    },
+    "30 a 49 anos": {
+      "pop_idade_trabalhar": 63953.0,
+      "taxa_participacao": 81.92,
+      "nivel_ocupacao": 77.89,
+      "taxa_formalizacao": 63.78,
+      "taxa_desocupacao": 4.92
+    },
+    "50 a 59 anos": {
+      "pop_idade_trabalhar": 24850.0,
+      "taxa_participacao": 68.54,
+      "nivel_ocupacao": 65.63,
+      "taxa_formalizacao": 59.81,
+      "taxa_desocupacao": 4.25
+    },
+    "60 anos ou mais": {
+      "pop_idade_trabalhar": 34052.0,
+      "taxa_participacao": 25.15,
+      "nivel_ocupacao": 24.43,
+      "taxa_formalizacao": 44.27,
+      "taxa_desocupacao": 2.89
+    }
+  },
+  "t11_by_education": {
+    "Sem instrução ou fund. incompleto": {
+      "pop_idade_trabalhar": 50751.0,
+      "taxa_participacao": 41.93,
+      "nivel_ocupacao": 39.2,
+      "taxa_formalizacao": 37.69,
+      "taxa_desocupacao": 6.52
+    },
+    "Fund. completo ou médio incompleto": {
+      "pop_idade_trabalhar": 28470.0,
+      "taxa_participacao": 53.31,
+      "nivel_ocupacao": 48.36,
+      "taxa_formalizacao": 47.5,
+      "taxa_desocupacao": 9.29
+    },
+    "Ensino médio completo ou sup. incompleto": {
+      "pop_idade_trabalhar": 64005.0,
+      "taxa_participacao": 74.15,
+      "nivel_ocupacao": 68.65,
+      "taxa_formalizacao": 64.16,
+      "taxa_desocupacao": 7.42
+    },
+    "Ensino superior completo": {
+      "pop_idade_trabalhar": 29590.0,
+      "taxa_participacao": 83.09,
+      "nivel_ocupacao": 80.13,
+      "taxa_formalizacao": 75.67,
+      "taxa_desocupacao": 3.57
+    }
+  },
+  "t14_yearly_income": {
+    "2012": {
+      "rendimento_medio_princ": 1970.04,
+      "rendimento_medio_todos": 2005.12
+    },
+    "2013": {
+      "rendimento_medio_princ": 2026.54,
+      "rendimento_medio_todos": 2061.93
+    },
+    "2014": {
+      "rendimento_medio_princ": 2047.73,
+      "rendimento_medio_todos": 2078.66
+    },
+    "2015": {
+      "rendimento_medio_princ": 1976.74,
+      "rendimento_medio_todos": 2012.0
+    },
+    "2016": {
+      "rendimento_medio_princ": 1946.1,
+      "rendimento_medio_todos": 1976.38
+    },
+    "2017": {
+      "rendimento_medio_princ": 1938.91,
+      "rendimento_medio_todos": 1971.52
+    },
+    "2018": {
+      "rendimento_medio_princ": 1905.84,
+      "rendimento_medio_todos": 1943.44
+    },
+    "2019": {
+      "rendimento_medio_princ": 1867.64,
+      "rendimento_medio_todos": 1905.1
+    },
+    "2020": {
+      "rendimento_medio_princ": 1930.95,
+      "rendimento_medio_todos": 1957.81
+    },
+    "2021": {
+      "rendimento_medio_princ": 1848.64,
+      "rendimento_medio_todos": 1879.18
+    },
+    "2022": {
+      "rendimento_medio_princ": 1890.87,
+      "rendimento_medio_todos": 1924.21
+    },
+    "2023": {
+      "rendimento_medio_princ": 2038.19,
+      "rendimento_medio_todos": 2078.19
+    },
+    "2024": {
+      "rendimento_medio_princ": 2124.74,
+      "rendimento_medio_todos": 2181.72
+    }
+  },
+  "t14_income_by_sex": {
+    "Total": 2124.74,
+    "Homens": 2244.33,
+    "Mulheres": 1963.42
+  },
+  "t14_income_by_race": {
+    "Branca": 2514.24,
+    "Preta": 1930.82,
+    "Parda": 1831.8
+  },
+  "t14_income_by_education": {
+    "Sem instrução ou fund. incompleto": 1959.94,
+    "Fund. completo ou médio incompleto": 2454.6,
+    "Ensino médio completo ou sup. incompleto": 6089.83,
+    "Ensino superior completo": 0
+  },
+  "t17_atividade": {
+    "Total": {
+      "total": 43782.0,
+      "sem_instrucao": 14.51,
+      "fund_completo": 11.17,
+      "medio_completo": 41.73,
+      "superior_completo": 32.6,
+      "idade_14_29": 24.7,
+      "idade_30_49": 48.83,
+      "idade_50_59": 16.97,
+      "idade_60_mais": 9.49
+    },
+    "Agropecuária": {
+      "total": 2836.0,
+      "sem_instrucao": 47.74,
+      "fund_completo": 17.33,
+      "medio_completo": 27.8,
+      "superior_completo": 7.14,
+      "idade_14_29": 19.82,
+      "idade_30_49": 42.23,
+      "idade_50_59": 21.86,
+      "idade_60_mais": 16.09
+    },
+    "Indústria": {
+      "total": 5879.0,
+      "sem_instrucao": 13.89,
+      "fund_completo": 13.51,
+      "medio_completo": 48.71,
+      "superior_completo": 23.88,
+      "idade_14_29": 26.33,
+      "idade_30_49": 51.23,
+      "idade_50_59": 14.77,
+      "idade_60_mais": 7.67
+    },
+    "Construção": {
+      "total": 2535.0,
+      "sem_instrucao": 33.09,
+      "fund_completo": 17.44,
+      "medio_completo": 35.42,
+      "superior_completo": 14.05,
+      "idade_14_29": 21.3,
+      "idade_30_49": 47.21,
+      "idade_50_59": 20.11,
+      "idade_60_mais": 11.38
+    },
+    "Comércio e reparação": {
+      "total": 8521.0,
+      "sem_instrucao": 12.07,
+      "fund_completo": 13.37,
+      "medio_completo": 54.77,
+      "superior_completo": 19.79,
+      "idade_14_29": 30.09,
+      "idade_30_49": 46.29,
+      "idade_50_59": 15.45,
+      "idade_60_mais": 8.17
+    },
+    "Adm. pública, educação, saúde e serv. sociais": {
+      "total": 8649.0,
+      "sem_instrucao": 2.79,
+      "fund_completo": 2.89,
+      "medio_completo": 30.17,
+      "superior_completo": 64.14,
+      "idade_14_29": 19.33,
+      "idade_30_49": 52.99,
+      "idade_50_59": 18.77,
+      "idade_60_mais": 8.91
+    },
+    "Transporte, armazenagem e correio": {
+      "total": 687.0,
+      "sem_instrucao": 4.99,
+      "fund_completo": 9.13,
+      "medio_completo": 58.88,
+      "superior_completo": 27.0,
+      "idade_14_29": 28.09,
+      "idade_30_49": 55.69,
+      "idade_50_59": 12.3,
+      "idade_60_mais": 3.92
+    },
+    "Alojamento e alimentação": {
+      "total": 3079.0,
+      "sem_instrucao": 21.2,
+      "fund_completo": 19.1,
+      "medio_completo": 50.34,
+      "superior_completo": 9.35,
+      "idade_14_29": 30.12,
+      "idade_30_49": 47.31,
+      "idade_50_59": 14.18,
+      "idade_60_mais": 8.39
+    },
+    "Informação, financeira e outras ativ. profissionais": {
+      "total": 5410.0,
+      "sem_instrucao": 5.77,
+      "fund_completo": 5.48,
+      "medio_completo": 41.99,
+      "superior_completo": 46.75,
+      "idade_14_29": 31.29,
+      "idade_30_49": 52.25,
+      "idade_50_59": 11.47,
+      "idade_60_mais": 4.99
+    },
+    "Serviços domésticos": {
+      "total": 5486.0,
+      "sem_instrucao": 40.23,
+      "fund_completo": 21.42,
+      "medio_completo": 36.31,
+      "superior_completo": 2.04,
+      "idade_14_29": 13.81,
+      "idade_30_49": 48.34,
+      "idade_50_59": 26.89,
+      "idade_60_mais": 10.96
+    },
+    "Outros serviços": {
+      "total": 3159.0,
+      "sem_instrucao": 10.91,
+      "fund_completo": 14.75,
+      "medio_completo": 54.35,
+      "superior_completo": 19.99,
+      "idade_14_29": 31.82,
+      "idade_30_49": 50.3,
+      "idade_50_59": 12.26,
+      "idade_60_mais": 5.62
+    }
+  },
+  "t137_tempo_desocupacao": {
+    "Brasil": {
+      "total_mil": 7194.0,
+      "ate_1_mes": 25.02,
+      "1_mes_1_ano": 39.32,
+      "1_2_anos": 11.41,
+      "2_anos_mais": 24.25
+    },
+    "Homens": {
+      "total_mil": 3311.0,
+      "ate_1_mes": 30.22,
+      "1_mes_1_ano": 39.63,
+      "1_2_anos": 10.43,
+      "2_anos_mais": 19.72
+    },
+    "Mulheres": {
+      "total_mil": 3883.0,
+      "ate_1_mes": 20.59,
+      "1_mes_1_ano": 39.05,
+      "1_2_anos": 12.25,
+      "2_anos_mais": 28.11
+    },
+    "Branca": {
+      "total_mil": 2466.0,
+      "ate_1_mes": 23.47,
+      "1_mes_1_ano": 41.76,
+      "1_2_anos": 11.63,
+      "2_anos_mais": 23.15
+    },
+    "Preta ou parda": {
+      "total_mil": 4653.0,
+      "ate_1_mes": 25.88,
+      "1_mes_1_ano": 38.17,
+      "1_2_anos": 11.11,
+      "2_anos_mais": 24.84
+    },
+    "Homem branco": {
+      "total_mil": 1149.0,
+      "ate_1_mes": 25.74,
+      "1_mes_1_ano": 42.61,
+      "1_2_anos": 11.87,
+      "2_anos_mais": 19.77
+    },
+    "Homem preto ou pardo": {
+      "total_mil": 2129.0,
+      "ate_1_mes": 32.74,
+      "1_mes_1_ano": 38.21,
+      "1_2_anos": 9.37,
+      "2_anos_mais": 19.68
+    },
+    "Mulher branca": {
+      "total_mil": 1317.0,
+      "ate_1_mes": 21.49,
+      "1_mes_1_ano": 41.01,
+      "1_2_anos": 11.41,
+      "2_anos_mais": 26.09
+    },
+    "Mulher preta ou parda": {
+      "total_mil": 2524.0,
+      "ate_1_mes": 20.1,
+      "1_mes_1_ano": 38.13,
+      "1_2_anos": 12.57,
+      "2_anos_mais": 29.2
+    },
+    "14 a 29 anos": {
+      "total_mil": 3646.0,
+      "ate_1_mes": 26.7,
+      "1_mes_1_ano": 41.02,
+      "1_2_anos": 12.92,
+      "2_anos_mais": 19.36
+    },
+    "30 a 49 anos": {
+      "total_mil": 2576.0,
+      "ate_1_mes": 23.06,
+      "1_mes_1_ano": 39.17,
+      "1_2_anos": 9.8,
+      "2_anos_mais": 27.96
+    },
+    "50 a 59 anos": {
+      "total_mil": 724.0,
+      "ate_1_mes": 24.76,
+      "1_mes_1_ano": 34.05,
+      "1_2_anos": 10.47,
+      "2_anos_mais": 30.72
+    },
+    "60 anos ou mais": {
+      "total_mil": 247.0,
+      "ate_1_mes": 21.44,
+      "1_mes_1_ano": 31.16,
+      "1_2_anos": 8.7,
+      "2_anos_mais": 38.71
+    },
+    "Sem instrução ou fundamental incompleto": {
+      "total_mil": 1387.0,
+      "ate_1_mes": 30.89,
+      "1_mes_1_ano": 36.43,
+      "1_2_anos": 8.95,
+      "2_anos_mais": 23.73
+    },
+    "Ensino fundamental completo ou médio incompleto": {
+      "total_mil": 1410.0,
+      "ate_1_mes": 29.2,
+      "1_mes_1_ano": 39.87,
+      "1_2_anos": 11.46,
+      "2_anos_mais": 19.47
+    },
+    "Ensino médio completo ou superior Incompleto": {
+      "total_mil": 3520.0,
+      "ate_1_mes": 22.66,
+      "1_mes_1_ano": 39.17,
+      "1_2_anos": 12.39,
+      "2_anos_mais": 25.78
+    },
+    "Ensino superior completo": {
+      "total_mil": 877.0,
+      "ate_1_mes": 18.51,
+      "1_mes_1_ano": 43.58,
+      "1_2_anos": 11.29,
+      "2_anos_mais": 26.62
+    }
+  },
+  "t141_horas": {
+    "Brasil": {
+      "total_mil": 26741.0,
+      "ate_39h": 29.7,
+      "40_44h": 52.58,
+      "45_48h": 9.52,
+      "49h_mais": 8.2
+    },
+    "15 a 17 anos": {
+      "total_mil": 1381.0,
+      "ate_39h": 70.29,
+      "40_44h": 23.93,
+      "45_48h": 3.03,
+      "49h_mais": 2.76
+    },
+    "18 a 24 anos": {
+      "total_mil": 13129.0,
+      "ate_39h": 29.71,
+      "40_44h": 53.11,
+      "45_48h": 9.79,
+      "49h_mais": 7.39
+    },
+    "25 a 29 anos": {
+      "total_mil": 12231.0,
+      "ate_39h": 25.11,
+      "40_44h": 55.24,
+      "45_48h": 9.97,
+      "49h_mais": 9.68
+    },
+    "Homem": {
+      "total_mil": 15330.0,
+      "ate_39h": 24.68,
+      "40_44h": 55.06,
+      "45_48h": 10.54,
+      "49h_mais": 9.73
+    },
+    "Mulher": {
+      "total_mil": 11411.0,
+      "ate_39h": 36.46,
+      "40_44h": 49.24,
+      "45_48h": 8.17,
+      "49h_mais": 6.13
+    },
+    "Branca": {
+      "total_mil": 10770.0,
+      "ate_39h": 28.21,
+      "40_44h": 54.13,
+      "45_48h": 9.06,
+      "49h_mais": 8.59
+    },
+    "Preta": {
+      "total_mil": 3285.0,
+      "ate_39h": 30.18,
+      "40_44h": 51.05,
+      "45_48h": 9.49,
+      "49h_mais": 9.28
+    },
+    "Parda": {
+      "total_mil": 12416.0,
+      "ate_39h": 30.91,
+      "40_44h": 51.59,
+      "45_48h": 9.98,
+      "49h_mais": 7.53
+    },
+    "Preta ou parda": {
+      "total_mil": 15702.0,
+      "ate_39h": 30.76,
+      "40_44h": 51.47,
+      "45_48h": 9.87,
+      "49h_mais": 7.89
+    },
+    "Até fundamental incompleto": {
+      "total_mil": 2141.0,
+      "ate_39h": 34.8,
+      "40_44h": 46.47,
+      "45_48h": 9.82,
+      "49h_mais": 8.91
+    },
+    "Fundamental completo até médio incompleto": {
+      "total_mil": 4942.0,
+      "ate_39h": 38.85,
+      "40_44h": 43.07,
+      "45_48h": 9.28,
+      "49h_mais": 8.8
+    },
+    "Médio completo até superior incompleto": {
+      "total_mil": 15536.0,
+      "ate_39h": 26.84,
+      "40_44h": 54.78,
+      "45_48h": 10.36,
+      "49h_mais": 8.01
+    },
+    "Superior completo ou nível mais elevado": {
+      "total_mil": 4122.0,
+      "ate_39h": 26.88,
+      "40_44h": 58.83,
+      "45_48h": 6.49,
+      "49h_mais": 7.8
+    }
+  },
+  "t143_nenos": {
+    "Brasil": {
+      "total_mil": 46977.37,
+      "so_estuda_mil": 10935.56,
+      "estuda_ocupado_mil": 5926.64,
+      "so_ocupado_mil": 20814.46,
+      "nao_estuda_nao_ocupado_mil": 9300.71,
+      "so_estuda_pct": 23.28,
+      "estuda_ocupado_pct": 12.62,
+      "so_ocupado_pct": 44.31,
+      "nao_estuda_nao_ocupado_pct": 19.8
+    },
+    "Norte": {
+      "total_mil": 4749.02,
+      "so_estuda_mil": 1260.84,
+      "estuda_ocupado_mil": 535.01,
+      "so_ocupado_mil": 1796.63,
+      "nao_estuda_nao_ocupado_mil": 1156.54,
+      "so_estuda_pct": 26.55,
+      "estuda_ocupado_pct": 11.27,
+      "so_ocupado_pct": 37.83,
+      "nao_estuda_nao_ocupado_pct": 24.35
+    },
+    "Nordeste": {
+      "total_mil": 13169.16,
+      "so_estuda_mil": 3457.72,
+      "estuda_ocupado_mil": 1136.3,
+      "so_ocupado_mil": 4947.54,
+      "nao_estuda_nao_ocupado_mil": 3627.6,
+      "so_estuda_pct": 26.26,
+      "estuda_ocupado_pct": 8.63,
+      "so_ocupado_pct": 37.57,
+      "nao_estuda_nao_ocupado_pct": 27.55
+    },
+    "Sudeste": {
+      "total_mil": 18519.07,
+      "so_estuda_mil": 4083.66,
+      "estuda_ocupado_mil": 2537.24,
+      "so_ocupado_mil": 8864.63,
+      "nao_estuda_nao_ocupado_mil": 3033.54,
+      "so_estuda_pct": 22.05,
+      "estuda_ocupado_pct": 13.7,
+      "so_ocupado_pct": 47.87,
+      "nao_estuda_nao_ocupado_pct": 16.38
+    },
+    "Sul": {
+      "total_mil": 6539.74,
+      "so_estuda_mil": 1273.17,
+      "estuda_ocupado_mil": 1116.86,
+      "so_ocupado_mil": 3277.14,
+      "nao_estuda_nao_ocupado_mil": 872.56,
+      "so_estuda_pct": 19.47,
+      "estuda_ocupado_pct": 17.08,
+      "so_ocupado_pct": 50.11,
+      "nao_estuda_nao_ocupado_pct": 13.34
+    },
+    "Centro-Oeste": {
+      "total_mil": 4000.38,
+      "so_estuda_mil": 860.17,
+      "estuda_ocupado_mil": 601.22,
+      "so_ocupado_mil": 1928.53,
+      "nao_estuda_nao_ocupado_mil": 610.46,
+      "so_estuda_pct": 21.5,
+      "estuda_ocupado_pct": 15.03,
+      "so_ocupado_pct": 48.21,
+      "nao_estuda_nao_ocupado_pct": 15.26
+    },
+    "Homem": {
+      "total_mil": 23773.18,
+      "so_estuda_mil": 5232.28,
+      "estuda_ocupado_mil": 2898.92,
+      "so_ocupado_mil": 12431.02,
+      "nao_estuda_nao_ocupado_mil": 3210.97,
+      "so_estuda_pct": 22.01,
+      "estuda_ocupado_pct": 12.19,
+      "so_ocupado_pct": 52.29,
+      "nao_estuda_nao_ocupado_pct": 13.51
+    },
+    "Mulher": {
+      "total_mil": 23204.19,
+      "so_estuda_mil": 5703.28,
+      "estuda_ocupado_mil": 3027.73,
+      "so_ocupado_mil": 8383.44,
+      "nao_estuda_nao_ocupado_mil": 6089.74,
+      "so_estuda_pct": 24.58,
+      "estuda_ocupado_pct": 13.05,
+      "so_ocupado_pct": 36.13,
+      "nao_estuda_nao_ocupado_pct": 26.24
+    },
+    "Branca": {
+      "total_mil": 18064.29,
+      "so_estuda_mil": 4465.51,
+      "estuda_ocupado_mil": 2741.24,
+      "so_ocupado_mil": 8028.64,
+      "nao_estuda_nao_ocupado_mil": 2828.9,
+      "so_estuda_pct": 24.72,
+      "estuda_ocupado_pct": 15.17,
+      "so_ocupado_pct": 44.44,
+      "nao_estuda_nao_ocupado_pct": 15.66
+    },
+    "Preta": {
+      "total_mil": 5485.77,
+      "so_estuda_mil": 1049.25,
+      "estuda_ocupado_mil": 617.25,
+      "so_ocupado_mil": 2667.97,
+      "nao_estuda_nao_ocupado_mil": 1151.3,
+      "so_estuda_pct": 19.13,
+      "estuda_ocupado_pct": 11.25,
+      "so_ocupado_pct": 48.63,
+      "nao_estuda_nao_ocupado_pct": 20.99
+    },
+    "Parda": {
+      "total_mil": 22932.37,
+      "so_estuda_mil": 5301.38,
+      "estuda_ocupado_mil": 2516.2,
+      "so_ocupado_mil": 9900.15,
+      "nao_estuda_nao_ocupado_mil": 5214.64,
+      "so_estuda_pct": 23.12,
+      "estuda_ocupado_pct": 10.97,
+      "so_ocupado_pct": 43.17,
+      "nao_estuda_nao_ocupado_pct": 22.74
+    },
+    "Preta ou parda": {
+      "total_mil": 28418.13,
+      "so_estuda_mil": 6350.63,
+      "estuda_ocupado_mil": 3133.45,
+      "so_ocupado_mil": 12568.12,
+      "nao_estuda_nao_ocupado_mil": 6365.93,
+      "so_estuda_pct": 22.35,
+      "estuda_ocupado_pct": 11.03,
+      "so_ocupado_pct": 44.23,
+      "nao_estuda_nao_ocupado_pct": 22.4
+    },
+    "Homem branco": {
+      "total_mil": 9067.49,
+      "so_estuda_mil": 2123.69,
+      "estuda_ocupado_mil": 1299.19,
+      "so_ocupado_mil": 4632.81,
+      "nao_estuda_nao_ocupado_mil": 1011.8,
+      "so_estuda_pct": 23.42,
+      "estuda_ocupado_pct": 14.33,
+      "so_ocupado_pct": 51.09,
+      "nao_estuda_nao_ocupado_pct": 11.16
+    }
+  },
+  "t150_jovens_pobreza": {
+    "Brasil": {
+      "total_jovens": 47894.99,
+      "menos_215": 11.38,
+      "menos_365": 18.8,
+      "menos_685": 38.28,
+      "ate_50_med_nac": 25.18,
+      "ate_50_med_reg": 22.3
+    },
+    "Norte": {
+      "total_jovens": 4819.75,
+      "menos_215": 15.04,
+      "menos_365": 27.74,
+      "menos_685": 52.54,
+      "ate_50_med_nac": 36.88,
+      "ate_50_med_reg": 25.49
+    },
+    "Nordeste": {
+      "total_jovens": 13478.43,
+      "menos_215": 22.43,
+      "menos_365": 35.11,
+      "menos_685": 61.21,
+      "ate_50_med_nac": 44.65,
+      "ate_50_med_reg": 25.96
+    },
+    "Sudeste": {
+      "total_jovens": 18978.42,
+      "menos_215": 6.34,
+      "menos_365": 11.04,
+      "menos_685": 27.76,
+      "ate_50_med_nac": 15.98,
+      "ate_50_med_reg": 20.92
+    },
+    "Sul": {
+      "total_jovens": 6681.21,
+      "menos_215": 4.41,
+      "menos_365": 7.09,
+      "menos_685": 19.62,
+      "ate_50_med_nac": 10.25,
+      "ate_50_med_reg": 18.46
+    },
+    "Centro-Oeste": {
+      "total_jovens": 3937.18,
+      "menos_215": 5.25,
+      "menos_365": 9.31,
+      "menos_685": 24.68,
+      "ate_50_med_nac": 13.83,
+      "ate_50_med_reg": 19.02
+    },
+    "Homem": {
+      "total_jovens": 24126.15,
+      "menos_215": 11.11,
+      "menos_365": 18.17,
+      "menos_685": 36.64,
+      "ate_50_med_nac": 24.07,
+      "ate_50_med_reg": 21.43
+    },
+    "Mulher": {
+      "total_jovens": 23768.84,
+      "menos_215": 11.67,
+      "menos_365": 19.44,
+      "menos_685": 39.94,
+      "ate_50_med_nac": 26.3,
+      "ate_50_med_reg": 23.18
+    },
+    "Branca": {
+      "total_jovens": 18608.25,
+      "menos_215": 7.52,
+      "menos_365": 11.8,
+      "menos_685": 25.99,
+      "ate_50_med_nac": 16.1,
+      "ate_50_med_reg": 16.85
+    },
+    "Preta": {
+      "total_jovens": 5380.91,
+      "menos_215": 12.19,
+      "menos_365": 20.32,
+      "menos_685": 43.25,
+      "ate_50_med_nac": 28.41,
+      "ate_50_med_reg": 24.8
+    },
+    "Parda": {
+      "total_jovens": 23382.44,
+      "menos_215": 14.19,
+      "menos_365": 23.95,
+      "menos_685": 46.85,
+      "ate_50_med_nac": 31.59,
+      "ate_50_med_reg": 26.03
+    },
+    "Preta ou parda": {
+      "total_jovens": 28763.35,
+      "menos_215": 13.81,
+      "menos_365": 23.27,
+      "menos_685": 46.17,
+      "ate_50_med_nac": 30.99,
+      "ate_50_med_reg": 25.8
+    },
+    "Homem branco": {
+      "total_jovens": 9280.16,
+      "menos_215": 7.51,
+      "menos_365": 11.57,
+      "menos_685": 25.06,
+      "ate_50_med_nac": 15.52,
+      "ate_50_med_reg": 16.42
+    },
+    "Homem preto ou pardo": {
+      "total_jovens": 11827.34,
+      "menos_215": 13.8,
+      "menos_365": 23.12,
+      "menos_685": 44.73,
+      "ate_50_med_nac": 30.18,
+      "ate_50_med_reg": 25.08
+    },
+    "Mulher branca": {
+      "total_jovens": 9328.09,
+      "menos_215": 7.54,
+      "menos_365": 12.03,
+      "menos_685": 26.92,
+      "ate_50_med_nac": 16.67,
+      "ate_50_med_reg": 17.28
+    },
+    "Mulher preta ou parda": {
+      "total_jovens": 11555.1,
+      "menos_215": 14.59,
+      "menos_365": 24.8,
+      "menos_685": 49.01,
+      "ate_50_med_nac": 33.03,
+      "ate_50_med_reg": 27.0
+    },
+    "Até fundamental incompleto": {
+      "total_jovens": 6844.77,
+      "menos_215": 24.05,
+      "menos_365": 38.06,
+      "menos_685": 65.06,
+      "ate_50_med_nac": 47.88,
+      "ate_50_med_reg": 41.86
+    },
+    "Fundamental completo até médio incompleto": {
+      "total_jovens": 13832.89,
+      "menos_215": 14.36,
+      "menos_365": 24.15,
+      "menos_685": 47.88,
+      "ate_50_med_nac": 32.02,
+      "ate_50_med_reg": 28.93
+    },
+    "Médio completo até superior incompleto": {
+      "total_jovens": 22508.76,
+      "menos_215": 7.48,
+      "menos_365": 12.75,
+      "menos_685": 30.35,
+      "ate_50_med_nac": 18.2,
+      "ate_50_med_reg": 15.91
+    },
+    "Superior completo ou nível mais elevado": {
+      "total_jovens": 4708.57,
+      "menos_215": 2.88,
+      "menos_365": 4.0,
+      "menos_685": 9.05,
+      "ate_50_med_nac": 5.41,
+      "ate_50_med_reg": 4.92
+    }
+  },
+  "t151_grupos_ocupacao": {
+    "Brasil": {
+      "total": 101309.0,
+      "homens": 57345.0,
+      "mulheres": 43963.0,
+      "branca": 43782.0,
+      "preta": 11883.0,
+      "parda": 44461.0,
+      "preta_ou_parda": 56344.0
+    },
+    "Diretores e gerentes": {
+      "total": 3530.0,
+      "homens": 2081.0,
+      "mulheres": 1449.0,
+      "branca": 2300.0,
+      "preta": 197.0,
+      "parda": 980.0,
+      "preta_ou_parda": 1177.0
+    },
+    "Profissionais das ciências e intelectuais": {
+      "total": 12834.0,
+      "homens": 5198.0,
+      "mulheres": 7636.0,
+      "branca": 7728.0,
+      "preta": 1065.0,
+      "parda": 3807.0,
+      "preta_ou_parda": 4872.0
+    },
+    "Técnicos e profissionais de nível médio": {
+      "total": 8676.0,
+      "homens": 4687.0,
+      "mulheres": 3990.0,
+      "branca": 4491.0,
+      "preta": 909.0,
+      "parda": 3172.0,
+      "preta_ou_parda": 4080.0
+    },
+    "Trabalhadores de apoio administrativo": {
+      "total": 8487.0,
+      "homens": 3301.0,
+      "mulheres": 5186.0,
+      "branca": 3997.0,
+      "preta": 917.0,
+      "parda": 3476.0,
+      "preta_ou_parda": 4393.0
+    },
+    "Trabalhadores dos serviços, vendedores dos comércios e mercados": {
+      "total": 22595.0,
+      "homens": 9513.0,
+      "mulheres": 13082.0,
+      "branca": 9156.0,
+      "preta": 2678.0,
+      "parda": 10494.0,
+      "preta_ou_parda": 13172.0
+    },
+    "Trabalhadores qualificados da agropecuária, florestais, da caça e da pesca": {
+      "total": 4960.0,
+      "homens": 4025.0,
+      "mulheres": 934.0,
+      "branca": 2083.0,
+      "preta": 473.0,
+      "parda": 2354.0,
+      "preta_ou_parda": 2827.0
+    },
+    "Trabalhadores qualificados, operários e artesões da construção, das artes mecânicas e outros ofícios": {
+      "total": 13585.0,
+      "homens": 11392.0,
+      "mulheres": 2192.0,
+      "branca": 5094.0,
+      "preta": 1842.0,
+      "parda": 6522.0,
+      "preta_ou_parda": 8363.0
+    },
+    "Operadores de instalações e máquinas e montadores": {
+      "total": 9509.0,
+      "homens": 8233.0,
+      "mulheres": 1276.0,
+      "branca": 3853.0,
+      "preta": 1108.0,
+      "parda": 4451.0,
+      "preta_ou_parda": 5559.0
+    },
+    "Ocupações elementares": {
+      "total": 16326.0,
+      "homens": 8197.0,
+      "mulheres": 8130.0,
+      "branca": 4754.0,
+      "preta": 2601.0,
+      "parda": 8826.0,
+      "preta_ou_parda": 11427.0
+    }
+  },
+  "city_income": [
+    [
+      "Rendimento médio mensal das pessoas ocupadas de 10 anos ou mais, por cidade"
+    ],
+    [
+      "",
+      "Belo Horizonte (MG)",
+      "Porto Alegre (RS)",
+      "Recife (PE)",
+      "Rio de Janeiro (RJ)",
+      "Salvador (BA)",
+      "São Paulo (SP)",
+      "Total das áreas"
+    ],
+    [
+      "Totals",
+      "2.073,40",
+      "2.278,80",
+      "1.647,80",
+      "2.434,90",
+      "1.653,60",
+      "2.324,10",
+      "2.227,50"
+    ],
+    [
+      "Fonte: \"IBGE - Pesquisa Mensal de Emprego\""
+    ]
+  ],
+  "national_income": [
+    [
+      "Rendimento médio mensal das pessoas de 14 anos ou mais"
+    ],
+    [
+      "",
+      "",
+      "Totais"
+    ],
+    [
+      "Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+      "Reais",
+      "3.732"
+    ],
+    [
+      "Variação percentual em relação a três trimestres móveis anteriores - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+      "%",
+      "0,3"
+    ],
+    [
+      "Variação percentual em relação ao mesmo trimestre móvel do ano anterior - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+      "%",
+      "5,3"
+    ],
+    [
+      "Fonte: \"IBGE - Pesquisa Nacional por Amostra de Domicílios Contínua mensal\""
+    ]
+  ]
+} as const;
