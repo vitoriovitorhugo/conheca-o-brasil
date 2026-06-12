@@ -1,0 +1,1155 @@
+     1→{
+     2→  "t11_yearly": {
+     3→    "2012": {
+     4→      "pop_idade_trabalhar": 153685.0,
+     5→      "pop_forca_trabalho": 96354.0,
+     6→      "pop_ocupada": 89261.0,
+     7→      "pop_ocupada_formal": 52597.0,
+     8→      "pop_desocupada": 7093.0,
+     9→      "taxa_participacao": 62.7,
+    10→      "nivel_ocupacao": 58.08,
+    11→      "taxa_formalizacao": 58.92,
+    12→      "taxa_desocupacao": 7.36,
+    13→      "taxa_subutilizacao": 18.64
+    14→    },
+    15→    "2013": {
+    16→      "pop_idade_trabalhar": 155766.0,
+    17→      "pop_forca_trabalho": 97943.0,
+    18→      "pop_ocupada": 90814.0,
+    19→      "pop_ocupada_formal": 54547.0,
+    20→      "pop_desocupada": 7129.0,
+    21→      "taxa_participacao": 62.88,
+    22→      "nivel_ocupacao": 58.3,
+    23→      "taxa_formalizacao": 60.06,
+    24→      "taxa_desocupacao": 7.28,
+    25→      "taxa_subutilizacao": 17.08
+    26→    },
+    27→    "2014": {
+    28→      "pop_idade_trabalhar": 157802.0,
+    29→      "pop_forca_trabalho": 98516.0,
+    30→      "pop_ocupada": 91619.0,
+    31→      "pop_ocupada_formal": 56116.0,
+    32→      "pop_desocupada": 6897.0,
+    33→      "taxa_participacao": 62.43,
+    34→      "nivel_ocupacao": 58.06,
+    35→      "taxa_formalizacao": 61.25,
+    36→      "taxa_desocupacao": 7.0,
+    37→      "taxa_subutilizacao": 15.85
+    38→    },
+    39→    "2015": {
+    40→      "pop_idade_trabalhar": 159714.0,
+    41→      "pop_forca_trabalho": 100562.0,
+    42→      "pop_ocupada": 91649.0,
+    43→      "pop_ocupada_formal": 56224.0,
+    44→      "pop_desocupada": 8913.0,
+    45→      "taxa_participacao": 62.96,
+    46→      "nivel_ocupacao": 57.38,
+    47→      "taxa_formalizacao": 61.35,
+    48→      "taxa_desocupacao": 8.86,
+    49→      "taxa_subutilizacao": 18.21
+    50→    },
+    51→    "2016": {
+    52→      "pop_idade_trabalhar": 161500.0,
+    53→      "pop_forca_trabalho": 101726.0,
+    54→      "pop_ocupada": 89894.0,
+    55→      "pop_ocupada_formal": 54999.0,
+    56→      "pop_desocupada": 11832.0,
+    57→      "taxa_participacao": 62.99,
+    58→      "nivel_ocupacao": 55.66,
+    59→      "taxa_formalizacao": 61.18,
+    60→      "taxa_desocupacao": 11.63,
+    61→      "taxa_subutilizacao": 21.39
+    62→    },
+    63→    "2017": {
+    64→      "pop_idade_trabalhar": 163166.0,
+    65→      "pop_forca_trabalho": 103204.0,
+    66→      "pop_ocupada": 90172.0,
+    67→      "pop_ocupada_formal": 53604.0,
+    68→      "pop_desocupada": 13032.0,
+    69→      "taxa_participacao": 63.25,
+    70→      "nivel_ocupacao": 55.26,
+    71→      "taxa_formalizacao": 59.45,
+    72→      "taxa_desocupacao": 12.63,
+    73→      "taxa_subutilizacao": 24.19
+    74→    },
+    75→    "2018": {
+    76→      "pop_idade_trabalhar": 164729.0,
+    77→      "pop_forca_trabalho": 104176.0,
+    78→      "pop_ocupada": 91519.0,
+    79→      "pop_ocupada_formal": 53739.0,
+    80→      "pop_desocupada": 12657.0,
+    81→      "taxa_participacao": 63.24,
+    82→      "nivel_ocupacao": 55.56,
+    83→      "taxa_formalizacao": 58.72,
+    84→      "taxa_desocupacao": 12.15,
+    85→      "taxa_subutilizacao": 24.66
+    86→    },
+    87→    "2019": {
+    88→      "pop_idade_trabalhar": 166328.0,
+    89→      "pop_forca_trabalho": 106046.0,
+    90→      "pop_ocupada": 93534.0,
+    91→      "pop_ocupada_formal": 54763.0,
+    92→      "pop_desocupada": 12511.0,
+    93→      "taxa_participacao": 63.76,
+    94→      "nivel_ocupacao": 56.23,
+    95→      "taxa_formalizacao": 58.55,
+    96→      "taxa_desocupacao": 11.8,
+    97→      "taxa_subutilizacao": 24.36
+    98→    },
+    99→    "2020": {
+   100→      "pop_idade_trabalhar": 167886.0,
+   101→      "pop_forca_trabalho": 98880.0,
+   102→      "pop_ocupada": 85289.0,
+   103→      "pop_ocupada_formal": 52179.0,
+   104→      "pop_desocupada": 13590.0,
+   105→      "taxa_participacao": 58.9,
+   106→      "nivel_ocupacao": 50.8,
+   107→      "taxa_formalizacao": 61.18,
+   108→      "taxa_desocupacao": 13.74,
+   109→      "taxa_subutilizacao": 28.27
+   110→    },
+   111→    "2021": {
+   112→      "pop_idade_trabalhar": 169125.0,
+   113→      "pop_forca_trabalho": 102253.0,
+   114→      "pop_ocupada": 87929.0,
+   115→      "pop_ocupada_formal": 52631.0,
+   116→      "pop_desocupada": 14324.0,
+   117→      "taxa_participacao": 60.46,
+   118→      "nivel_ocupacao": 51.99,
+   119→      "taxa_formalizacao": 59.86,
+   120→      "taxa_desocupacao": 14.01,
+   121→      "taxa_subutilizacao": 28.54
+   122→    },
+   123→    "2022": {
+   124→      "pop_idade_trabalhar": 170254.0,
+   125→      "pop_forca_trabalho": 105241.0,
+   126→      "pop_ocupada": 95158.0,
+   127→      "pop_ocupada_formal": 56192.0,
+   128→      "pop_desocupada": 10082.0,
+   129→      "taxa_participacao": 61.81,
+   130→      "nivel_ocupacao": 55.89,
+   131→      "taxa_formalizacao": 59.05,
+   132→      "taxa_desocupacao": 9.58,
+   133→      "taxa_subutilizacao": 20.93
+   134→    },
+   135→    "2023": {
+   136→      "pop_idade_trabalhar": 171515.0,
+   137→      "pop_forca_trabalho": 107026.0,
+   138→      "pop_ocupada": 98733.0,
+   139→      "pop_ocupada_formal": 58491.0,
+   140→      "pop_desocupada": 8293.0,
+   141→      "taxa_participacao": 62.4,
+   142→      "nivel_ocupacao": 57.57,
+   143→      "taxa_formalizacao": 59.24,
+   144→      "taxa_desocupacao": 7.75,
+   145→      "taxa_subutilizacao": 18.01
+   146→    },
+   147→    "2024": {
+   148→      "pop_idade_trabalhar": 172816.0,
+   149→      "pop_forca_trabalho": 108502.0,
+   150→      "pop_ocupada": 101309.0,
+   151→      "pop_ocupada_formal": 60171.0,
+   152→      "pop_desocupada": 7194.0,
+   153→      "taxa_participacao": 62.78,
+   154→      "nivel_ocupacao": 58.62,
+   155→      "taxa_formalizacao": 59.39,
+   156→      "taxa_desocupacao": 6.63,
+   157→      "taxa_subutilizacao": 16.22
+   158→    }
+   159→  },
+   160→  "t11_by_sex": {
+   161→    "Homens": {
+   162→      "pop_idade_trabalhar": 83321.0,
+   163→      "taxa_participacao": 72.8,
+   164→      "nivel_ocupacao": 68.82,
+   165→      "taxa_formalizacao": 59.44,
+   166→      "taxa_desocupacao": 5.46,
+   167→      "taxa_subutilizacao": 12.8
+   168→    },
+   169→    "Mulheres": {
+   170→      "pop_idade_trabalhar": 89495.0,
+   171→      "taxa_participacao": 53.46,
+   172→      "nivel_ocupacao": 49.12,
+   173→      "taxa_formalizacao": 59.33,
+   174→      "taxa_desocupacao": 8.11,
+   175→      "taxa_subutilizacao": 20.38
+   176→    }
+   177→  },
+   178→  "t11_by_race": {
+   179→    "Branca": {
+   180→      "pop_idade_trabalhar": 72975.0,
+   181→      "taxa_participacao": 63.38,
+   182→      "nivel_ocupacao": 60.0,
+   183→      "taxa_formalizacao": 65.97,
+   184→      "taxa_desocupacao": 5.33,
+   185→      "taxa_subutilizacao": 12.39
+   186→    },
+   187→    "Preta": {
+   188→      "pop_idade_trabalhar": 19623.0,
+   189→      "taxa_participacao": 65.81,
+   190→      "nivel_ocupacao": 60.56,
+   191→      "taxa_formalizacao": 56.44,
+   192→      "taxa_desocupacao": 7.98,
+   193→      "taxa_subutilizacao": 18.72
+   194→    },
+   195→    "Parda": {
+   196→      "pop_idade_trabalhar": 78147.0,
+   197→      "taxa_participacao": 61.53,
+   198→      "nivel_ocupacao": 56.89,
+   199→      "taxa_formalizacao": 53.79,
+   200→      "taxa_desocupacao": 7.53,
+   201→      "taxa_subutilizacao": 19.1
+   202→    },
+   203→    "Preta ou parda": {
+   204→      "pop_idade_trabalhar": 97771.0,
+   205→      "taxa_participacao": 62.39,
+   206→      "nivel_ocupacao": 57.63,
+   207→      "taxa_formalizacao": 54.35,
+   208→      "taxa_desocupacao": 7.63,
+   209→      "taxa_subutilizacao": 19.02
+   210→    }
+   211→  },
+   212→  "t11_by_age": {
+   213→    "14 a 17 anos": {
+   214→      "pop_idade_trabalhar": 11969.0,
+   215→      "taxa_participacao": 17.13,
+   216→      "nivel_ocupacao": 12.59,
+   217→      "taxa_formalizacao": 21.49,
+   218→      "taxa_desocupacao": 26.47
+   219→    },
+   220→    "18 a 24 anos": {
+   221→      "pop_idade_trabalhar": 21636.0,
+   222→      "taxa_participacao": 70.1,
+   223→      "nivel_ocupacao": 60.68,
+   224→      "taxa_formalizacao": 55.3,
+   225→      "taxa_desocupacao": 13.44
+   226→    },
+   227→    "25 a 29 anos": {
+   228→      "pop_idade_trabalhar": 16356.0,
+   229→      "taxa_participacao": 81.29,
+   230→      "nivel_ocupacao": 74.78,
+   231→      "taxa_formalizacao": 60.32,
+   232→      "taxa_desocupacao": 8.01
+   233→    },
+   234→    "30 a 49 anos": {
+   235→      "pop_idade_trabalhar": 63953.0,
+   236→      "taxa_participacao": 81.92,
+   237→      "nivel_ocupacao": 77.89,
+   238→      "taxa_formalizacao": 63.78,
+   239→      "taxa_desocupacao": 4.92
+   240→    },
+   241→    "50 a 59 anos": {
+   242→      "pop_idade_trabalhar": 24850.0,
+   243→      "taxa_participacao": 68.54,
+   244→      "nivel_ocupacao": 65.63,
+   245→      "taxa_formalizacao": 59.81,
+   246→      "taxa_desocupacao": 4.25
+   247→    },
+   248→    "60 anos ou mais": {
+   249→      "pop_idade_trabalhar": 34052.0,
+   250→      "taxa_participacao": 25.15,
+   251→      "nivel_ocupacao": 24.43,
+   252→      "taxa_formalizacao": 44.27,
+   253→      "taxa_desocupacao": 2.89
+   254→    }
+   255→  },
+   256→  "t11_by_education": {
+   257→    "Sem instrução ou fund. incompleto": {
+   258→      "pop_idade_trabalhar": 50751.0,
+   259→      "taxa_participacao": 41.93,
+   260→      "nivel_ocupacao": 39.2,
+   261→      "taxa_formalizacao": 37.69,
+   262→      "taxa_desocupacao": 6.52
+   263→    },
+   264→    "Fund. completo ou médio incompleto": {
+   265→      "pop_idade_trabalhar": 28470.0,
+   266→      "taxa_participacao": 53.31,
+   267→      "nivel_ocupacao": 48.36,
+   268→      "taxa_formalizacao": 47.5,
+   269→      "taxa_desocupacao": 9.29
+   270→    },
+   271→    "Ensino médio completo ou sup. incompleto": {
+   272→      "pop_idade_trabalhar": 64005.0,
+   273→      "taxa_participacao": 74.15,
+   274→      "nivel_ocupacao": 68.65,
+   275→      "taxa_formalizacao": 64.16,
+   276→      "taxa_desocupacao": 7.42
+   277→    },
+   278→    "Ensino superior completo": {
+   279→      "pop_idade_trabalhar": 29590.0,
+   280→      "taxa_participacao": 83.09,
+   281→      "nivel_ocupacao": 80.13,
+   282→      "taxa_formalizacao": 75.67,
+   283→      "taxa_desocupacao": 3.57
+   284→    }
+   285→  },
+   286→  "t14_yearly_income": {
+   287→    "2012": {
+   288→      "rendimento_medio_princ": 1970.04,
+   289→      "rendimento_medio_todos": 2005.12
+   290→    },
+   291→    "2013": {
+   292→      "rendimento_medio_princ": 2026.54,
+   293→      "rendimento_medio_todos": 2061.93
+   294→    },
+   295→    "2014": {
+   296→      "rendimento_medio_princ": 2047.73,
+   297→      "rendimento_medio_todos": 2078.66
+   298→    },
+   299→    "2015": {
+   300→      "rendimento_medio_princ": 1976.74,
+   301→      "rendimento_medio_todos": 2012.0
+   302→    },
+   303→    "2016": {
+   304→      "rendimento_medio_princ": 1946.1,
+   305→      "rendimento_medio_todos": 1976.38
+   306→    },
+   307→    "2017": {
+   308→      "rendimento_medio_princ": 1938.91,
+   309→      "rendimento_medio_todos": 1971.52
+   310→    },
+   311→    "2018": {
+   312→      "rendimento_medio_princ": 1905.84,
+   313→      "rendimento_medio_todos": 1943.44
+   314→    },
+   315→    "2019": {
+   316→      "rendimento_medio_princ": 1867.64,
+   317→      "rendimento_medio_todos": 1905.1
+   318→    },
+   319→    "2020": {
+   320→      "rendimento_medio_princ": 1930.95,
+   321→      "rendimento_medio_todos": 1957.81
+   322→    },
+   323→    "2021": {
+   324→      "rendimento_medio_princ": 1848.64,
+   325→      "rendimento_medio_todos": 1879.18
+   326→    },
+   327→    "2022": {
+   328→      "rendimento_medio_princ": 1890.87,
+   329→      "rendimento_medio_todos": 1924.21
+   330→    },
+   331→    "2023": {
+   332→      "rendimento_medio_princ": 2038.19,
+   333→      "rendimento_medio_todos": 2078.19
+   334→    },
+   335→    "2024": {
+   336→      "rendimento_medio_princ": 2124.74,
+   337→      "rendimento_medio_todos": 2181.72
+   338→    }
+   339→  },
+   340→  "t14_income_by_sex": {
+   341→    "Total": 2124.74,
+   342→    "Homens": 2244.33,
+   343→    "Mulheres": 1963.42
+   344→  },
+   345→  "t14_income_by_race": {
+   346→    "Branca": 2514.24,
+   347→    "Preta": 1930.82,
+   348→    "Parda": 1831.8
+   349→  },
+   350→  "t14_income_by_education": {
+   351→    "Sem instrução ou fund. incompleto": 1959.94,
+   352→    "Fund. completo ou médio incompleto": 2454.6,
+   353→    "Ensino médio completo ou sup. incompleto": 6089.83,
+   354→    "Ensino superior completo": 0
+   355→  },
+   356→  "t17_atividade": {
+   357→    "Total": {
+   358→      "total": 43782.0,
+   359→      "sem_instrucao": 14.51,
+   360→      "fund_completo": 11.17,
+   361→      "medio_completo": 41.73,
+   362→      "superior_completo": 32.6,
+   363→      "idade_14_29": 24.7,
+   364→      "idade_30_49": 48.83,
+   365→      "idade_50_59": 16.97,
+   366→      "idade_60_mais": 9.49
+   367→    },
+   368→    "Agropecuária": {
+   369→      "total": 2836.0,
+   370→      "sem_instrucao": 47.74,
+   371→      "fund_completo": 17.33,
+   372→      "medio_completo": 27.8,
+   373→      "superior_completo": 7.14,
+   374→      "idade_14_29": 19.82,
+   375→      "idade_30_49": 42.23,
+   376→      "idade_50_59": 21.86,
+   377→      "idade_60_mais": 16.09
+   378→    },
+   379→    "Indústria": {
+   380→      "total": 5879.0,
+   381→      "sem_instrucao": 13.89,
+   382→      "fund_completo": 13.51,
+   383→      "medio_completo": 48.71,
+   384→      "superior_completo": 23.88,
+   385→      "idade_14_29": 26.33,
+   386→      "idade_30_49": 51.23,
+   387→      "idade_50_59": 14.77,
+   388→      "idade_60_mais": 7.67
+   389→    },
+   390→    "Construção": {
+   391→      "total": 2535.0,
+   392→      "sem_instrucao": 33.09,
+   393→      "fund_completo": 17.44,
+   394→      "medio_completo": 35.42,
+   395→      "superior_completo": 14.05,
+   396→      "idade_14_29": 21.3,
+   397→      "idade_30_49": 47.21,
+   398→      "idade_50_59": 20.11,
+   399→      "idade_60_mais": 11.38
+   400→    },
+   401→    "Comércio e reparação": {
+   402→      "total": 8521.0,
+   403→      "sem_instrucao": 12.07,
+   404→      "fund_completo": 13.37,
+   405→      "medio_completo": 54.77,
+   406→      "superior_completo": 19.79,
+   407→      "idade_14_29": 30.09,
+   408→      "idade_30_49": 46.29,
+   409→      "idade_50_59": 15.45,
+   410→      "idade_60_mais": 8.17
+   411→    },
+   412→    "Adm. pública, educação, saúde e serv. sociais": {
+   413→      "total": 8649.0,
+   414→      "sem_instrucao": 2.79,
+   415→      "fund_completo": 2.89,
+   416→      "medio_completo": 30.17,
+   417→      "superior_completo": 64.14,
+   418→      "idade_14_29": 19.33,
+   419→      "idade_30_49": 52.99,
+   420→      "idade_50_59": 18.77,
+   421→      "idade_60_mais": 8.91
+   422→    },
+   423→    "Transporte, armazenagem e correio": {
+   424→      "total": 687.0,
+   425→      "sem_instrucao": 4.99,
+   426→      "fund_completo": 9.13,
+   427→      "medio_completo": 58.88,
+   428→      "superior_completo": 27.0,
+   429→      "idade_14_29": 28.09,
+   430→      "idade_30_49": 55.69,
+   431→      "idade_50_59": 12.3,
+   432→      "idade_60_mais": 3.92
+   433→    },
+   434→    "Alojamento e alimentação": {
+   435→      "total": 3079.0,
+   436→      "sem_instrucao": 21.2,
+   437→      "fund_completo": 19.1,
+   438→      "medio_completo": 50.34,
+   439→      "superior_completo": 9.35,
+   440→      "idade_14_29": 30.12,
+   441→      "idade_30_49": 47.31,
+   442→      "idade_50_59": 14.18,
+   443→      "idade_60_mais": 8.39
+   444→    },
+   445→    "Informação, financeira e outras ativ. profissionais": {
+   446→      "total": 5410.0,
+   447→      "sem_instrucao": 5.77,
+   448→      "fund_completo": 5.48,
+   449→      "medio_completo": 41.99,
+   450→      "superior_completo": 46.75,
+   451→      "idade_14_29": 31.29,
+   452→      "idade_30_49": 52.25,
+   453→      "idade_50_59": 11.47,
+   454→      "idade_60_mais": 4.99
+   455→    },
+   456→    "Serviços domésticos": {
+   457→      "total": 5486.0,
+   458→      "sem_instrucao": 40.23,
+   459→      "fund_completo": 21.42,
+   460→      "medio_completo": 36.31,
+   461→      "superior_completo": 2.04,
+   462→      "idade_14_29": 13.81,
+   463→      "idade_30_49": 48.34,
+   464→      "idade_50_59": 26.89,
+   465→      "idade_60_mais": 10.96
+   466→    },
+   467→    "Outros serviços": {
+   468→      "total": 3159.0,
+   469→      "sem_instrucao": 10.91,
+   470→      "fund_completo": 14.75,
+   471→      "medio_completo": 54.35,
+   472→      "superior_completo": 19.99,
+   473→      "idade_14_29": 31.82,
+   474→      "idade_30_49": 50.3,
+   475→      "idade_50_59": 12.26,
+   476→      "idade_60_mais": 5.62
+   477→    }
+   478→  },
+   479→  "t137_tempo_desocupacao": {
+   480→    "Brasil": {
+   481→      "total_mil": 7194.0,
+   482→      "ate_1_mes": 25.02,
+   483→      "1_mes_1_ano": 39.32,
+   484→      "1_2_anos": 11.41,
+   485→      "2_anos_mais": 24.25
+   486→    },
+   487→    "Homens": {
+   488→      "total_mil": 3311.0,
+   489→      "ate_1_mes": 30.22,
+   490→      "1_mes_1_ano": 39.63,
+   491→      "1_2_anos": 10.43,
+   492→      "2_anos_mais": 19.72
+   493→    },
+   494→    "Mulheres": {
+   495→      "total_mil": 3883.0,
+   496→      "ate_1_mes": 20.59,
+   497→      "1_mes_1_ano": 39.05,
+   498→      "1_2_anos": 12.25,
+   499→      "2_anos_mais": 28.11
+   500→    },
+   501→    "Branca": {
+   502→      "total_mil": 2466.0,
+   503→      "ate_1_mes": 23.47,
+   504→      "1_mes_1_ano": 41.76,
+   505→      "1_2_anos": 11.63,
+   506→      "2_anos_mais": 23.15
+   507→    },
+   508→    "Preta ou parda": {
+   509→      "total_mil": 4653.0,
+   510→      "ate_1_mes": 25.88,
+   511→      "1_mes_1_ano": 38.17,
+   512→      "1_2_anos": 11.11,
+   513→      "2_anos_mais": 24.84
+   514→    },
+   515→    "Homem branco": {
+   516→      "total_mil": 1149.0,
+   517→      "ate_1_mes": 25.74,
+   518→      "1_mes_1_ano": 42.61,
+   519→      "1_2_anos": 11.87,
+   520→      "2_anos_mais": 19.77
+   521→    },
+   522→    "Homem preto ou pardo": {
+   523→      "total_mil": 2129.0,
+   524→      "ate_1_mes": 32.74,
+   525→      "1_mes_1_ano": 38.21,
+   526→      "1_2_anos": 9.37,
+   527→      "2_anos_mais": 19.68
+   528→    },
+   529→    "Mulher branca": {
+   530→      "total_mil": 1317.0,
+   531→      "ate_1_mes": 21.49,
+   532→      "1_mes_1_ano": 41.01,
+   533→      "1_2_anos": 11.41,
+   534→      "2_anos_mais": 26.09
+   535→    },
+   536→    "Mulher preta ou parda": {
+   537→      "total_mil": 2524.0,
+   538→      "ate_1_mes": 20.1,
+   539→      "1_mes_1_ano": 38.13,
+   540→      "1_2_anos": 12.57,
+   541→      "2_anos_mais": 29.2
+   542→    },
+   543→    "14 a 29 anos": {
+   544→      "total_mil": 3646.0,
+   545→      "ate_1_mes": 26.7,
+   546→      "1_mes_1_ano": 41.02,
+   547→      "1_2_anos": 12.92,
+   548→      "2_anos_mais": 19.36
+   549→    },
+   550→    "30 a 49 anos": {
+   551→      "total_mil": 2576.0,
+   552→      "ate_1_mes": 23.06,
+   553→      "1_mes_1_ano": 39.17,
+   554→      "1_2_anos": 9.8,
+   555→      "2_anos_mais": 27.96
+   556→    },
+   557→    "50 a 59 anos": {
+   558→      "total_mil": 724.0,
+   559→      "ate_1_mes": 24.76,
+   560→      "1_mes_1_ano": 34.05,
+   561→      "1_2_anos": 10.47,
+   562→      "2_anos_mais": 30.72
+   563→    },
+   564→    "60 anos ou mais": {
+   565→      "total_mil": 247.0,
+   566→      "ate_1_mes": 21.44,
+   567→      "1_mes_1_ano": 31.16,
+   568→      "1_2_anos": 8.7,
+   569→      "2_anos_mais": 38.71
+   570→    },
+   571→    "Sem instrução ou fundamental incompleto": {
+   572→      "total_mil": 1387.0,
+   573→      "ate_1_mes": 30.89,
+   574→      "1_mes_1_ano": 36.43,
+   575→      "1_2_anos": 8.95,
+   576→      "2_anos_mais": 23.73
+   577→    },
+   578→    "Ensino fundamental completo ou médio incompleto": {
+   579→      "total_mil": 1410.0,
+   580→      "ate_1_mes": 29.2,
+   581→      "1_mes_1_ano": 39.87,
+   582→      "1_2_anos": 11.46,
+   583→      "2_anos_mais": 19.47
+   584→    },
+   585→    "Ensino médio completo ou superior Incompleto": {
+   586→      "total_mil": 3520.0,
+   587→      "ate_1_mes": 22.66,
+   588→      "1_mes_1_ano": 39.17,
+   589→      "1_2_anos": 12.39,
+   590→      "2_anos_mais": 25.78
+   591→    },
+   592→    "Ensino superior completo": {
+   593→      "total_mil": 877.0,
+   594→      "ate_1_mes": 18.51,
+   595→      "1_mes_1_ano": 43.58,
+   596→      "1_2_anos": 11.29,
+   597→      "2_anos_mais": 26.62
+   598→    }
+   599→  },
+   600→  "t141_horas": {
+   601→    "Brasil": {
+   602→      "total_mil": 26741.0,
+   603→      "ate_39h": 29.7,
+   604→      "40_44h": 52.58,
+   605→      "45_48h": 9.52,
+   606→      "49h_mais": 8.2
+   607→    },
+   608→    "15 a 17 anos": {
+   609→      "total_mil": 1381.0,
+   610→      "ate_39h": 70.29,
+   611→      "40_44h": 23.93,
+   612→      "45_48h": 3.03,
+   613→      "49h_mais": 2.76
+   614→    },
+   615→    "18 a 24 anos": {
+   616→      "total_mil": 13129.0,
+   617→      "ate_39h": 29.71,
+   618→      "40_44h": 53.11,
+   619→      "45_48h": 9.79,
+   620→      "49h_mais": 7.39
+   621→    },
+   622→    "25 a 29 anos": {
+   623→      "total_mil": 12231.0,
+   624→      "ate_39h": 25.11,
+   625→      "40_44h": 55.24,
+   626→      "45_48h": 9.97,
+   627→      "49h_mais": 9.68
+   628→    },
+   629→    "Homem": {
+   630→      "total_mil": 15330.0,
+   631→      "ate_39h": 24.68,
+   632→      "40_44h": 55.06,
+   633→      "45_48h": 10.54,
+   634→      "49h_mais": 9.73
+   635→    },
+   636→    "Mulher": {
+   637→      "total_mil": 11411.0,
+   638→      "ate_39h": 36.46,
+   639→      "40_44h": 49.24,
+   640→      "45_48h": 8.17,
+   641→      "49h_mais": 6.13
+   642→    },
+   643→    "Branca": {
+   644→      "total_mil": 10770.0,
+   645→      "ate_39h": 28.21,
+   646→      "40_44h": 54.13,
+   647→      "45_48h": 9.06,
+   648→      "49h_mais": 8.59
+   649→    },
+   650→    "Preta": {
+   651→      "total_mil": 3285.0,
+   652→      "ate_39h": 30.18,
+   653→      "40_44h": 51.05,
+   654→      "45_48h": 9.49,
+   655→      "49h_mais": 9.28
+   656→    },
+   657→    "Parda": {
+   658→      "total_mil": 12416.0,
+   659→      "ate_39h": 30.91,
+   660→      "40_44h": 51.59,
+   661→      "45_48h": 9.98,
+   662→      "49h_mais": 7.53
+   663→    },
+   664→    "Preta ou parda": {
+   665→      "total_mil": 15702.0,
+   666→      "ate_39h": 30.76,
+   667→      "40_44h": 51.47,
+   668→      "45_48h": 9.87,
+   669→      "49h_mais": 7.89
+   670→    },
+   671→    "Até fundamental incompleto": {
+   672→      "total_mil": 2141.0,
+   673→      "ate_39h": 34.8,
+   674→      "40_44h": 46.47,
+   675→      "45_48h": 9.82,
+   676→      "49h_mais": 8.91
+   677→    },
+   678→    "Fundamental completo até médio incompleto": {
+   679→      "total_mil": 4942.0,
+   680→      "ate_39h": 38.85,
+   681→      "40_44h": 43.07,
+   682→      "45_48h": 9.28,
+   683→      "49h_mais": 8.8
+   684→    },
+   685→    "Médio completo até superior incompleto": {
+   686→      "total_mil": 15536.0,
+   687→      "ate_39h": 26.84,
+   688→      "40_44h": 54.78,
+   689→      "45_48h": 10.36,
+   690→      "49h_mais": 8.01
+   691→    },
+   692→    "Superior completo ou nível mais elevado": {
+   693→      "total_mil": 4122.0,
+   694→      "ate_39h": 26.88,
+   695→      "40_44h": 58.83,
+   696→      "45_48h": 6.49,
+   697→      "49h_mais": 7.8
+   698→    }
+   699→  },
+   700→  "t143_nenos": {
+   701→    "Brasil": {
+   702→      "total_mil": 46977.37,
+   703→      "so_estuda_mil": 10935.56,
+   704→      "estuda_ocupado_mil": 5926.64,
+   705→      "so_ocupado_mil": 20814.46,
+   706→      "nao_estuda_nao_ocupado_mil": 9300.71,
+   707→      "so_estuda_pct": 23.28,
+   708→      "estuda_ocupado_pct": 12.62,
+   709→      "so_ocupado_pct": 44.31,
+   710→      "nao_estuda_nao_ocupado_pct": 19.8
+   711→    },
+   712→    "Norte": {
+   713→      "total_mil": 4749.02,
+   714→      "so_estuda_mil": 1260.84,
+   715→      "estuda_ocupado_mil": 535.01,
+   716→      "so_ocupado_mil": 1796.63,
+   717→      "nao_estuda_nao_ocupado_mil": 1156.54,
+   718→      "so_estuda_pct": 26.55,
+   719→      "estuda_ocupado_pct": 11.27,
+   720→      "so_ocupado_pct": 37.83,
+   721→      "nao_estuda_nao_ocupado_pct": 24.35
+   722→    },
+   723→    "Nordeste": {
+   724→      "total_mil": 13169.16,
+   725→      "so_estuda_mil": 3457.72,
+   726→      "estuda_ocupado_mil": 1136.3,
+   727→      "so_ocupado_mil": 4947.54,
+   728→      "nao_estuda_nao_ocupado_mil": 3627.6,
+   729→      "so_estuda_pct": 26.26,
+   730→      "estuda_ocupado_pct": 8.63,
+   731→      "so_ocupado_pct": 37.57,
+   732→      "nao_estuda_nao_ocupado_pct": 27.55
+   733→    },
+   734→    "Sudeste": {
+   735→      "total_mil": 18519.07,
+   736→      "so_estuda_mil": 4083.66,
+   737→      "estuda_ocupado_mil": 2537.24,
+   738→      "so_ocupado_mil": 8864.63,
+   739→      "nao_estuda_nao_ocupado_mil": 3033.54,
+   740→      "so_estuda_pct": 22.05,
+   741→      "estuda_ocupado_pct": 13.7,
+   742→      "so_ocupado_pct": 47.87,
+   743→      "nao_estuda_nao_ocupado_pct": 16.38
+   744→    },
+   745→    "Sul": {
+   746→      "total_mil": 6539.74,
+   747→      "so_estuda_mil": 1273.17,
+   748→      "estuda_ocupado_mil": 1116.86,
+   749→      "so_ocupado_mil": 3277.14,
+   750→      "nao_estuda_nao_ocupado_mil": 872.56,
+   751→      "so_estuda_pct": 19.47,
+   752→      "estuda_ocupado_pct": 17.08,
+   753→      "so_ocupado_pct": 50.11,
+   754→      "nao_estuda_nao_ocupado_pct": 13.34
+   755→    },
+   756→    "Centro-Oeste": {
+   757→      "total_mil": 4000.38,
+   758→      "so_estuda_mil": 860.17,
+   759→      "estuda_ocupado_mil": 601.22,
+   760→      "so_ocupado_mil": 1928.53,
+   761→      "nao_estuda_nao_ocupado_mil": 610.46,
+   762→      "so_estuda_pct": 21.5,
+   763→      "estuda_ocupado_pct": 15.03,
+   764→      "so_ocupado_pct": 48.21,
+   765→      "nao_estuda_nao_ocupado_pct": 15.26
+   766→    },
+   767→    "Homem": {
+   768→      "total_mil": 23773.18,
+   769→      "so_estuda_mil": 5232.28,
+   770→      "estuda_ocupado_mil": 2898.92,
+   771→      "so_ocupado_mil": 12431.02,
+   772→      "nao_estuda_nao_ocupado_mil": 3210.97,
+   773→      "so_estuda_pct": 22.01,
+   774→      "estuda_ocupado_pct": 12.19,
+   775→      "so_ocupado_pct": 52.29,
+   776→      "nao_estuda_nao_ocupado_pct": 13.51
+   777→    },
+   778→    "Mulher": {
+   779→      "total_mil": 23204.19,
+   780→      "so_estuda_mil": 5703.28,
+   781→      "estuda_ocupado_mil": 3027.73,
+   782→      "so_ocupado_mil": 8383.44,
+   783→      "nao_estuda_nao_ocupado_mil": 6089.74,
+   784→      "so_estuda_pct": 24.58,
+   785→      "estuda_ocupado_pct": 13.05,
+   786→      "so_ocupado_pct": 36.13,
+   787→      "nao_estuda_nao_ocupado_pct": 26.24
+   788→    },
+   789→    "Branca": {
+   790→      "total_mil": 18064.29,
+   791→      "so_estuda_mil": 4465.51,
+   792→      "estuda_ocupado_mil": 2741.24,
+   793→      "so_ocupado_mil": 8028.64,
+   794→      "nao_estuda_nao_ocupado_mil": 2828.9,
+   795→      "so_estuda_pct": 24.72,
+   796→      "estuda_ocupado_pct": 15.17,
+   797→      "so_ocupado_pct": 44.44,
+   798→      "nao_estuda_nao_ocupado_pct": 15.66
+   799→    },
+   800→    "Preta": {
+   801→      "total_mil": 5485.77,
+   802→      "so_estuda_mil": 1049.25,
+   803→      "estuda_ocupado_mil": 617.25,
+   804→      "so_ocupado_mil": 2667.97,
+   805→      "nao_estuda_nao_ocupado_mil": 1151.3,
+   806→      "so_estuda_pct": 19.13,
+   807→      "estuda_ocupado_pct": 11.25,
+   808→      "so_ocupado_pct": 48.63,
+   809→      "nao_estuda_nao_ocupado_pct": 20.99
+   810→    },
+   811→    "Parda": {
+   812→      "total_mil": 22932.37,
+   813→      "so_estuda_mil": 5301.38,
+   814→      "estuda_ocupado_mil": 2516.2,
+   815→      "so_ocupado_mil": 9900.15,
+   816→      "nao_estuda_nao_ocupado_mil": 5214.64,
+   817→      "so_estuda_pct": 23.12,
+   818→      "estuda_ocupado_pct": 10.97,
+   819→      "so_ocupado_pct": 43.17,
+   820→      "nao_estuda_nao_ocupado_pct": 22.74
+   821→    },
+   822→    "Preta ou parda": {
+   823→      "total_mil": 28418.13,
+   824→      "so_estuda_mil": 6350.63,
+   825→      "estuda_ocupado_mil": 3133.45,
+   826→      "so_ocupado_mil": 12568.12,
+   827→      "nao_estuda_nao_ocupado_mil": 6365.93,
+   828→      "so_estuda_pct": 22.35,
+   829→      "estuda_ocupado_pct": 11.03,
+   830→      "so_ocupado_pct": 44.23,
+   831→      "nao_estuda_nao_ocupado_pct": 22.4
+   832→    },
+   833→    "Homem branco": {
+   834→      "total_mil": 9067.49,
+   835→      "so_estuda_mil": 2123.69,
+   836→      "estuda_ocupado_mil": 1299.19,
+   837→      "so_ocupado_mil": 4632.81,
+   838→      "nao_estuda_nao_ocupado_mil": 1011.8,
+   839→      "so_estuda_pct": 23.42,
+   840→      "estuda_ocupado_pct": 14.33,
+   841→      "so_ocupado_pct": 51.09,
+   842→      "nao_estuda_nao_ocupado_pct": 11.16
+   843→    }
+   844→  },
+   845→  "t150_jovens_pobreza": {
+   846→    "Brasil": {
+   847→      "total_jovens": 47894.99,
+   848→      "menos_215": 11.38,
+   849→      "menos_365": 18.8,
+   850→      "menos_685": 38.28,
+   851→      "ate_50_med_nac": 25.18,
+   852→      "ate_50_med_reg": 22.3
+   853→    },
+   854→    "Norte": {
+   855→      "total_jovens": 4819.75,
+   856→      "menos_215": 15.04,
+   857→      "menos_365": 27.74,
+   858→      "menos_685": 52.54,
+   859→      "ate_50_med_nac": 36.88,
+   860→      "ate_50_med_reg": 25.49
+   861→    },
+   862→    "Nordeste": {
+   863→      "total_jovens": 13478.43,
+   864→      "menos_215": 22.43,
+   865→      "menos_365": 35.11,
+   866→      "menos_685": 61.21,
+   867→      "ate_50_med_nac": 44.65,
+   868→      "ate_50_med_reg": 25.96
+   869→    },
+   870→    "Sudeste": {
+   871→      "total_jovens": 18978.42,
+   872→      "menos_215": 6.34,
+   873→      "menos_365": 11.04,
+   874→      "menos_685": 27.76,
+   875→      "ate_50_med_nac": 15.98,
+   876→      "ate_50_med_reg": 20.92
+   877→    },
+   878→    "Sul": {
+   879→      "total_jovens": 6681.21,
+   880→      "menos_215": 4.41,
+   881→      "menos_365": 7.09,
+   882→      "menos_685": 19.62,
+   883→      "ate_50_med_nac": 10.25,
+   884→      "ate_50_med_reg": 18.46
+   885→    },
+   886→    "Centro-Oeste": {
+   887→      "total_jovens": 3937.18,
+   888→      "menos_215": 5.25,
+   889→      "menos_365": 9.31,
+   890→      "menos_685": 24.68,
+   891→      "ate_50_med_nac": 13.83,
+   892→      "ate_50_med_reg": 19.02
+   893→    },
+   894→    "Homem": {
+   895→      "total_jovens": 24126.15,
+   896→      "menos_215": 11.11,
+   897→      "menos_365": 18.17,
+   898→      "menos_685": 36.64,
+   899→      "ate_50_med_nac": 24.07,
+   900→      "ate_50_med_reg": 21.43
+   901→    },
+   902→    "Mulher": {
+   903→      "total_jovens": 23768.84,
+   904→      "menos_215": 11.67,
+   905→      "menos_365": 19.44,
+   906→      "menos_685": 39.94,
+   907→      "ate_50_med_nac": 26.3,
+   908→      "ate_50_med_reg": 23.18
+   909→    },
+   910→    "Branca": {
+   911→      "total_jovens": 18608.25,
+   912→      "menos_215": 7.52,
+   913→      "menos_365": 11.8,
+   914→      "menos_685": 25.99,
+   915→      "ate_50_med_nac": 16.1,
+   916→      "ate_50_med_reg": 16.85
+   917→    },
+   918→    "Preta": {
+   919→      "total_jovens": 5380.91,
+   920→      "menos_215": 12.19,
+   921→      "menos_365": 20.32,
+   922→      "menos_685": 43.25,
+   923→      "ate_50_med_nac": 28.41,
+   924→      "ate_50_med_reg": 24.8
+   925→    },
+   926→    "Parda": {
+   927→      "total_jovens": 23382.44,
+   928→      "menos_215": 14.19,
+   929→      "menos_365": 23.95,
+   930→      "menos_685": 46.85,
+   931→      "ate_50_med_nac": 31.59,
+   932→      "ate_50_med_reg": 26.03
+   933→    },
+   934→    "Preta ou parda": {
+   935→      "total_jovens": 28763.35,
+   936→      "menos_215": 13.81,
+   937→      "menos_365": 23.27,
+   938→      "menos_685": 46.17,
+   939→      "ate_50_med_nac": 30.99,
+   940→      "ate_50_med_reg": 25.8
+   941→    },
+   942→    "Homem branco": {
+   943→      "total_jovens": 9280.16,
+   944→      "menos_215": 7.51,
+   945→      "menos_365": 11.57,
+   946→      "menos_685": 25.06,
+   947→      "ate_50_med_nac": 15.52,
+   948→      "ate_50_med_reg": 16.42
+   949→    },
+   950→    "Homem preto ou pardo": {
+   951→      "total_jovens": 11827.34,
+   952→      "menos_215": 13.8,
+   953→      "menos_365": 23.12,
+   954→      "menos_685": 44.73,
+   955→      "ate_50_med_nac": 30.18,
+   956→      "ate_50_med_reg": 25.08
+   957→    },
+   958→    "Mulher branca": {
+   959→      "total_jovens": 9328.09,
+   960→      "menos_215": 7.54,
+   961→      "menos_365": 12.03,
+   962→      "menos_685": 26.92,
+   963→      "ate_50_med_nac": 16.67,
+   964→      "ate_50_med_reg": 17.28
+   965→    },
+   966→    "Mulher preta ou parda": {
+   967→      "total_jovens": 11555.1,
+   968→      "menos_215": 14.59,
+   969→      "menos_365": 24.8,
+   970→      "menos_685": 49.01,
+   971→      "ate_50_med_nac": 33.03,
+   972→      "ate_50_med_reg": 27.0
+   973→    },
+   974→    "Até fundamental incompleto": {
+   975→      "total_jovens": 6844.77,
+   976→      "menos_215": 24.05,
+   977→      "menos_365": 38.06,
+   978→      "menos_685": 65.06,
+   979→      "ate_50_med_nac": 47.88,
+   980→      "ate_50_med_reg": 41.86
+   981→    },
+   982→    "Fundamental completo até médio incompleto": {
+   983→      "total_jovens": 13832.89,
+   984→      "menos_215": 14.36,
+   985→      "menos_365": 24.15,
+   986→      "menos_685": 47.88,
+   987→      "ate_50_med_nac": 32.02,
+   988→      "ate_50_med_reg": 28.93
+   989→    },
+   990→    "Médio completo até superior incompleto": {
+   991→      "total_jovens": 22508.76,
+   992→      "menos_215": 7.48,
+   993→      "menos_365": 12.75,
+   994→      "menos_685": 30.35,
+   995→      "ate_50_med_nac": 18.2,
+   996→      "ate_50_med_reg": 15.91
+   997→    },
+   998→    "Superior completo ou nível mais elevado": {
+   999→      "total_jovens": 4708.57,
+  1000→      "menos_215": 2.88,
+  1001→      "menos_365": 4.0,
+  1002→      "menos_685": 9.05,
+  1003→      "ate_50_med_nac": 5.41,
+  1004→      "ate_50_med_reg": 4.92
+  1005→    }
+  1006→  },
+  1007→  "t151_grupos_ocupacao": {
+  1008→    "Brasil": {
+  1009→      "total": 101309.0,
+  1010→      "homens": 57345.0,
+  1011→      "mulheres": 43963.0,
+  1012→      "branca": 43782.0,
+  1013→      "preta": 11883.0,
+  1014→      "parda": 44461.0,
+  1015→      "preta_ou_parda": 56344.0
+  1016→    },
+  1017→    "Diretores e gerentes": {
+  1018→      "total": 3530.0,
+  1019→      "homens": 2081.0,
+  1020→      "mulheres": 1449.0,
+  1021→      "branca": 2300.0,
+  1022→      "preta": 197.0,
+  1023→      "parda": 980.0,
+  1024→      "preta_ou_parda": 1177.0
+  1025→    },
+  1026→    "Profissionais das ciências e intelectuais": {
+  1027→      "total": 12834.0,
+  1028→      "homens": 5198.0,
+  1029→      "mulheres": 7636.0,
+  1030→      "branca": 7728.0,
+  1031→      "preta": 1065.0,
+  1032→      "parda": 3807.0,
+  1033→      "preta_ou_parda": 4872.0
+  1034→    },
+  1035→    "Técnicos e profissionais de nível médio": {
+  1036→      "total": 8676.0,
+  1037→      "homens": 4687.0,
+  1038→      "mulheres": 3990.0,
+  1039→      "branca": 4491.0,
+  1040→      "preta": 909.0,
+  1041→      "parda": 3172.0,
+  1042→      "preta_ou_parda": 4080.0
+  1043→    },
+  1044→    "Trabalhadores de apoio administrativo": {
+  1045→      "total": 8487.0,
+  1046→      "homens": 3301.0,
+  1047→      "mulheres": 5186.0,
+  1048→      "branca": 3997.0,
+  1049→      "preta": 917.0,
+  1050→      "parda": 3476.0,
+  1051→      "preta_ou_parda": 4393.0
+  1052→    },
+  1053→    "Trabalhadores dos serviços, vendedores dos comércios e mercados": {
+  1054→      "total": 22595.0,
+  1055→      "homens": 9513.0,
+  1056→      "mulheres": 13082.0,
+  1057→      "branca": 9156.0,
+  1058→      "preta": 2678.0,
+  1059→      "parda": 10494.0,
+  1060→      "preta_ou_parda": 13172.0
+  1061→    },
+  1062→    "Trabalhadores qualificados da agropecuária, florestais, da caça e da pesca": {
+  1063→      "total": 4960.0,
+  1064→      "homens": 4025.0,
+  1065→      "mulheres": 934.0,
+  1066→      "branca": 2083.0,
+  1067→      "preta": 473.0,
+  1068→      "parda": 2354.0,
+  1069→      "preta_ou_parda": 2827.0
+  1070→    },
+  1071→    "Trabalhadores qualificados, operários e artesões da construção, das artes mecânicas e outros ofícios": {
+  1072→      "total": 13585.0,
+  1073→      "homens": 11392.0,
+  1074→      "mulheres": 2192.0,
+  1075→      "branca": 5094.0,
+  1076→      "preta": 1842.0,
+  1077→      "parda": 6522.0,
+  1078→      "preta_ou_parda": 8363.0
+  1079→    },
+  1080→    "Operadores de instalações e máquinas e montadores": {
+  1081→      "total": 9509.0,
+  1082→      "homens": 8233.0,
+  1083→      "mulheres": 1276.0,
+  1084→      "branca": 3853.0,
+  1085→      "preta": 1108.0,
+  1086→      "parda": 4451.0,
+  1087→      "preta_ou_parda": 5559.0
+  1088→    },
+  1089→    "Ocupações elementares": {
+  1090→      "total": 16326.0,
+  1091→      "homens": 8197.0,
+  1092→      "mulheres": 8130.0,
+  1093→      "branca": 4754.0,
+  1094→      "preta": 2601.0,
+  1095→      "parda": 8826.0,
+  1096→      "preta_ou_parda": 11427.0
+  1097→    }
+  1098→  },
+  1099→  "city_income": [
+  1100→    [
+  1101→      "Rendimento médio mensal das pessoas ocupadas de 10 anos ou mais, por cidade"
+  1102→    ],
+  1103→    [
+  1104→      "",
+  1105→      "Belo Horizonte (MG)",
+  1106→      "Porto Alegre (RS)",
+  1107→      "Recife (PE)",
+  1108→      "Rio de Janeiro (RJ)",
+  1109→      "Salvador (BA)",
+  1110→      "São Paulo (SP)",
+  1111→      "Total das áreas"
+  1112→    ],
+  1113→    [
+  1114→      "Totals",
+  1115→      "2.073,40",
+  1116→      "2.278,80",
+  1117→      "1.647,80",
+  1118→      "2.434,90",
+  1119→      "1.653,60",
+  1120→      "2.324,10",
+  1121→      "2.227,50"
+  1122→    ],
+  1123→    [
+  1124→      "Fonte: \"IBGE - Pesquisa Mensal de Emprego\""
+  1125→    ]
+  1126→  ],
+  1127→  "national_income": [
+  1128→    [
+  1129→      "Rendimento médio mensal das pessoas de 14 anos ou mais"
+  1130→    ],
+  1131→    [
+  1132→      "",
+  1133→      "",
+  1134→      "Totais"
+  1135→    ],
+  1136→    [
+  1137→      "Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+  1138→      "Reais",
+  1139→      "3.732"
+  1140→    ],
+  1141→    [
+  1142→      "Variação percentual em relação a três trimestres móveis anteriores - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+  1143→      "%",
+  1144→      "0,3"
+  1145→    ],
+  1146→    [
+  1147→      "Variação percentual em relação ao mesmo trimestre móvel do ano anterior - Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+  1148→      "%",
+  1149→      "5,3"
+  1150→    ],
+  1151→    [
+  1152→      "Fonte: \"IBGE - Pesquisa Nacional por Amostra de Domicílios Contínua mensal\""
+  1153→    ]
+  1154→  ]
+  1155→}
