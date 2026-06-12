@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import fs from "fs";
-import path from "path";
+import { ibgeData } from "@/lib/ibge-data";
 
 export async function GET() {
   try {
@@ -17,12 +16,8 @@ export async function GET() {
       return NextResponse.json(data);
     }
 
-    // Fallback: read directly from JSON file
-    const filePath = path.join(process.cwd(), "ibge_data.json");
-    const fileContents = fs.readFileSync(filePath, "utf-8");
-    const jsonData = JSON.parse(fileContents);
-
-    return NextResponse.json(jsonData);
+    // Fallback: use inline data (works on Vercel serverless)
+    return NextResponse.json(ibgeData);
   } catch (error) {
     console.error("IBGE data fetch error:", error);
     return NextResponse.json(

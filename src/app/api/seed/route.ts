@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { hash } from "bcryptjs";
-import fs from "fs";
-import path from "path";
+import { ibgeData } from "@/lib/ibge-data";
 
 export async function GET() {
   try {
@@ -12,11 +11,7 @@ export async function GET() {
       quizScores: 0,
     };
 
-    // 1. Seed IBGE data from JSON file
-    const filePath = path.join(process.cwd(), "ibge_data.json");
-    const fileContents = fs.readFileSync(filePath, "utf-8");
-    const ibgeData = JSON.parse(fileContents);
-
+    // 1. Seed IBGE data from inline data (works on Vercel serverless)
     for (const [key, value] of Object.entries(ibgeData)) {
       await db.ibgeData.upsert({
         where: { key },
